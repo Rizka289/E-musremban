@@ -9,6 +9,15 @@ class Auth extends CI_Controller
     }
     public function index()
     {
+        // $userdata = $this->session->userdata();
+
+        // if ($userdata['isLogin']) {
+        //     if ($userdata['user-data']['role'] == 1)
+        //         redirect('Admin');
+
+        //     if ($userdata['user-data']['role'] == 2)
+        //         redirect('User');
+        // }
         $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
         $this->form_validation->set_rules('password', 'Password', 'trim|required');
         if ($this->form_validation->run() == false) {
@@ -34,13 +43,14 @@ class Auth extends CI_Controller
                 // cek password
                 if (password_verify($password, $user['password'])) {
                     $data = [
-                        'email' => $user['email'],
-                        'id_status' => $user['id_status']
+                        'user-data' => $user,
+                        'isLogin' => true
                     ];
                     $this->session->set_userdata($data);
-                    if ($user['id_status'] == 1) {
+                    if ($user['role'] == 1) {
                         redirect('admin');
-                    } else {
+                    }
+                    if ($user['role'] == 2) {
                         redirect('user');
                     }
                 } else {
@@ -88,10 +98,10 @@ class Auth extends CI_Controller
     public function logout()
     {
         $this->session->unset_userdata('email');
-        $this->session->unset_userdata('id_status');
+        $this->session->unset_userdata('role');
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
         You have been logged out !
       </div>');
-        redirect('auth');
+        redirect('Home');
     }
 }

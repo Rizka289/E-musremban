@@ -12,8 +12,8 @@
                 <div class="card-body">
                     <h5 class="card-title"><?= $user['username']; ?></h5>
                     <p class="card-text"><?= $user['email']; ?></p>
-                    <p class="card-text"><small class="text-muted">Member
-                            Since <?= date('d F Y', $user['date_created']); ?></small></p>
+                    <small class="card-text"><small class="text-muted">Member
+                            Since <?= date_format(date_create($user['date_created']), "Y M d") ?></small></small>
                 </div>
             </div>
         </div>

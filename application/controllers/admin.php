@@ -1,6 +1,17 @@
 <?php
 class Admin extends CI_Controller
 {
+    public function __construct()
+    {
+        parent::__construct();
+        $userdata = $this->session->userdata();
+        if (!$userdata['isLogin']) {
+            redirect('auth');
+        }
+
+        if ($userdata['user-data']['role'] == 2)
+            redirect('User');
+    }
     public function index()
     {
         $data['title'] = 'My Profile';
