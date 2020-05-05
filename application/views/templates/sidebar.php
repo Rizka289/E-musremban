@@ -18,11 +18,6 @@
     // }
     ?>
 
-    <!-- Heading -->
-    <div class="sidebar-heading">
-        Administrator
-    </div>
-
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
         <a class="nav-link" href="index.html">
@@ -47,7 +42,7 @@
                 $userdata = $this->session->userdata();
                 if ($userdata['user-data']['role'] == 1) :
                 ?>
-                <a class="collapse-item" href="utilities-color.html">Tahun</a>
+                <a class="collapse-item" href="<?= site_url('Tahun') ?>">Tahun</a>
                 <a class="collapse-item" href="utilities-color.html">Bidang</a>
                 <a class="collapse-item" href="utilities-border.html">Sub Bidang</a>
                 <?php endif ?>

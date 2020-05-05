@@ -1,4 +1,6 @@
 <?php
+defined('BASEPATH') or exit('No direct script accesss allowed');
+
 class Auth extends CI_Controller
 {
     public function __construct()
@@ -9,15 +11,6 @@ class Auth extends CI_Controller
     }
     public function index()
     {
-        // $userdata = $this->session->userdata();
-
-        // if ($userdata['isLogin']) {
-        //     if ($userdata['user-data']['role'] == 1)
-        //         redirect('Admin');
-
-        //     if ($userdata['user-data']['role'] == 2)
-        //         redirect('User');
-        // }
         $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
         $this->form_validation->set_rules('password', 'Password', 'trim|required');
         if ($this->form_validation->run() == false) {
