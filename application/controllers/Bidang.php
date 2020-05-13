@@ -46,10 +46,10 @@ class Bidang extends CI_Controller
     public function proses_edit()
     {
 
-        $kode = $this->input->post('kode_rek');
-        $nama = $this->input->post('Nama_rek');
+        $kode = $this->input->post('korek');
+        $nama = $this->input->post('narek');
 
-        $id = $this->input->post('id_bidang');
+        $id = $this->input->post('id');
 
         $objek = array(
             'kode_rek' => $kode,
