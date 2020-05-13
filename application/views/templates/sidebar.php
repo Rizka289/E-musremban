@@ -43,7 +43,7 @@
                 if ($userdata['user-data']['role'] == 1) :
                 ?>
                 <a class="collapse-item" href="<?= site_url('Tahun') ?>">Tahun</a>
-                <a class="collapse-item" href="utilities-color.html">Bidang</a>
+                <a class="collapse-item" href="<?= site_url('Bidang') ?>">Bidang</a>
                 <a class="collapse-item" href="utilities-border.html">Sub Bidang</a>
                 <?php endif ?>
                 <a class="collapse-item" href="utilities-animation.html">Usulan</a>

@@ -16,12 +16,34 @@ class Tahun extends CI_Controller
         $this->load->view("templates/header", $data);
         $this->load->view("templates/sidebar", $data);
         $this->load->view("templates/topbar", $data);
-        $this->load->view("tahun/index", $data);
+        $this->load->view("Input Data/v_tahun", $data);
         $this->load->view("templates/footer");
     }
     public function insert()
     {
         $this->Tahun_model->insert();
+        redirect('tahun', 'refresh');
+    }
+    public function hapus($id)
+    {
+        if ($this->Tahun_model->remove($id)) {
+            echo "
+            <script>
+                alert('Data Berhasil Dihapus');
+            </script>
+            ";
+        } else {
+            echo "
+            <script>
+                alert('Data Gagal Dihapus');
+            </script>
+            ";
+            redirect('tahun', 'refresh');
+        }
+    }
+    public function edit($id)
+    {
+        $this->Tahun_model->get_id($id);
         redirect('tahun', 'refresh');
     }
 }
