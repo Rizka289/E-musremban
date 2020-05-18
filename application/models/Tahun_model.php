@@ -3,9 +3,9 @@ defined('BASEPATH') or exit('No direct script accesss allowed');
 
 class Tahun_model extends CI_Model
 {
-    public function getAll()
+    public function getAll($limit, $start)
     {
-        return $this->db->get('tbl_tahun')->result();
+        return $this->db->get('tbl_tahun', $limit, $start)->result();
     }
     public function insert()
     {
@@ -22,7 +22,10 @@ class Tahun_model extends CI_Model
 
     public function get_id($id)
     {
-        $this->db->where('id_tahun', $id);
-        $this->db->get('tbl_tahun')->row();
+        return $this->db->where('id_tahun', $id)->get('tbl_tahun')->row();
+    }
+    public function update($id, $objek)
+    {
+        return $this->db->where('id_tahun', $id)->update('tbl_tahun', $objek);
     }
 }

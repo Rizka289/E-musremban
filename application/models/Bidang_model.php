@@ -3,15 +3,15 @@ defined('BASEPATH') or exit('No direct script accesss allowed');
 
 class Bidang_model extends CI_Model
 {
-    public function getAll()
+    public function getAll($limit, $start)
     {
-        return $this->db->get('tbl_bidang')->result();
+        return $this->db->get('tbl_bidang', $limit, $start)->result();
     }
     public function insert()
     {
         $data = [
-            'kode_rek' => $this->input->post('korek', true),
-            'Nama_rek' => $this->input->post('narek', true),
+            'kode_rek' => htmlspecialchars($this->input->post('korek', true)),
+            'Nama_rek' => htmlspecialchars($this->input->post('narek', true))
         ];
         $this->db->insert('tbl_bidang', $data);
     }

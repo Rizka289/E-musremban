@@ -1,9 +1,3 @@
-<?php if ($this->session->flashdata()) : ?>
-<script>
-alert('Sukses');
-</script>
-<?php endif; ?>
-
 <!-- Modal Tambah Data -->
 <div class="modal fade" id="tambah" tabindex="-1" role="dialog" aria-labelledby="TambahLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -18,9 +12,9 @@ alert('Sukses');
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Kode Rekening</label>
-                        <input type="text" class="form-control" id="korek" name="korek" autocomplete="off">
+                        <input type="text" class="form-control" name="korek" autocomplete="off">
                         <label>Nama Rekening</label>
-                        <input type="text" class="form-control" id="narek" name="narek" autocomplete="off">
+                        <input type="text" class="form-control" name="narek" autocomplete="off">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -39,6 +33,11 @@ alert('Sukses');
     </div>
     <div class="card-body">
         <div class="table-responsive">
+            <?php
+            if ($this->session->flashdata('message')) {
+                echo "<div class='alert alert-primary'><button type='button' class='close' data-dismiss='alert' aria-label='close'><span aria-hidden='true'>&times;</span></button>" . $this->session->flashdata('message') . "</div>";
+            }
+            ?>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambah"><i
                     class="fas fa-fw fa-plus-circle"></i>Tambah</button>
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -50,23 +49,28 @@ alert('Sukses');
                         <th>Aksi</th>
                     </tr>
                 </thead>
-                <?php $i = 1; ?>
+                <?php $i = 1;
+                $this->uri->segment('3') + 1; ?>
                 <?php foreach ($bidang as $key) : ?>
                 <tr>
-                    <td><?= $i; ?></td>
+                    <td><?= $i++; ?></td>
                     <td><?= $key->kode_rek; ?></td>
                     <td><?= $key->Nama_rek; ?></td>
                     <td>
-                        <a href="<?= site_url('bidang/edit/' . $key->id_bidang) ?>"><i
+                        <a href="<?= site_url('bidang/edit/' . $key->id_bidang) ?>" class="btn btn-primary"><i
                                 class="far fa-fw fa-edit"></i></a>
                         <a onclick="return confirm ('yakin?');"
-                            href="<?= site_url('bidang/hapus/' . $key->id_bidang) ?>"><i
+                            href="<?= site_url('bidang/hapus/' . $key->id_bidang) ?>" class="btn btn-primary"><i
                                 class="fas fa-fw fa-trash-alt"></i></a>
                     </td>
                 </tr>
-                <?php $i++ ?>
                 <?php endforeach; ?>
             </table>
+            <div class="rows">
+                <div class="col">
+                    <?= $pagination; ?>
+                </div>
+            </div>
         </div>
     </div>
 </div>

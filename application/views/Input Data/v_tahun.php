@@ -30,6 +30,15 @@
     </div>
     <div class="card-body">
         <div class="table-responsive">
+            <?php
+
+            if ($this->session->flashdata('message')) {
+                echo "<div class='alert alert-primary'>  <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                <span aria-hidden='true'>&times;</span>
+              </button> " . $this->session->flashdata('message') . "</div>";
+            }
+
+            ?>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambah"><i
                     class="fas fa-fw fa-plus-circle"></i>Tambah</button>
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -40,21 +49,26 @@
                         <th>Aksi</th>
                     </tr>
                 </thead>
-                <?php $i = 1; ?>
+
+                <?php $i = $this->uri->segment('3') + 1; ?>
                 <?php foreach ($tahun as $key) : ?>
                 <tr>
-                    <td><?= $i; ?></td>
+                    <td><?= $i++; ?></td>
                     <td><?= $key->tahun; ?></td>
                     <td>
-                        <a href="<?= site_url('tahun/update') ?>"><i class="far fa-fw fa-edit"></i></a>
-                        <a onclick="return confirm('Yakin?');"
-                            href="<?= site_url('tahun/hapus/' . $key->id_tahun) ?>"><i
-                                class="fas fa-fw fa-trash-alt"></i></a>
+                        <a href="<?= site_url('tahun/edit/' . $key->id_tahun) ?>" class="btn btn-primary"><i
+                                class="far fa-fw fa-edit"></i></a>
+                        <a onclick="return confirm('Yakin?');" href="<?= site_url('tahun/hapus/' . $key->id_tahun) ?>"
+                            class="btn btn-primary"><i class="fas fa-fw fa-trash-alt"></i></a>
                     </td>
                 </tr>
-                <?php $i++; ?>
                 <?php endforeach; ?>
             </table>
+            <div class="row">
+                <div class="col">
+                    <?= $pagination; ?>
+                </div>
+            </div>
         </div>
     </div>
 </div>
