@@ -12,25 +12,9 @@
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
 
-    <?php
-    // $multi = $this->session->userdata('role');
-    // if ($_SESSION['admin']) {
-    // }
-    ?>
-
-    <!-- Nav Item - Dashboard -->
     <li class="nav-item">
-        <a class="nav-link" href="index.html">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span></a>
-    </li>
-
-    <!-- Divider -->
-    <hr class="sidebar-divider">
-
-    <li class="nav-item">
-        <a class="nav-link" href="index.html">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
+        <a class="nav-link" href="<?= site_url('Profile') ?> ">
+            <i class="far fa-fw fa-id-card"></i>
             <span>Profil</span></a>
     </li>
 
@@ -41,7 +25,7 @@
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
             aria-expanded="true" aria-controls="collapseUtilities">
-            <i class="fas fa-fw fa-cog"></i>
+            <i class="fas fa-fw fa-folder-plus"></i>
             <span>Data</span>
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">

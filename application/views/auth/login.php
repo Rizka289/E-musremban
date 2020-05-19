@@ -36,9 +36,14 @@
                                 <div class="text-center">
                                     <a class="small" href="forgot-password.html">Forgot Password?</a>
                                 </div>
-                                <div class="text-center">
+                                <div id="register" class="text-center">
+                                    <?php if ($jumlahUser < 4) : // maksimal usek = 3 
+                                    ?>
                                     <a class="small" href="<?= site_url('auth/registrasi') ?>">Create an
                                         Account!</a>
+                                    <?php elseif ($jumlahUser >= 3) : ?>
+                                    <p style="color: #4e73df;" class="small">Create an Account!</p>
+                                    <?php endif ?>
                                 </div>
                             </div>
                         </div>
@@ -51,3 +56,28 @@
     </div>
 
 </div>
+<!-- <script>
+$(document).ready(function() {
+    var domain = window.location.origin == 'http://localhost' ? window.location.origin + '/desa_tamansari' :
+        window.location.origin;
+    $.ajax({
+        url: domain + '/index.php/auth/getUserCount',
+    }).done(cektJumlahUser).fail(function(err) {
+        console.log(err);
+
+    })
+})
+
+function cektJumlahUser(data) {
+    var wrapper = $("#register").parent();
+    // maksimal user 3
+    if (data >= 3) {
+        $("#register a").hide();
+        $("#register p").show();
+    } else {
+        $("#register a").show();
+        $("#register p").hide();
+    }
+
+}
+</script> -->

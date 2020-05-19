@@ -13,10 +13,12 @@ class Auth extends CI_Controller
     {
         $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
         $this->form_validation->set_rules('password', 'Password', 'trim|required');
+        $jumlahUser = $this->db->count_all('tbl_user'); // ambil data jumlah user
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Halaman Login';
+            $data['jumlahUser'] = $jumlahUser;
             $this->load->view('templates/login_header', $data);
-            $this->load->view('auth/login');
+            $this->load->view('auth/login', $data);
             $this->load->view('templates/login_footer');
         } else {
             $this->_login();
@@ -29,7 +31,6 @@ class Auth extends CI_Controller
         $password = $this->input->post('password');
 
         $user = $this->db->get_where('tbl_user', ['email' => $email])->row_array();
-
         // cek user ada apa tidak
         if ($user) {
             if ($user['is_active'] == 1) {
@@ -65,6 +66,7 @@ class Auth extends CI_Controller
             redirect('auth');
         }
     }
+
     public function registrasi()
     {
         $data['title'] = 'Halaman Registrasi';
@@ -75,6 +77,7 @@ class Auth extends CI_Controller
             'matches' => 'password dont match!',
             'min_length' => 'password too short'
         ]);
+
         $this->form_validation->set_rules('password2', 'Password', 'required|trim|matches[password1]');
         if ($this->form_validation->run() == false) {
             $this->load->view('templates/login_header', $data);
@@ -97,4 +100,8 @@ class Auth extends CI_Controller
       </div>');
         redirect('Home');
     }
+    // function getUserCount()
+    // {
+    //     echo $this->db->count_all('tbl_user');
+    // }
 }

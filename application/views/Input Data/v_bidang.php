@@ -49,8 +49,9 @@
                         <th>Aksi</th>
                     </tr>
                 </thead>
-                <?php $i = 1;
-                $this->uri->segment('3') + 1; ?>
+                <?php $i =
+                    $this->uri->segment('3') + 1;
+                ?>
                 <?php foreach ($bidang as $key) : ?>
                 <tr>
                     <td><?= $i++; ?></td>

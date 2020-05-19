@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-
+    <script src="<?php echo base_url('assets/vendor/jquery/jquery.js') ?>"></script>
     <title><?= $title; ?></title>
 
     <!-- Custom fonts for this template-->

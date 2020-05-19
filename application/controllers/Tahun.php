@@ -10,7 +10,7 @@ class Tahun extends CI_Controller
     }
     public function index()
     {
-        $config['base_url'] = site_url('tahun');
+        $config['base_url'] = site_url('tahun/index');
         $config['total_rows'] = $this->db->count_all('tbl_tahun');
         $config['per_page'] = 5;
         $config['uri_segment'] = 3;
