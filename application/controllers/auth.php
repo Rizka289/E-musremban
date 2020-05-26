@@ -100,8 +100,4 @@ class Auth extends CI_Controller
       </div>');
         redirect('Home');
     }
-    // function getUserCount()
-    // {
-    //     echo $this->db->count_all('tbl_user');
-    // }
 }

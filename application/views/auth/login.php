@@ -34,7 +34,7 @@
                                 </form>
                                 <hr>
                                 <div class="text-center">
-                                    <a class="small" href="forgot-password.html">Forgot Password?</a>
+                                    <a class="small" href="">Forgot Password?</a>
                                 </div>
                                 <div id="register" class="text-center">
                                     <?php if ($jumlahUser < 4) : // maksimal usek = 3 
@@ -56,28 +56,3 @@
     </div>
 
 </div>
-<!-- <script>
-$(document).ready(function() {
-    var domain = window.location.origin == 'http://localhost' ? window.location.origin + '/desa_tamansari' :
-        window.location.origin;
-    $.ajax({
-        url: domain + '/index.php/auth/getUserCount',
-    }).done(cektJumlahUser).fail(function(err) {
-        console.log(err);
-
-    })
-})
-
-function cektJumlahUser(data) {
-    var wrapper = $("#register").parent();
-    // maksimal user 3
-    if (data >= 3) {
-        $("#register a").hide();
-        $("#register p").show();
-    } else {
-        $("#register a").show();
-        $("#register p").hide();
-    }
-
-}
-</script> -->

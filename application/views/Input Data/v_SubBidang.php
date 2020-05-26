@@ -3,17 +3,29 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Tambah Data Bidang</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Tambah Data Sub Bidang</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="<?= site_url('bidang/tambah') ?>" method="post">
+            <form action="<?= site_url() ?>" method="post">
                 <div class="modal-body">
                     <div class="form-group">
-                        <label>Kode Rekening</label>
-                        <input type="text" class="form-control" name="korek" autocomplete="off">
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Kode Rekening</label>
+                            <select class="form-control" id="exampleFormControlSelect1">
+                                <!-- <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option> -->
+                            </select>
+                        </div>
                         <label>Nama Bidang</label>
+                        <input type="text" class="form-control" name="narek" autocomplete="off">
+                        <label>Sub Rekening</label>
+                        <input type="text" class="form-control" name="narek" autocomplete="off">
+                        <label>Nama Sub Bidang</label>
                         <input type="text" class="form-control" name="narek" autocomplete="off">
                     </div>
                 </div>
@@ -29,7 +41,7 @@
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Data Bidang</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Data Sub Bidang</h6>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -45,33 +57,23 @@
                     <tr>
                         <th>No</th>
                         <th>Kode Rekening</th>
-                        <th>Nama Rekening</th>
+                        <th>Nama Bidang</th>
+                        <th>Sub Rekening</th>
+                        <th>Nama Sub Bidang</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
-                <?php $i =
-                    $this->uri->segment('3') + 1;
-                ?>
-                <?php foreach ($bidang as $key) : ?>
-                <tr>
-                    <td><?= $i++; ?></td>
-                    <td><?= $key->kode_rek; ?></td>
-                    <td><?= $key->Nama_rek; ?></td>
-                    <td>
-                        <a href="<?= site_url('bidang/edit/' . $key->id_bidang) ?>" class="btn btn-primary"><i
-                                class="far fa-fw fa-edit"></i></a>
-                        <a onclick="return confirm ('yakin?');"
-                            href="<?= site_url('bidang/hapus/' . $key->id_bidang) ?>" class="btn btn-primary"><i
-                                class="fas fa-fw fa-trash-alt"></i></a>
-                    </td>
-                </tr>
-                <?php endforeach; ?>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <a href="<?= site_url() ?>" class="btn btn-primary"><i class="far fa-fw fa-edit"></i></a>
+                    <a onclick="return confirm ('yakin?');" href="<?= site_url() ?>" class="btn btn-primary"><i
+                            class="fas fa-fw fa-trash-alt"></i></a>
+                </td>
             </table>
-            <div class="rows">
-                <div class="col">
-                    <?= $pagination; ?>
-                </div>
-            </div>
         </div>
     </div>
 </div>

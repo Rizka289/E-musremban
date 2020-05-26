@@ -37,7 +37,7 @@
                 ?>
                 <a class="collapse-item" href="<?= site_url('Tahun') ?>">Tahun</a>
                 <a class="collapse-item" href="<?= site_url('Bidang') ?>">Bidang</a>
-                <a class="collapse-item" href="utilities-border.html">Sub Bidang</a>
+                <a class="collapse-item" href="<?= site_url('Sub_bidang') ?>">Sub Bidang</a>
                 <?php endif ?>
                 <a class="collapse-item" href="utilities-animation.html">Usulan</a>
 
