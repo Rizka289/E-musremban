@@ -8,25 +8,22 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="<?= site_url() ?>" method="post">
+            <form action="<?= site_url('sub_bidang/create') ?>" method="post">
                 <div class="modal-body">
                     <div class="form-group">
                         <div class="form-group">
-                            <label for="exampleFormControlSelect1">Kode Rekening</label>
-                            <select class="form-control" id="exampleFormControlSelect1">
-                                <!-- <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option> -->
+                            <label>Kode Rekening</label>
+                            <select class="form-control">
+                                <option>-Pilih-</option>
+
                             </select>
                         </div>
                         <label>Nama Bidang</label>
                         <input type="text" class="form-control" name="narek" autocomplete="off">
                         <label>Sub Rekening</label>
-                        <input type="text" class="form-control" name="narek" autocomplete="off">
+                        <input type="text" class="form-control" name="SubRek" autocomplete="off">
                         <label>Nama Sub Bidang</label>
-                        <input type="text" class="form-control" name="narek" autocomplete="off">
+                        <input type="text" class="form-control" name="Nasub" autocomplete="off">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -63,11 +60,15 @@
                         <th>Aksi</th>
                     </tr>
                 </thead>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <?php $i = 1 ?>
+                <?php foreach ($subBidang as $key) : ?>
+                <td><?= $i++; ?></td>
+                <td><?= $key->kode_rek ?></td>
+                <td><?= $key->Nama_rek ?></td>
+                <td><?= $key->Sub_rek ?> </td>
+                <td><?= $key->nama_sub_bidang ?>
+                </td>
+                <?php endforeach; ?>
                 <td>
                     <a href="<?= site_url() ?>" class="btn btn-primary"><i class="far fa-fw fa-edit"></i></a>
                     <a onclick="return confirm ('yakin?');" href="<?= site_url() ?>" class="btn btn-primary"><i
