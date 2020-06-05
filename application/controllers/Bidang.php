@@ -10,6 +10,7 @@ class Bidang extends CI_Controller
     }
     public function index()
     {
+        // pagination
         $config['base_url'] = site_url('bidang/index');
         $config['total_rows'] = $this->db->count_all('tbl_bidang');
         $config['per_page'] = 5;

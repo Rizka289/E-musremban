@@ -1,4 +1,10 @@
 <!-- Modal Tambah Data -->
+<?php
+echo '<script type="text/javascript">';
+echo "let data = " . json_encode($Sub) . "\n";
+echo '</script>';
+?>
+
 <div class="modal fade" id="tambah" tabindex="-1" role="dialog" aria-labelledby="TambahLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -13,13 +19,15 @@
                     <div class="form-group">
                         <div class="form-group">
                             <label>Kode Rekening</label>
-                            <select class="form-control">
+                            <select class="form-control" id="idrekening" name="idrekening">
                                 <option>-Pilih-</option>
-
+                                <?php foreach ($Sub as $key) : ?>
+                                <option value="<?= $key->kode_rek; ?>"><?= $key->kode_rek; ?></option>
+                                <?php endforeach; ?>
                             </select>
                         </div>
                         <label>Nama Bidang</label>
-                        <input type="text" class="form-control" name="narek" autocomplete="off">
+                        <input type="text" class="form-control" name="narek" autocomplete="off" id="nama_bidang">
                         <label>Sub Rekening</label>
                         <input type="text" class="form-control" name="SubRek" autocomplete="off">
                         <label>Nama Sub Bidang</label>
@@ -60,23 +68,38 @@
                         <th>Aksi</th>
                     </tr>
                 </thead>
-                <?php $i = 1 ?>
-                <?php foreach ($subBidang as $key) : ?>
-                <td><?= $i++; ?></td>
-                <td><?= $key->kode_rek ?></td>
-                <td><?= $key->Nama_rek ?></td>
-                <td><?= $key->Sub_rek ?> </td>
-                <td><?= $key->nama_sub_bidang ?>
-                </td>
-                <?php endforeach; ?>
-                <td>
-                    <a href="<?= site_url() ?>" class="btn btn-primary"><i class="far fa-fw fa-edit"></i></a>
-                    <a onclick="return confirm ('yakin?');" href="<?= site_url() ?>" class="btn btn-primary"><i
-                            class="fas fa-fw fa-trash-alt"></i></a>
-                </td>
+                <tbody>
+                    <?php $i = 1 ?>
+                    <?php foreach ($subBidang as $key) : ?>
+                    <tr>
+                        <td><?= $i++; ?></td>
+                        <td><?= $key->kode_rek ?></td>
+                        <td><?= $key->Nama_rek ?></td>
+                        <td><?= $key->Sub_rek ?> </td>
+                        <td><?= $key->nama_sub_bidang ?>
+                        </td>
+                        <td>
+                            <a href="<?= site_url() ?>" class="btn btn-primary"><i class="far fa-fw fa-edit"></i></a>
+                            <a onclick="return confirm ('yakin?');" href="<?= site_url() ?>" class="btn btn-primary"><i
+                                    class="fas fa-fw fa-trash-alt"></i></a>
+                        </td>
+                    </tr>
+                    <?php endforeach; ?>
+                </tbody>
             </table>
         </div>
     </div>
 </div>
 </div>
+<script>
+console.log(data);
+let idrekening = document.getElementById('idrekening');
+idrekening.addEventListener("change", function() {
+    var selectedCountry = $(this).children("option:selected").val();
+    let result = data.find(function(item) {
+        return item.kode_rek == selectedCountry
+    })
+    document.getElementById('nama_bidang').value = result.Nama_rek;
+})
+</script>
 <!-- /.container-fluid -->

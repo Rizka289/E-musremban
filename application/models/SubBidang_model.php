@@ -11,4 +11,12 @@ class SubBidang_model extends CI_Model
         $query = $this->db->get();
         return $query->result();
     }
+    public function getSub()
+    {
+        return $this->db->get('tbl_bidang')->result();
+    }
+    public function create($objek)
+    {
+        $this->db->insert('tbl_sub_bidang', $objek);
+    }
 }

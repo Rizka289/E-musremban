@@ -11,6 +11,7 @@ class Sub_bidang extends CI_Controller
     function index()
     {
         $data['subBidang'] = $this->SubBidang_model->getAll();
+        $data['Sub'] = $this->SubBidang_model->getSub();
         $data['title'] = 'Halaman Sub Bidang';
         $this->load->view('Templates/header', $data);
         $this->load->view('Templates/sidebar');
@@ -20,13 +21,16 @@ class Sub_bidang extends CI_Controller
     }
     function create()
     {
-        $sub = $this->input->post('Sub_rek');
-        $isi = $this->input->post('nama_sub_bidang');
+        $sub = $this->input->post('SubRek');
+        $isi = $this->input->post('Nasub');
+        $idrek = $this->input->post('idrekening');
 
         $objek = array(
             'Sub_rek' => $sub,
-            'nama_sub_bidang' => $isi
-
+            'nama_sub_bidang' => $isi,
+            'id_bidang' => $idrek
         );
+        $this->SubBidang_model->create($objek);
+        redirect('Sub_Bidang', 'refresh');
     }
 }
