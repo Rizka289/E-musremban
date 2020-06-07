@@ -19,7 +19,7 @@ echo '</script>';
                     <div class="form-group">
                         <div class="form-group">
                             <label>Kode Rekening</label>
-                            <select class="form-control" id="idrekening" name="idrekening">
+                            <select class="custom-select" id="idrekening" name="idrekening">
                                 <option>-Pilih-</option>
                                 <?php foreach ($Sub as $key) : ?>
                                 <option value="<?= $key->kode_rek; ?>"><?= $key->kode_rek; ?></option>
@@ -69,7 +69,8 @@ echo '</script>';
                     </tr>
                 </thead>
                 <tbody>
-                    <?php $i = 1 ?>
+                    <?php $i =
+                        $this->uri->segment('3') + 1; ?>
                     <?php foreach ($subBidang as $key) : ?>
                     <tr>
                         <td><?= $i++; ?></td>
@@ -79,14 +80,20 @@ echo '</script>';
                         <td><?= $key->nama_sub_bidang ?>
                         </td>
                         <td>
-                            <a href="<?= site_url() ?>" class="btn btn-primary"><i class="far fa-fw fa-edit"></i></a>
-                            <a onclick="return confirm ('yakin?');" href="<?= site_url() ?>" class="btn btn-primary"><i
-                                    class="fas fa-fw fa-trash-alt"></i></a>
+                            <a href="<?= site_url() ?>" class="btn btn-warning"><i class="far fa-fw fa-edit"></i></a>
+                            <a onclick="return confirm ('yakin?');"
+                                href="<?= site_url('Sub_bidang/hapus/' . $key->Id_sub_bidang) ?>"
+                                class="btn btn-danger"><i class="fas fa-fw fa-trash-alt"></i></a>
                         </td>
                     </tr>
                     <?php endforeach; ?>
                 </tbody>
             </table>
+            <div class="rows">
+                <div class="col">
+                    <?= $pagination; ?>
+                </div>
+            </div>
         </div>
     </div>
 </div>

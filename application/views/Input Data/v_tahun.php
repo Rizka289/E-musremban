@@ -56,10 +56,10 @@
                     <td><?= $i++; ?></td>
                     <td><?= $key->tahun; ?></td>
                     <td>
-                        <a href="<?= site_url('tahun/edit/' . $key->id_tahun) ?>" class="btn btn-primary"><i
+                        <a href="<?= site_url('tahun/edit/' . $key->id_tahun) ?>" class="btn btn-warning"><i
                                 class="far fa-fw fa-edit"></i></a>
                         <a onclick="return confirm('Yakin?');" href="<?= site_url('tahun/hapus/' . $key->id_tahun) ?>"
-                            class="btn btn-primary"><i class="fas fa-fw fa-trash-alt"></i></a>
+                            class="btn btn-danger"><i class="fas fa-fw fa-trash-alt"></i></a>
                     </td>
                 </tr>
                 <?php endforeach; ?>

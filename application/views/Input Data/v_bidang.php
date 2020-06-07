@@ -58,10 +58,10 @@
                     <td><?= $key->kode_rek; ?></td>
                     <td><?= $key->Nama_rek; ?></td>
                     <td>
-                        <a href="<?= site_url('bidang/edit/' . $key->id_bidang) ?>" class="btn btn-primary"><i
+                        <a href="<?= site_url('bidang/edit/' . $key->id_bidang) ?>" class="btn btn-warning"><i
                                 class="far fa-fw fa-edit"></i></a>
                         <a onclick="return confirm ('yakin?');"
-                            href="<?= site_url('bidang/hapus/' . $key->id_bidang) ?>" class="btn btn-primary"><i
+                            href="<?= site_url('bidang/hapus/' . $key->id_bidang) ?>" class="btn btn-danger"><i
                                 class="fas fa-fw fa-trash-alt"></i></a>
                     </td>
                 </tr>
