@@ -28,4 +28,8 @@ class SubBidang_model extends CI_Model
     {
         return $this->db->where('id_sub_bidang', $id)->get('tbl_sub_bidang')->row();
     }
+    public function update($id, $objek)
+    {
+        return $this->db->where('id_sub_bidang', $id)->update('tbl_sub_bidang', $objek);
+    }
 }

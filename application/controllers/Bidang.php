@@ -45,10 +45,10 @@ class Bidang extends CI_Controller
         $data['title'] = 'Halaman Bidang';
 
         $this->load->view('templates/header', $data);
-        $this->load->view('templates/sidebar', $data);
-        $this->load->view('templates/topbar', $data);
+        $this->load->view('templates/sidebar');
+        $this->load->view('templates/topbar');
         $this->load->view('Input Data/v_bidang', $data);
-        $this->load->view('templates/footer', $data);
+        $this->load->view('templates/footer');
     }
     public function tambah()
     {

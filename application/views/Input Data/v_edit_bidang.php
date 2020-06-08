@@ -9,7 +9,7 @@
                         <label>Kode Rekening</label>
                         <input type="text" class="form-control" name="korek" value="<?= $isi_bidang->kode_rek; ?>"
                             autocomplete="off">
-                        <label>Nama Rekening</label>
+                        <label>Nama Bidang</label>
                         <input type="text" class="form-control" name="narek" value="<?= $isi_bidang->Nama_rek; ?>"
                             autocomplete="off">
                     </div>
