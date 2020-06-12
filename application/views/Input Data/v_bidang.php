@@ -1,4 +1,6 @@
 <!-- Modal Tambah Data -->
+
+
 <div class="modal fade" id="tambah" tabindex="-1" role="dialog" aria-labelledby="TambahLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -8,13 +10,22 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="<?= site_url('bidang/tambah') ?>" method="post">
+            <form action="<?= site_url('bidang/create') ?>" method="post">
                 <div class="modal-body">
                     <div class="form-group">
+                        <div class="form-group">
+                            <label>Tahun</label>
+                            <select class="custom-select" id="" name="tahun">
+                                <option>-Pilih-</option>
+                                <?php foreach ($tbl_t as $key) : ?>
+                                <option value="<?= $key->id_tahun ?>"><?= $key->tahun; ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
                         <label>Kode Rekening</label>
-                        <input type="text" class="form-control" name="korek" autocomplete="off">
+                        <input type="text" class="form-control" name="kode_rek" autocomplete="off">
                         <label>Nama Bidang</label>
-                        <input type="text" class="form-control" name="narek" autocomplete="off">
+                        <input type="text" class="form-control" name="nama_bid" autocomplete="off">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -44,36 +55,49 @@
                 <thead>
                     <tr>
                         <th>No</th>
+                        <th>Tahun</th>
                         <th>Kode Rekening</th>
-                        <th>Nama Rekening</th>
+                        <th>Nama Bidang</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
-                <?php $i =
-                    $this->uri->segment('3') + 1;
-                ?>
-                <?php foreach ($bidang as $key) : ?>
-                <tr>
-                    <td><?= $i++; ?></td>
-                    <td><?= $key->kode_rek; ?></td>
-                    <td><?= $key->Nama_rek; ?></td>
-                    <td>
-                        <a href="<?= site_url('bidang/edit/' . $key->id_bidang) ?>" class="btn btn-warning"><i
-                                class="far fa-fw fa-edit"></i></a>
-                        <a onclick="return confirm ('yakin?');"
-                            href="<?= site_url('bidang/hapus/' . $key->id_bidang) ?>" class="btn btn-danger"><i
-                                class="fas fa-fw fa-trash-alt"></i></a>
-                    </td>
-                </tr>
-                <?php endforeach; ?>
+                <tbody>
+                    <?php $i =
+                        $this->uri->segment('3') + 1; ?>
+                    <?php foreach ($bidang as $key) : ?>
+                    <tr>
+                        <td><?= $i++; ?></td>
+                        <td><?= $key->tahun ?></td>
+                        <td><?= $key->kode_rek ?></td>
+                        <td><?= $key->nama_bidang ?> </td>
+                        <td>
+                            <a href="<?= site_url('') ?>" class="btn btn-warning"><i class="far fa-fw fa-edit"></i></a>
+                            <a onclick="return confirm ('yakin?');"
+                                href="<?= site_url('bidang/hapus/' . $key->id_bidang) ?>" class="btn btn-danger"><i
+                                    class="fas fa-fw fa-trash-alt"></i></a>
+                        </td>
+                    </tr>
+                    <?php endforeach; ?>
+                </tbody>
             </table>
-            <div class="rows">
+            <!-- <div class="rows">
                 <div class="col">
                     <?= $pagination; ?>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>
 </div>
+<!-- <script>
+console.log(data);
+let idrekening = document.getElementById('idrekening');
+idrekening.addEventListener("change", function() {
+    var selectedCountry = $(this).children("option:selected").val();
+    let result = data.find(function(item) {
+        return item.kode_rek == selectedCountry
+    })
+    document.getElementById('nama_bidang').value = result.nama_bidang;
+})
+</script> -->
 <!-- /.container-fluid -->

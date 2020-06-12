@@ -27,7 +27,7 @@ echo '</script>';
                             </select>
                         </div>
                         <label>Nama Bidang</label>
-                        <input type="text" class="form-control" name="narek" autocomplete="off" id="nama_bidang">
+                        <input type="text" class="form-control" name="nama_bid" autocomplete="off" id="nama_bidang">
                         <label>Sub Rekening</label>
                         <input type="text" class="form-control" name="SubRek" autocomplete="off">
                         <label>Nama Sub Bidang</label>
@@ -107,7 +107,7 @@ idrekening.addEventListener("change", function() {
     let result = data.find(function(item) {
         return item.kode_rek == selectedCountry
     })
-    document.getElementById('nama_bidang').value = result.Nama_rek;
+    document.getElementById('nama_bidang').value = result.nama_bidang;
 })
 </script>
 <!-- /.container-fluid -->
