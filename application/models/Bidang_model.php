@@ -18,7 +18,7 @@ class Bidang_model extends CI_Model
     function create($objek)
     {
         $this->db->insert('tbl_bidang', $objek);
-        $this->session->set_flashdata('message', 'Data Berhasil Ditambahkan');
+       
     }
     public function remove($id)
     {

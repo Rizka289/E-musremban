@@ -39,7 +39,7 @@
                 <a class="collapse-item" href="<?= site_url('Bidang') ?>">Bidang</a>
                 <a class="collapse-item" href="<?= site_url('Sub_bidang') ?>">Sub Bidang</a>
                 <?php endif ?>
-                <a class="collapse-item" href="utilities-animation.html">Usulan</a>
+                <a class="collapse-item" href="<?= site_url('Usulan') ?>">Usulan</a>
 
 
             </div>
