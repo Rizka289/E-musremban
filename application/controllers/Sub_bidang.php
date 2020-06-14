@@ -45,6 +45,7 @@ class Sub_bidang extends CI_Controller
     {
         $data['title'] = "Halaman Edit Sub Bidang";
         $data['isi_subB'] = $this->SubBidang_model->get_id($id);
+        $data['Sub'] = $this->SubBidang_model->getSub();
         // var_dump($data['isi_subB']);
         // die;
         $this->load->view("Templates/header", $data);

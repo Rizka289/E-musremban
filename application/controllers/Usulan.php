@@ -12,6 +12,8 @@ class Usulan extends CI_Controller
     {
         $data['title'] = 'Halaman Usulan';
         $data['usulan'] = $this->Usulan_model->getAll();
+        // var_dump($data['usulan']);
+        // die;
 
         $this->load->view('Templates/header', $data);
         $this->load->view('Templates/sidebar');

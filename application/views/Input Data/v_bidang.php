@@ -71,7 +71,8 @@
                         <td><?= $key->kode_rek ?></td>
                         <td><?= $key->nama_bidang ?> </td>
                         <td>
-                            <a href="<?= site_url('') ?>" class="btn btn-warning"><i class="far fa-fw fa-edit"></i></a>
+                            <a href="<?= site_url('bidang/edit/' . $key->id_bidang) ?>" class="btn btn-warning"><i
+                                    class="far fa-fw fa-edit"></i></a>
                             <a onclick="return confirm ('yakin?');"
                                 href="<?= site_url('bidang/hapus/' . $key->id_bidang) ?>" class="btn btn-danger"><i
                                     class="fas fa-fw fa-trash-alt"></i></a>
@@ -80,24 +81,7 @@
                     <?php endforeach; ?>
                 </tbody>
             </table>
-            <!-- <div class="rows">
-                <div class="col">
-                    <?= $pagination; ?>
-                </div>
-            </div> -->
         </div>
     </div>
 </div>
 </div>
-<!-- <script>
-console.log(data);
-let idrekening = document.getElementById('idrekening');
-idrekening.addEventListener("change", function() {
-    var selectedCountry = $(this).children("option:selected").val();
-    let result = data.find(function(item) {
-        return item.kode_rek == selectedCountry
-    })
-    document.getElementById('nama_bidang').value = result.nama_bidang;
-})
-</script> -->
-<!-- /.container-fluid -->

@@ -18,9 +18,9 @@
                         <label>Nama Bidang</label>
                         <input type="text" class="form-control" name="narek" autocomplete="off">
                         <label>Sub Kode Rekening</label>
-                        <input type="text" class="form-control" name="SubRek" autocomplete="off">
+                        <input type="text" class="form-control" name="SubRek" value="<?= $isi_subB->Sub_rek ?>">
                         <label>Nama Sub Bidang</label>
-                        <input type="text" class="form-control" name="Nasub" autocomplete="off">
+                        <input type="text" class="form-control" name="Nasub" value="<?= $isi_subB->nama_sub_bidang ?>">
                     </div>
                     <div class="form-group">
                         <input type="hidden" name="id" value="<?= $isi_subB->Id_sub_bidang; ?>">
