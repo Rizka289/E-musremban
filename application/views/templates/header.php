@@ -20,6 +20,13 @@
     <!-- Custom styles for this template-->
     <link href="<?= base_url('assets') ?>/css/sb-admin-2.min.css" rel="stylesheet">
 
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="<?= base_url('assets') ?>/vendor/jquery/jquery.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="<?= base_url('assets') ?>/vendor/jquery-easing/jquery.easing.min.js"></script>
+
 </head>
 
 <body id="page-top">

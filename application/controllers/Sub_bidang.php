@@ -58,15 +58,15 @@ class Sub_bidang extends CI_Controller
     {
         $sub = $this->input->post('SubRek');
         $isi = $this->input->post('Nasub');
-        $idrek = $this->input->post('idrekening');
-
+        $id_bidang = $this->input->post('id_bidang');
+        $id_sub_bidang = $this->input->post('id');
         $objek = array(
             'Sub_rek' => $sub,
             'nama_sub_bidang' => $isi,
-            'id_bidang' => $idrek
+            'id_bidang' => $id_bidang
         );
         $data['Sub'] = $this->SubBidang_model->getSub();
-        $this->SubBidang_model->update($sub, $objek);
+        $this->SubBidang_model->update($id_sub_bidang, $objek);
         $this->session->set_flashdata('message', 'Data Berhasil diedit');
         redirect('sub_bidang');
     }

@@ -56,17 +56,23 @@ class Bidang extends CI_Controller
     }
     public function proses_edit()
     {
+
         $id = $this->input->post('id');
+        $id_tahun = $this->input->post('tahun');
         $kode = $this->input->post('kode_rek');
         $nabid = $this->input->post('nama_bid');
 
         $objek = array(
-            'id_tahun' => $id,
+            'id_tahun' => $id_tahun,
             'kode_rek' => $kode,
             'nama_bidang' => $nabid
         );
         $this->Bidang_model->update($id, $objek);
         $this->session->set_flashdata('message', 'Data Berhasil Diedit');
         redirect('bidang', 'refresh');
+    }
+    function getBidang($params)
+    {
+        echo $this->Bidang_model->getBidang($params);
     }
 }

@@ -5,16 +5,18 @@
             <div class="card-body">
 
                 <form action="<?= site_url('Bidang/proses_edit/') ?>" method="post">
-
+                    <input type="hidden" name="id" value="<?= $isi_bidang->id_bidang ?>">
                     <div class="modal-body">
                         <div class="form-group">
                             <div class="form-group">
                                 <label>Tahun</label>
-                                <select class="custom-select" id="" name="tahun">
+                                <select class="custom-select" id="tahun" name="tahun">
                                     <option>-Pilih-</option>
-                                    <?php foreach ($tbl_t as $key) : ?>
-                                    <option value="<?= $key->id_tahun ?>"><?= $key->tahun; ?></option>
-                                    <?php endforeach; ?>
+                                    <?php
+                                    foreach ($tbl_t as $key) : ?>
+                                    <option value="<?= $key->id_tahun ?>"><?= $key->tahun ?></option>
+                                    <?php endforeach;
+                                    ?>
                                 </select>
                             </div>
 
@@ -28,9 +30,6 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <input type="hidden" name="id" value="<?= $isi_bidang->id_bidang; ?>">
-                    </div>
                     <button type="submit" class="btn btn-primary">Simpan</button>
                 </form>
 
@@ -39,3 +38,10 @@
     </div>
 </div>
 </div>
+<script>
+var tahun = "<?= isset($isi_bidang->id_tahun) ? $isi_bidang->id_tahun : 'tidak ada id tahun' ?>";
+if (tahun == 'tidak ada id tahun')
+    alert('Error id tahun tidak ada');
+$("#tahun option[value='" + tahun + "']").prop('selected', true);
+$("#tahun").trigger('change');
+</script>
