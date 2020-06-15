@@ -21,4 +21,7 @@ class Usulan extends CI_Controller
         $this->load->view('Input Data/v_usulan', $data);
         $this->load->view('Templates/footer');
     }
+    public function create()
+    {
+    }
 }

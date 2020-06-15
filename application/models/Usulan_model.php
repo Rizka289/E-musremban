@@ -12,4 +12,12 @@ class Usulan_model extends CI_Model
         $query  = $this->db->get();
         return $query->result();
     }
+    public function getBidang()
+    {
+        return $this->db->get('tbl_bidang')->result();
+    }
+    public function getSub()
+    {
+        return $this->db->get('tbl_sub_bidang')->result();
+    }
 }

@@ -13,15 +13,40 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <div class="form-group">
-                            <label>Tahun</label>
+                            <label>Kode Rekening</label>
                             <select class="custom-select" id="" name="tahun">
                                 <option>-Pilih-</option>
                             </select>
                         </div>
-                        <label>Kode Rekening</label>
-                        <input type="text" class="form-control" name="kode_rek" autocomplete="off">
+
                         <label>Nama Bidang</label>
-                        <input type="text" class="form-control" name="nama_bid" autocomplete="off">
+                        <input type="text" class="form-control" name="kode_rek" autocomplete="off">
+
+                        <div class="form-group">
+                            <label>Sub Rekening</label>
+                            <select class="custom-select" id="" name="tahun">
+                                <option>-Pilih-</option>
+                            </select>
+                        </div>
+
+                        <label>Nama Sub Bidang</label>
+                        <input type="text" class="form-control" name="kode_rek" autocomplete="off">
+
+                        <label>Usulan</label>
+                        <input type="text" class="form-control" name="kode_rek" autocomplete="off">
+
+                        <label>Item</label>
+                        <input type="text" class="form-control" name="kode_rek" autocomplete="off">
+
+                        <label>Volume</label>
+                        <input type="text" class="form-control" name="kode_rek" autocomplete="off">
+
+                        <label>Satuan</label>
+                        <input type="text" class="form-control" name="kode_rek" autocomplete="off">
+
+                        <label>Harga</label>
+                        <input type="text" class="form-control" name="kode_rek" autocomplete="off">
+
                     </div>
                 </div>
                 <div class="modal-footer">

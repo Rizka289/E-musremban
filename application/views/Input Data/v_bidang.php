@@ -1,6 +1,5 @@
 <!-- Modal Tambah Data -->
 
-
 <div class="modal fade" id="tambah" tabindex="-1" role="dialog" aria-labelledby="TambahLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -10,24 +9,32 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
+
             <form action="<?= site_url('bidang/create') ?>" method="post">
                 <div class="modal-body">
                     <div class="form-group">
+
                         <div class="form-group">
                             <label>Tahun</label>
-                            <select class="custom-select" id="" name="tahun">
-                                <option>-Pilih-</option>
-                                <?php foreach ($tbl_t as $key) : ?>
-                                <option value="<?= $key->id_tahun ?>"><?= $key->tahun; ?></option>
-                                <?php endforeach; ?>
+
+                            <select class="custom-select" onfocus="this.size=5" onblur="this.size=1"
+                                onchange="this .size=1;this.blur()" id="" name="tahun">
+                                <div class="test">
+                                    <option>-Pilih-</option>
+                                    <?php foreach ($tbl_t as $key) : ?>
+                                    <option value="<?= $key->id_tahun ?>"><?= $key->tahun; ?></option>
+                                    <?php endforeach; ?>
+                                </div>
                             </select>
                         </div>
+
                         <label>Kode Rekening</label>
                         <input type="text" class="form-control" name="kode_rek" autocomplete="off">
                         <label>Nama Bidang</label>
                         <input type="text" class="form-control" name="nama_bid" autocomplete="off">
                     </div>
                 </div>
+
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="submit" name="insertdata" class="btn btn-primary">Simpan</button>

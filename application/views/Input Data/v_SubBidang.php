@@ -19,7 +19,8 @@ echo '</script>';
                     <div class="form-group">
                         <div class="form-group">
                             <label>Kode Rekening</label>
-                            <select class="custom-select" id="idrekening" name="idrekening">
+                            <select class="custom-select" onfocus="this.size=5" onblur="this.size=1"
+                                onchange="this .size=1;this.blur()" id="idrekening" name="idrekening">
                                 <option>-Pilih-</option>
                                 <?php foreach ($Sub as $key) : ?>
                                 <option value="<?= $key->id_bidang; ?>"><?= $key->kode_rek; ?></option>
