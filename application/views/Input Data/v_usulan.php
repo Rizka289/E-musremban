@@ -31,7 +31,8 @@ echo '</script>';
 
                         <div class="form-group">
                             <label>Sub Rekening</label>
-                            <select class="custom-select" id="" name="sub">
+                            <select class="custom-select" onfocus="this.size=5" onblur="this.size=1"
+                                onchange="this.size=1;this.blur()" id="subRek" name="sub">
                                 <option>-Pilih-</option>
                                 <?php foreach ($subBi as $key) : ?>
                                 <option value="<?= $key->Id_sub_bidang ?>"><?= $key->Sub_rek ?></option>
@@ -98,7 +99,8 @@ echo '</script>';
                         <td><?= $key->usulan ?></td>
                         <td><?= $key->anggaran ?></td>
                         <td>
-                            <a href="<?= site_url() ?>" class="btn btn-warning"><i class="far fa-fw fa-edit"></i></a>
+                            <a href="<?= site_url('usulan/edit/' . $key->id_usulan) ?>" class="btn btn-warning"><i
+                                    class="far fa-fw fa-edit"></i></a>
                             <a onclick="return confirm ('yakin?');"
                                 href="<?= site_url('usulan/hapus/' . $key->id_usulan) ?>" class="btn btn-danger"><i
                                     class="fas fa-fw fa-trash-alt"></i></a>

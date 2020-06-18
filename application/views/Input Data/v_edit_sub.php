@@ -22,8 +22,10 @@ echo '<script> let dataBidang = ' . json_encode($Sub) . '; let idBidang = ' . $i
 
                         <label>Nama Bidang</label>
                         <input type="text" id="narek" class="form-control" name="narek" autocomplete="off">
+
                         <label>Sub Kode Rekening</label>
                         <input type="text" class="form-control" name="SubRek" value="<?= $isi_subB->Sub_rek ?>">
+
                         <label>Nama Sub Bidang</label>
                         <input type="text" class="form-control" name="Nasub" value="<?= $isi_subB->nama_sub_bidang ?>">
                     </div>

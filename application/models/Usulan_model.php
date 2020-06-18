@@ -29,4 +29,12 @@ class Usulan_model extends CI_Model
     {
         $this->db->delete('tbl_usulan', array('id_usulan' => $id));
     }
+    public function get_id($id)
+    {
+        return $this->db->where('id_usulan', $id)->get('tbl_usulan')->row();
+    }
+    public function update($id, $objek)
+    {
+        return $this->db->where('id_usulan', $id)->update('tbl_usulan', $objek);
+    }
 }
