@@ -20,4 +20,13 @@ class Usulan_model extends CI_Model
     {
         return $this->db->get('tbl_sub_bidang')->result();
     }
+    public function create($objek)
+    {
+        $this->db->insert('tbl_usulan', $objek);
+        $this->session->set_flashdata('message', 'Data Berhasil Ditambahkan');
+    }
+    public function remove($id)
+    {
+        $this->db->delete('tbl_usulan', array('id_usulan' => $id));
+    }
 }

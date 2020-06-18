@@ -29,8 +29,10 @@ echo '</script>';
                         </div>
                         <label>Nama Bidang</label>
                         <input type="text" class="form-control" name="nama_bid" autocomplete="off" id="nama_bidang">
+
                         <label>Sub Rekening</label>
                         <input type="text" class="form-control" name="SubRek" autocomplete="off">
+
                         <label>Nama Sub Bidang</label>
                         <input type="text" class="form-control" name="Nasub" autocomplete="off">
                     </div>
