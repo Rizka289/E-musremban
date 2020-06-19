@@ -29,9 +29,11 @@ echo '<script> let dataBidang = ' . json_encode($Sub) . '; let idBidang = ' . $i
                         <label>Nama Sub Bidang</label>
                         <input type="text" class="form-control" name="Nasub" value="<?= $isi_subB->nama_sub_bidang ?>">
                     </div>
+
                     <div class="form-group">
                         <input type="hidden" name="id" value="<?= $isi_subB->Id_sub_bidang; ?>">
                     </div>
+
                     <button type="submit" class="btn btn-primary">Simpan</button>
                 </form>
             </div>

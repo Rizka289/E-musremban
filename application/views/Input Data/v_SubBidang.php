@@ -14,6 +14,7 @@ echo '</script>';
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
+
             <form action="<?= site_url('sub_bidang/create') ?>" method="post">
                 <div class="modal-body">
                     <div class="form-group">
@@ -27,6 +28,7 @@ echo '</script>';
                                 <?php endforeach; ?>
                             </select>
                         </div>
+
                         <label>Nama Bidang</label>
                         <input type="text" class="form-control" name="nama_bid" autocomplete="off" id="nama_bidang">
 
@@ -37,6 +39,7 @@ echo '</script>';
                         <input type="text" class="form-control" name="Nasub" autocomplete="off">
                     </div>
                 </div>
+
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="submit" name="insertdata" class="btn btn-primary">Simpan</button>
@@ -71,6 +74,7 @@ echo '</script>';
                         <th>Aksi</th>
                     </tr>
                 </thead>
+
                 <tbody>
                     <?php $i =
                         $this->uri->segment('3') + 1; ?>
@@ -92,8 +96,8 @@ echo '</script>';
                     </tr>
                     <?php endforeach; ?>
                 </tbody>
-            </table>
 
+            </table>
         </div>
     </div>
 </div>
