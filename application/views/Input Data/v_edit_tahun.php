@@ -10,9 +10,11 @@
                         <input type="text" class="form-control" name="tahun" value="<?= $isi_tahun->tahun; ?>"
                             autocomplete="off">
                     </div>
+
                     <div class="form-group">
                         <input type="hidden" name="id" value="<?= $isi_tahun->id_tahun; ?>">
                     </div>
+
                     <button type="submit" class="btn btn-primary">Simpan</button>
                 </form>
 

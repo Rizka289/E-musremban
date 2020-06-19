@@ -18,7 +18,7 @@
                             <label>Tahun</label>
 
                             <select class="custom-select" onfocus="this.size=5" onblur="this.size=1"
-                                onchange="this .size=1;this.blur()" id="" name="tahun">
+                                onchange="this .size=1;this.blur()" name="tahun">
                                 <div class="test">
                                     <option>-Pilih-</option>
                                     <?php foreach ($tbl_t as $key) : ?>
@@ -30,6 +30,7 @@
 
                         <label>Kode Rekening</label>
                         <input type="text" class="form-control" name="kode_rek" autocomplete="off">
+
                         <label>Nama Bidang</label>
                         <input type="text" class="form-control" name="nama_bid" autocomplete="off">
                     </div>

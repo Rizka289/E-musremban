@@ -5,7 +5,9 @@
             <div class="card-body">
 
                 <form action="<?= site_url('Bidang/proses_edit/') ?>" method="post">
+
                     <input type="hidden" name="id" value="<?= $isi_bidang->id_bidang ?>">
+
                     <div class="modal-body">
                         <div class="form-group">
                             <div class="form-group">

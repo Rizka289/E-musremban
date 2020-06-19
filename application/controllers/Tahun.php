@@ -80,7 +80,7 @@ class Tahun extends CI_Controller
             'tahun' => $tahun
         );
         $this->Tahun_model->update($id, $objek);
-        $this->session->set_flashdata('message', 'Data Berhasil Diedit');
+        $this->session->set_flashdata('message', 'Data Berhasil diedit');
         redirect('tahun', 'refresh');
     }
 }

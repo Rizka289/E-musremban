@@ -53,7 +53,6 @@ class Usulan extends CI_Controller
         $data['subBi'] = $this->Usulan_model->getSub();
         // var_dump($data['isi_usulan']);
         // die;
-
         $this->load->view('Templates/header', $data);
         $this->load->view('Templates/sidebar');
         $this->load->view('Templates/topbar');

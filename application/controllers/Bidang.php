@@ -38,7 +38,7 @@ class Bidang extends CI_Controller
     public function hapus($id)
     {
         $this->Bidang_model->remove($id);
-        $this->session->set_flashdata('message', 'Data Berhasil DIhapus');
+        $this->session->set_flashdata('message', 'Data Berhasil dihapus');
         redirect('bidang');
     }
     public function edit($id)
@@ -68,7 +68,7 @@ class Bidang extends CI_Controller
             'nama_bidang' => $nabid
         );
         $this->Bidang_model->update($id, $objek);
-        $this->session->set_flashdata('message', 'Data Berhasil Diedit');
+        $this->session->set_flashdata('message', 'Data Berhasil diedit');
         redirect('bidang', 'refresh');
     }
     function getBidang($params)
