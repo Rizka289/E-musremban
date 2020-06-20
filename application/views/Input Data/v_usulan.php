@@ -1,6 +1,7 @@
 <?php
 echo '<script type="text/javascript">';
 echo "let data = " . json_encode($bidang) . "\n";
+echo "let sub = " . json_encode($subBi) . "\n";
 echo '</script>';
 ?>
 
@@ -40,8 +41,8 @@ echo '</script>';
                             </select>
                         </div>
 
-                        <!-- <label>Nama Sub Bidang</label>
-                        <input type="text" class="form-control" name="namaSub" autocomplete="off"> -->
+                        <label>Nama Sub Bidang</label>
+                        <input type="text" class="form-control" name="sub_Bidang" autocomplete="off" id="sub_Bidang">
 
                         <label>Usulan</label>
                         <input type="text" class="form-control" name="usulan" autocomplete="off">
@@ -122,5 +123,13 @@ idrekening.addEventListener("change", function() {
         return item.id_bidang == selectedCountry
     })
     document.getElementById('nama_bidang').value = result.nama_bidang;
+})
+let subRek = document.getElementById('subRek');
+subRek.addEventListener("change", function() {
+    var selectedCountry = $(this).children("option:selected").val();
+    let result = sub.find(function(item) {
+        return item.Id_sub_bidang == selectedCountry
+    })
+    document.getElementById('sub_Bidang').value = result.nama_sub_bidang;
 })
 </script>

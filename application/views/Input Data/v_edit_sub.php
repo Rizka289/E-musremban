@@ -21,9 +21,9 @@ echo '<script> let dataBidang = ' . json_encode($Sub) . '; let idBidang = ' . $i
                         </select>
 
                         <label>Nama Bidang</label>
-                        <input type="text" id="narek" class="form-control" name="narek" autocomplete="off">
+                        <input type="text" id="nama_bidang" class="form-control" name="nama_bidang" autocomplete="off">
 
-                        <label>Sub Kode Rekening</label>
+                        <label>Sub Rekening</label>
                         <input type="text" class="form-control" name="SubRek" value="<?= $isi_subB->Sub_rek ?>">
 
                         <label>Nama Sub Bidang</label>
@@ -50,7 +50,7 @@ function onRekChange() {
     });
 
     if (bidang) {
-        $("#narek").val(bidang.nama_bidang);
+        $("#nama_bidang").val(bidang.nama_bidang);
         $("#id-bidang").val(bidang.id_bidang);
     }
 

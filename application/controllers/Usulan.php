@@ -61,11 +61,11 @@ class Usulan extends CI_Controller
     }
     public function proses_edit()
     {
+        $id_usulan = $this->input->post('id');
         $idrek = $this->input->post('idrekening');
         $subrek = $this->input->post('sub');
         $usulan = $this->input->post('usulan');
         $anggaran = $this->input->post('anggaran');
-        $id_usulan = $this->input->post('id');
 
         $objek = array(
             'id_bidang' => $idrek,
@@ -76,7 +76,7 @@ class Usulan extends CI_Controller
         $data['bidang'] = $this->Usulan_model->getBidang();
         $data['subBi'] = $this->Usulan_model->getSub();
         $this->Usulan_model->update($id_usulan, $objek);
-        $this->sessionn->set_flashdata('message', 'Data Berhasil diedit');
+        // $this->sessionn->set_flashdata('message', 'Data Berhasil diedit');
         redirect('usulan');
     }
 }

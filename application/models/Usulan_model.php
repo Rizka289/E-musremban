@@ -31,7 +31,14 @@ class Usulan_model extends CI_Model
     }
     public function get_id($id)
     {
-        return $this->db->where('id_usulan', $id)->get('tbl_usulan')->row();
+        $this->db->select('*');
+        $this->db->from('tbl_usulan');
+        $this->db->join('tbl_bidang', 'tbl_usulan.id_bidang = tbl_bidang.id_bidang');
+        $this->db->join('tbl_sub_bidang', 'tbl_usulan.id_sub_bidang = tbl_sub_bidang.Id_sub_bidang');
+        $this->db->where('id_usulan', $id);
+        $query  = $this->db->get()->row();
+        return $query;
+        // return $this->db->where('id_usulan', $id)->get('tbl_usulan')->row();
     }
     public function update($id, $objek)
     {
