@@ -110,7 +110,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Login Screens:</h6>
                         <a class="collapse-item" href="<?= site_url('auth') ?>">Login</a>
-                        <a class="collapse-item" href="<?= site_url('login') ?>">Login 2</a>
+                        <a class="collapse-item" href="<?= site_url('login') ?>">Login 23</a>
                         <div class="collapse-divider"></div>
                     </div>
                 </div>
