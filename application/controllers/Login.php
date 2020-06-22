@@ -18,7 +18,6 @@ class Login extends CI_Controller
         $this->load->view('templates/login_header', $data);
         $this->load->view('registrasi/login');
         $this->load->view('templates/login_footer');
-        // $this->Login_model->login();
     }
     public function login()
     {
@@ -32,7 +31,7 @@ class Login extends CI_Controller
             $user = $this->db->get_where('dusun', ['username' => $name])->row_array();
         }
 
-        if ($name == $user['username']) {
+        if ($name == $user['username'] && password_verify($password, $user['password'])) {
             if ($this->input->post('pilih') == 'desa') {
                 redirect('desa');
             } elseif ($this->input->post('pilih') == 'dusun') {
