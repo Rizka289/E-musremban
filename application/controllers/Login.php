@@ -1,4 +1,7 @@
 <?php
+
+use function PHPSTORM_META\type;
+
 defined('BASEPATH') or exit('No direct script accesss allowed');
 
 class Login extends CI_Controller
@@ -22,7 +25,7 @@ class Login extends CI_Controller
     public function login()
     {
         $user = [];
-        $name = $this->input->post('username');
+        $name = $this->input->post('name');
         $password = $this->input->post('password');
 
         if ($this->input->post('pilih') == 'desa') {
@@ -31,6 +34,7 @@ class Login extends CI_Controller
             $user = $this->db->get_where('dusun', ['username' => $name])->row_array();
         }
 
+
         if ($name == $user['username'] && password_verify($password, $user['password'])) {
             if ($this->input->post('pilih') == 'desa') {
                 redirect('desa');
@@ -38,22 +42,42 @@ class Login extends CI_Controller
                 redirect('dusun');
             }
         } else {
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+            Invalid login, please try again
+          </div>');
             redirect('login');
         }
     }
 
     public function registrasi()
     {
-        $data['title'] = 'Halaman Login';
 
+
+        $data['title'] = 'Halaman Login';
         $this->form_validation->set_rules('name', 'Name', 'required|trim');
         $this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[3]|matches[password2]', [
             'matches' => 'password dont match!',
             'min_length' => 'password too short'
         ]);
-        $this->Login_model->tambahDataUser();
-        $this->load->view('templates/login_header', $data);
-        $this->load->view('registrasi/registrasi');
-        $this->load->view('templates/login_footer');
+
+        $userDesa = $this->db->count_all('desa');
+        $userDusun = $this->db->count_all('dusun');
+        $this->form_validation->set_rules('password2', 'Password', 'required|trim|matches[password1]');
+        if ($this->form_validation->run() == false) {
+            $data['jmlhDesa'] = $userDesa;
+            $data['jmlhDusun'] = $userDusun;
+            $this->Login_model->tambahDataUser();
+            $this->load->view('templates/login_header', $data);
+            $this->load->view('registrasi/registrasi', $data);
+            $this->load->view('templates/login_footer');
+        } else {
+            $this->Login_model->tambahDataUser();
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> You have create an account  </div>');
+            redirect('login');
+        }
+    }
+    function ambilJumlahUser($user)
+    {
+        echo $this->db->count_all($user);
     }
 }

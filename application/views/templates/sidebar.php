@@ -31,14 +31,9 @@
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Input</h6>
-                <?php
-                $userdata = $this->session->userdata();
-                if ($userdata['user-data']['role'] == 1) :
-                ?>
                 <a class="collapse-item" href="<?= site_url('Tahun') ?>">Tahun</a>
                 <a class="collapse-item" href="<?= site_url('Bidang') ?>">Bidang</a>
                 <a class="collapse-item" href="<?= site_url('Sub_bidang') ?>">Sub Bidang</a>
-                <?php endif ?>
                 <a class="collapse-item" href="<?= site_url('Usulan') ?>">Usulan</a>
 
 

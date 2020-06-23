@@ -17,8 +17,8 @@
                                 <?= $this->session->flashdata('message'); ?>
                                 <form class="user" method="post" action="<?= site_url('login/login') ?>">
                                     <div class="form-group">
-                                        <input type="text" class="form-control form-control-user" name="username"
-                                            placeholder="Username " autocomplete="off" value="">
+                                        <input type="text" class="form-control form-control-user" name="name"
+                                            placeholder="Username" autocomplete="off">
                                     </div>
                                     <div class="form-group">
                                         <input type="password" class="form-control form-control-user" name="password"
@@ -43,8 +43,7 @@
                                     <a class="small" href="">Forgot Password?</a>
                                 </div>
                                 <div id="register" class="text-center">
-                                    <a class="small" href="<?= site_url('login/registrasi') ?>">Create an
-                                        Account!</a>
+                                    <a class="small" href="<?= site_url('login/registrasi') ?>">Create an Account!</a>
                                 </div>
                             </div>
                         </div>
