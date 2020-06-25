@@ -1,4 +1,3 @@
-<!-- Modal Tambah Data -->
 <?php
 echo '<script type="text/javascript">';
 echo "let data = " . json_encode($Sub) . "\n";

@@ -36,6 +36,10 @@ class Login extends CI_Controller
 
 
         if ($name == $user['username'] && password_verify($password, $user['password'])) {
+            $data = [
+                'dusun' => $this->input->post('pilih')
+            ];
+            $this->session->set_userdata($data);
             if ($this->input->post('pilih') == 'desa') {
                 redirect('desa');
             } elseif ($this->input->post('pilih') == 'dusun') {
@@ -79,5 +83,13 @@ class Login extends CI_Controller
     function ambilJumlahUser($user)
     {
         echo $this->db->count_all($user);
+    }
+    public function logout()
+    {
+        $this->session->unset_userdata('username');
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+        You have been logged out !
+      </div>');
+        redirect(base_url());
     }
 }

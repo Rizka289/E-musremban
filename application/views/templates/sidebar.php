@@ -20,6 +20,14 @@
 
     <!-- Divider -->
     <hr class="sidebar-divider">
+    <?php if ($this->session->userdata('dusun') != "dusun") { ?>
+    <li class="nav-item">
+        <a class="nav-link" href="<?= site_url('UserDusun') ?>">
+            <i class="fas fa-fw fa-table"></i>
+            <span>User Dusun</span></a>
+    </li>
+    <hr class="sidebar-divider">
+    <?php } ?>
 
     <!-- Nav Item - Data Collapse Menu -->
     <li class="nav-item">
@@ -31,15 +39,17 @@
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Input</h6>
+                <?php if ($this->session->userdata('dusun') != "dusun") { ?>
                 <a class="collapse-item" href="<?= site_url('Tahun') ?>">Tahun</a>
                 <a class="collapse-item" href="<?= site_url('Bidang') ?>">Bidang</a>
                 <a class="collapse-item" href="<?= site_url('Sub_bidang') ?>">Sub Bidang</a>
+                <?php } ?>
                 <a class="collapse-item" href="<?= site_url('Usulan') ?>">Usulan</a>
-
 
             </div>
         </div>
     </li>
+
 
 
     <!-- Divider -->

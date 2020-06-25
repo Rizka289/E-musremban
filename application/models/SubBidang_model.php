@@ -26,7 +26,12 @@ class SubBidang_model extends CI_Model
     }
     public function get_id($id)
     {
-        return $this->db->where('id_sub_bidang', $id)->get('tbl_sub_bidang')->row();
+        $this->db->select('*');
+        $this->db->from('tbl_bidang');
+        $this->db->join('tbl_sub_bidang', 'tbl_sub_bidang.id_bidang = tbl_bidang.id_bidang');
+        $this->db->where('Id_sub_bidang', $id);
+        $query = $this->db->get()->row();
+        return $query;
     }
     public function update($id, $objek)
     {

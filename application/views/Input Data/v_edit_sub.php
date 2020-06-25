@@ -1,5 +1,9 @@
 <?php
-echo '<script> let dataBidang = ' . json_encode($Sub) . '; let idBidang = ' . $isi_subB->id_bidang . '</script>';
+echo '<script type="text/javascript">';
+echo "let idbdg = " . json_encode($isi_subB->id_bidang) . "\n";
+echo "let data = " . json_encode($bidang) . "\n";
+echo '</script>';
+var_dump($bidang);
 ?>
 
 <div class="row justify-content-center">
@@ -9,19 +13,20 @@ echo '<script> let dataBidang = ' . json_encode($Sub) . '; let idBidang = ' . $i
             <div class="card-body">
 
                 <form action="<?= site_url('Sub_bidang/proses_edit/') ?>" method="post">
-                    <input type="hidden" name="id_bidang" id="id-bidang">
                     <div class="form-group">
                         <label>Kode Rekening</label>
-                        <select class="custom-select" id="idrekening" name="idrekening"
-                            value="<?= $idrek->kode_rek; ?>">
+                        <select class="custom-select" onfocus="this.size=5" onblur="this.size=1"
+                            onchange="this.size=1;this.blur()" id="idrekening" name="idrekening"
+                            value="<?= $isi_subB->id_bidang; ?>">
                             <option>-Pilih-</option>
-                            <?php foreach ($Sub as $key) : ?>
-                            <option value="<?= $key->kode_rek; ?>"><?= $key->kode_rek; ?></option>
+                            <?php foreach ($bidang as $key) : ?>
+                            <option value="<?= $key->id_bidang; ?>"><?= $key->kode_rek; ?></option>
                             <?php endforeach; ?>
                         </select>
 
                         <label>Nama Bidang</label>
-                        <input type="text" id="nama_bidang" class="form-control" name="nama_bidang" autocomplete="off">
+                        <input type="text" id="nama_bidang" class="form-control" name="nama_bidang" autocomplete="off"
+                            value="<?= $isi_subB->nama_bidang; ?>">
 
                         <label>Sub Rekening</label>
                         <input type="text" class="form-control" name="SubRek" value="<?= $isi_subB->Sub_rek ?>">
@@ -42,30 +47,22 @@ echo '<script> let dataBidang = ' . json_encode($Sub) . '; let idBidang = ' . $i
 </div>
 </div>
 <script>
-function onRekChange() {
-    var ini = $(this);
-    var kode_rekening = ini.val();
-    let bidang = dataBidang.find(function(item) {
-        return item.kode_rek == kode_rekening;
-    });
-
-    if (bidang) {
-        $("#nama_bidang").val(bidang.nama_bidang);
-        $("#id-bidang").val(bidang.id_bidang);
+let id_bidang = document.querySelectorAll('#idrekening option');
+id_bidang.forEach(item => {
+    if (item.value == idbdg) {
+        item.selected = true;
     }
+})
+let idrekening = document.getElementById('idrekening');
+console.log(data);
+idrekening.addEventListener("change", function() {
+    var selectedCountry = $(this).children("option:selected").val();
+    console.log(selectedCountry);
 
-}
-
-var oldBidang = dataBidang.find(function(item) {
-    return item.id_bidang == idBidang;
-});;
-
-if (oldBidang) {
-    $.when($("#idrekening option[value='" + oldBidang.kode_rek + "']").prop('selected', true)).done();
-    setTimeout(function() {
-        $("#idrekening").trigger('change');
-    }, 1000)
-}
-
-$("#idrekening").change(onRekChange)
+    let result = data.find(function(item) {
+        return item.id_bidang == selectedCountry
+    })
+    console.log(result);
+    document.getElementById('nama_bidang').value = result.nama_bidang;
+})
 </script>

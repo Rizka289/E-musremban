@@ -10,9 +10,9 @@ class Login_model extends CI_Model
                 $this->input->post('password1'),
                 PASSWORD_DEFAULT
             ),
-            'alamat' => 2,
-            'agama' => 1,
-            'no_hp' => 5
+            'alamat' => '-',
+            'agama' => '-',
+            'no_hp' => '-'
         ];
         if ($this->input->post('pilih') == 'desa') {
             $this->db->insert('desa', $data);

@@ -1,4 +1,3 @@
-<?php var_dump($isi_usulan); ?>
 <?php
 echo '<script type="text/javascript">';
 echo "let idbdg = " . json_encode($isi_usulan->id_bidang) . "\n";
@@ -14,7 +13,6 @@ echo '</script>';
             <div class="card-body">
 
                 <form action="<?= site_url('usulan/proses_edit/') ?>" method="post">
-                    <input type="hidden" name="id_usulan" id="id-usulan">
                     <div class="form-group">
                         <label>Kode Rekening</label>
                         <select class="custom-select" onfocus="this.size=5" onblur="this.size=1"

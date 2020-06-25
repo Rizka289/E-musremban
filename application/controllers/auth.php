@@ -98,6 +98,6 @@ class Auth extends CI_Controller
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
         You have been logged out !
       </div>');
-        redirect('Home');
+        redirect(base_url());
     }
 }

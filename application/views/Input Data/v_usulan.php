@@ -75,6 +75,7 @@ echo '</script>';
             ?>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambah"><i
                     class="fas fa-fw fa-plus-circle"></i>Tambah</button>
+            <?php if ($this->session->userdata('dusun') != "dusun") { ?>
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
@@ -106,10 +107,12 @@ echo '</script>';
                                 href="<?= site_url('usulan/hapus/' . $key->id_usulan) ?>" class="btn btn-danger"><i
                                     class="fas fa-fw fa-trash-alt"></i></a>
                         </td>
+
                     </tr>
                     <?php endforeach; ?>
                 </tbody>
             </table>
+            <?php } ?>
         </div>
     </div>
 </div>

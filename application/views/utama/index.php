@@ -9,25 +9,25 @@
     <meta content="" name="description">
 
     <!-- Favicons -->
-    <link href="assetss/img/favicon.png" rel="icon">
-    <link href="assetss/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="<?= base_url() . 'assetss/img/favicon.png' ?>" rel="icon">
+    <link href="<?= base_url() . 'assetss/img/apple-touch-icon.png' ?>" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700"
         rel="stylesheet">
 
     <!-- Bootstrap CSS File -->
-    <link href="assetss/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?= base_url() . 'assetss/lib/bootstrap/css/bootstrap.min.css' ?>" rel="stylesheet">
 
     <!-- Libraries CSS Files -->
-    <link href="assetss/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="assetss/lib/animate/animate.min.css" rel="stylesheet">
-    <link href="assetss/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
-    <link href="assetss/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="assetss/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+    <link href="<?= base_url() . 'assetss/lib/font-awesome/css/font-awesome.min.css' ?>" rel="stylesheet">
+    <link href="<?= base_url() . 'assetss/lib/animate/animate.min.css' ?>" rel="stylesheet">
+    <link href="<?= base_url() . 'assetss/lib/ionicons/css/ionicons.min.css' ?>" rel="stylesheet">
+    <link href="<?= base_url() . 'assetss/lib/owlcarousel/assets/owl.carousel.min.css' ?>" rel="stylesheet">
+    <link href="<?= base_url() . 'assetss/lib/lightbox/css/lightbox.min.css' ?>" rel="stylesheet">
 
     <!-- Main Stylesheet File -->
-    <link href="assetss/css/style.css" rel="stylesheet">
+    <link href="<?= base_url() . 'assetss/css/style.css' ?>" rel="stylesheet">
 
     <!-- =======================================================
     Theme Name: BizPage
@@ -57,7 +57,6 @@
                     <li><a href="#about">About Us</a></li>
                     <li><a href="#portfolio">Portfolio</a></li>
                     <li><a href="<?= site_url('login') ?>">Login</a></li>
-                    <!-- <li><a href="<?= site_url('Auth') ?>">Login2</a></li> -->
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav><!-- #nav-menu-container -->
@@ -914,24 +913,24 @@
     <!-- <div id="preloader"></div> -->
 
     <!-- JavaScript Libraries -->
-    <script src="assetss/lib/jquery/jquery.min.js"></script>
-    <script src="assetss/lib/jquery/jquery-migrate.min.js"></script>
-    <script src="assetss/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assetss/lib/easing/easing.min.js"></script>
-    <script src="assetss/lib/superfish/hoverIntent.js"></script>
-    <script src="assetss/lib/superfish/superfish.min.js"></script>
-    <script src="assetss/lib/wow/wow.min.js"></script>
-    <script src="assetss/lib/waypoints/waypoints.min.js"></script>
-    <script src="assetss/lib/counterup/counterup.min.js"></script>
-    <script src="assetss/lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="assetss/lib/isotope/isotope.pkgd.min.js"></script>
-    <script src="assetss/lib/lightbox/js/lightbox.min.js"></script>
-    <script src="assetss/lib/touchSwipe/jquery.touchSwipe.min.js"></script>
+    <script src="<?= base_url() . 'assetss/lib/jquery/jquery.min.js' ?>"></script>
+    <script src="<?= base_url() . 'assetss/lib/jquery/jquery-migrate.min.js' ?>"></script>
+    <script src="<?= base_url() . 'assetss/lib/bootstrap/js/bootstrap.bundle.min.js' ?>"></script>
+    <script src="<?= base_url() . 'assetss/lib/easing/easing.min.js' ?>"></script>
+    <script src="<?= base_url() . 'assetss/lib/superfish/hoverIntent.js' ?>"></script>
+    <script src="<?= base_url() . 'assetss/lib/superfish/superfish.min.js' ?>"></script>
+    <script src="<?= base_url() . 'assetss/lib/wow/wow.min.js' ?>"></script>
+    <script src="<?= base_url() . 'assetss/lib/waypoints/waypoints.min.js' ?>"></script>
+    <script src="<?= base_url() . 'assetss/lib/counterup/counterup.min.js' ?>"></script>
+    <script src="<?= base_url() . 'assetss/lib/owlcarousel/owl.carousel.min.js' ?>"></script>
+    <script src="<?= base_url() . 'assetss/lib/isotope/isotope.pkgd.min.js' ?>"></script>
+    <script src="<?= base_url() . 'assetss/lib/lightbox/js/lightbox.min.js' ?>"></script>
+    <script src="<?= base_url() . 'assetss/lib/touchSwipe/jquery.touchSwipe.min.js' ?>"></script>
     <!-- Contact Form JavaScript File -->
-    <script src="assetss/contactform/contactform.js"></script>
+    <script src="<?= base_url() . 'assetss/contactform/contactform.js' ?>"></script>
 
     <!-- Template Main Javascript File -->
-    <script src="assetss/js/main.js"></script>
+    <script src="<?= base_url() . 'assetss/js/main.js' ?>"></script>
 
 </body>
 
