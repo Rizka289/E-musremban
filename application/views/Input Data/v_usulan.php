@@ -66,13 +66,13 @@ echo '</script>';
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary">Data Usulan</h6>
     </div>
+    <?php
+    if ($this->session->flashdata('message')) {
+        echo "<div class='alert alert-primary'><button type='button' class='close' data-dismiss='alert' aria-label='close'><span aria-hidden='true'>&times;</span></button>" . $this->session->flashdata('message') . "</div>";
+    }
+    ?>
     <div class="card-body">
         <div class="table-responsive">
-            <?php
-            if ($this->session->flashdata('message')) {
-                echo "<div class='alert alert-primary'><button type='button' class='close' data-dismiss='alert' aria-label='close'><span aria-hidden='true'>&times;</span></button>" . $this->session->flashdata('message') . "</div>";
-            }
-            ?>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambah"><i
                     class="fas fa-fw fa-plus-circle"></i>Tambah</button>
             <?php if ($this->session->userdata('dusun') != "dusun") { ?>

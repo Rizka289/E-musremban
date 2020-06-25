@@ -33,6 +33,11 @@
                     <?php endforeach ?>
                 </tbody>
             </table>
+            <div class="row">
+                <div class="col">
+                    <?= $pagination; ?>
+                </div>
+            </div>
         </div>
     </div>
 </div>

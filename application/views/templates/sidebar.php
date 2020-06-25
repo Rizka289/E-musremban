@@ -23,7 +23,7 @@
     <?php if ($this->session->userdata('dusun') != "dusun") { ?>
     <li class="nav-item">
         <a class="nav-link" href="<?= site_url('UserDusun') ?>">
-            <i class="fas fa-fw fa-table"></i>
+            <i class="fas fa-fw fa-users-cog"></i>
             <span>User Dusun</span></a>
     </li>
     <hr class="sidebar-divider">

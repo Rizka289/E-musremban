@@ -5,9 +5,11 @@ class Bidang_model extends CI_Model
 {
     public function getAll()
     {
+        $this->db->order_by('id_bidang', 'DESC');
         $this->db->select('*');
         $this->db->from('tbl_tahun');
         $this->db->join('tbl_bidang', 'tbl_bidang.id_tahun = tbl_tahun.id_tahun');
+        // $this->db->limit(1);
         $query = $this->db->get();
         return $query->result();
     }

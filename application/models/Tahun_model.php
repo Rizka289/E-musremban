@@ -5,7 +5,9 @@ class Tahun_model extends CI_Model
 {
     public function getAll($limit, $start)
     {
-        return $this->db->get('tbl_tahun', $limit, $start)->result();
+        $this->db->order_by('id_tahun', 'DESC');
+        $query = $this->db->get('tbl_tahun', $limit, $start);
+        return $query->result();
     }
     public function insert()
     {

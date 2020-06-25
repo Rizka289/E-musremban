@@ -12,7 +12,7 @@ class Tahun extends CI_Controller
     {
         $config['base_url'] = site_url('tahun/index');
         $config['total_rows'] = $this->db->count_all('tbl_tahun');
-        $config['per_page'] = 5;
+        $config['per_page'] = 10;
         $config['uri_segment'] = 3;
         $choice = $config['total_rows'] / $config['per_page'];
         $config["num_links"] = floor($choice);
@@ -43,8 +43,8 @@ class Tahun extends CI_Controller
         $data['title'] = 'HalamanTahun';
 
         $this->load->view("templates/header", $data);
-        $this->load->view("templates/sidebar", $data);
-        $this->load->view("templates/topbar", $data);
+        $this->load->view("templates/sidebar");
+        $this->load->view("templates/topbar");
         $this->load->view("Input Data/v_tahun", $data);
         $this->load->view("templates/footer");
     }

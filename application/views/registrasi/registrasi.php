@@ -65,7 +65,7 @@ function onTipeUserChange() { // dipanggil setiap element dengan id tipe-user be
         return;
     }
 
-    var maksimum = tipe == 'dusun' ? 5 : 4;
+    var maksimum = tipe == 'dusun' ? 8 : 4;
     // 3 adalah maksimum user untuk dusun dan 4 adalah maksimum user untuk desa, silahkan diganti
 
     var options = {
