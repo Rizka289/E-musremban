@@ -11,6 +11,7 @@ class Login extends CI_Controller
         parent::__construct();
         $this->load->model('Login_model');
         $this->load->library('form_validation');
+        $this->load->helper('cookie');
     }
     public function index()
     {
@@ -34,12 +35,35 @@ class Login extends CI_Controller
             $user = $this->db->get_where('dusun', ['username' => $name])->row_array();
         }
 
-
         if ($name == $user['username'] && password_verify($password, $user['password'])) {
             $data = [
                 'dusun' => $this->input->post('pilih')
             ];
             $this->session->set_userdata($data);
+
+            unset($user["password"]);
+            // $name   = 'user';
+            // $value  = json_encode($user);
+            // $expire = time() + 1000;
+            // $path  = '/';
+            // $secure = TRUE;
+
+            // setcookie($name, $value, $expire, $path, $secure);
+
+            // $this->load->helper('cookie');
+            $cookie = array(
+                'name'   => 'user',
+                'value'  => json_encode($user),
+                'expire' => '3600',
+                'path' => '/',
+                'secure' => TRUE
+            );
+            // $this->input->set_cookie($cookie);
+            // setcookie($cookie);
+            // set_cookie($cookie);
+            // var_dump(json_encode($user));
+            // var_dump($user);
+            setcookie('user', json_encode($user), time() + (86400 * 30), "/");
             if ($this->input->post('pilih') == 'desa') {
                 redirect('desa');
             } elseif ($this->input->post('pilih') == 'dusun') {
@@ -90,6 +114,7 @@ class Login extends CI_Controller
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
         You have been logged out !
       </div>');
+        // delete_cookie('user');
         redirect(base_url());
     }
 }

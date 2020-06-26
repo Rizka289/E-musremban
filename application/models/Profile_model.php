@@ -2,9 +2,12 @@
 defined('BASEPATH') or exit('No direct script accesss allowed');
 class Profile_model extends CI_Model
 {
-    public function getAll()
+    public function getDesa()
     {
-        $this->db->get('tbl_user');
-        $this->db->get('profil');
+        return $this->db->get('desa')->result();
+    }
+    public function getDusun()
+    {
+        return $this->db->get('dusun')->result();
     }
 }

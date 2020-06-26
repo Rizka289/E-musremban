@@ -66,7 +66,7 @@ function onTipeUserChange() { // dipanggil setiap element dengan id tipe-user be
     }
 
     var maksimum = tipe == 'dusun' ? 8 : 4;
-    // 3 adalah maksimum user untuk dusun dan 4 adalah maksimum user untuk desa, silahkan diganti
+    // 3 adalah maksimum user untuk dusun dan 4 adalah maksimum user untuk desa.
 
     var options = {
         url: 'http://localhost/desa_tamansari/index.php/login/ambilJumlahUser/' + tipe,
