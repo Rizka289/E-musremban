@@ -17,11 +17,11 @@ class Usulan extends CI_Controller
         // var_dump($data['usulan']);
         // die;
 
-        $this->load->view('Templates/header', $data);
+        $this->load->view('ext/header', $data);
         $this->load->view('Templates/sidebar');
         $this->load->view('Templates/topbar');
         $this->load->view('Input Data/v_usulan', $data);
-        $this->load->view('Templates/footer');
+        $this->load->view('ext/footer');
     }
     public function create()
     {

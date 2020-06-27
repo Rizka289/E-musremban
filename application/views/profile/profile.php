@@ -9,12 +9,14 @@
     <div class="card mb-3" style="max-width: 540px;">
         <div class="row no-gutters">
             <div class="col-md-4">
-                <img src="" class="card-img">
+                <img src="../assets/image/1.png" class="card-img">
             </div>
             <div class="col-md-8">
                 <div class="card-body">
-                    <h5 class="card-title"><?= $user->username; ?></h5>
-                    <p class="card-text"><?= $user->alamat; ?></p>
+                    <p class="card-title">Nama : <?= $user->username; ?></p>
+                    <p class="card-text">Agama : <?= $user->agama; ?></p>
+                    <p class="card-text">Alamat : <?= $user->alamat; ?></p>
+                    <p class="card-text">No Hp : <?= $user->alamat; ?></p>
                 </div>
             </div>
         </div>

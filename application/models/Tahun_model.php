@@ -3,10 +3,10 @@ defined('BASEPATH') or exit('No direct script accesss allowed');
 
 class Tahun_model extends CI_Model
 {
-    public function getAll($limit, $start)
+    public function getAll()
     {
         $this->db->order_by('id_tahun', 'DESC');
-        $query = $this->db->get('tbl_tahun', $limit, $start);
+        $query = $this->db->get('tbl_tahun');
         return $query->result();
     }
     public function insert()

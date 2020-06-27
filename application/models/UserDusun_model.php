@@ -3,9 +3,9 @@ defined('BASEPATH') or exit('No direct script accesss allowed');
 
 class UserDusun_model extends CI_Model
 {
-    public function getAll($limit, $start)
+    public function getAll()
     {
-        return $this->db->get('dusun', $limit, $start)->result();
+        return $this->db->get('dusun')->result();
     }
     public function remove($id)
     {

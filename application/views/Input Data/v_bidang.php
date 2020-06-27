@@ -59,7 +59,7 @@
             ?>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambah"><i
                     class="fas fa-fw fa-plus-circle"></i>Tambah</button>
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <table class="table table-bordered" id="exttable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
                         <th>No</th>
@@ -77,7 +77,7 @@
                         <td><?= $i++; ?></td>
                         <td><?= $key->tahun ?></td>
                         <td><?= $key->kode_rek ?></td>
-                        <td><?= $key->nama_bidang ?> </td>
+                        <td><?= $key->nama_bidang ?> </td> 
                         <td>
                             <a href="<?= site_url('bidang/edit/' . $key->id_bidang) ?>" class="btn btn-warning"><i
                                     class="far fa-fw fa-edit"></i></a>

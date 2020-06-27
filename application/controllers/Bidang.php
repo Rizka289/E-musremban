@@ -14,11 +14,11 @@ class Bidang extends CI_Controller
         $data['bidang'] = $this->Bidang_model->getAll();
         $data['tbl_t'] = $this->Bidang_model->getTahun();
 
-        $this->load->view('templates/header', $data);
+        $this->load->view('ext/header', $data);
         $this->load->view('templates/sidebar');
         $this->load->view('templates/topbar');
         $this->load->view('Input Data/v_bidang', $data);
-        $this->load->view('templates/footer');
+        $this->load->view('ext/footer');
     }
     public function create()
     {

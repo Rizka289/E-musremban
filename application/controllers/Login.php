@@ -42,15 +42,7 @@ class Login extends CI_Controller
             $this->session->set_userdata($data);
 
             unset($user["password"]);
-            // $name   = 'user';
-            // $value  = json_encode($user);
-            // $expire = time() + 1000;
-            // $path  = '/';
-            // $secure = TRUE;
 
-            // setcookie($name, $value, $expire, $path, $secure);
-
-            // $this->load->helper('cookie');
             $cookie = array(
                 'name'   => 'user',
                 'value'  => json_encode($user),
@@ -58,11 +50,7 @@ class Login extends CI_Controller
                 'path' => '/',
                 'secure' => TRUE
             );
-            // $this->input->set_cookie($cookie);
-            // setcookie($cookie);
-            // set_cookie($cookie);
-            // var_dump(json_encode($user));
-            // var_dump($user);
+
             setcookie('user', json_encode($user), time() + (86400 * 30), "/");
             if ($this->input->post('pilih') == 'desa') {
                 redirect('desa');
@@ -114,7 +102,7 @@ class Login extends CI_Controller
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
         You have been logged out !
       </div>');
-        // delete_cookie('user');
+
         redirect(base_url());
     }
 }

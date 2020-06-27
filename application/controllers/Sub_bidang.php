@@ -15,11 +15,11 @@ class Sub_bidang extends CI_Controller
 
         $data['title'] = 'Halaman Sub Bidang';
 
-        $this->load->view('Templates/header', $data);
+        $this->load->view('ext/header', $data);
         $this->load->view('Templates/sidebar');
         $this->load->view('Templates/topbar');
         $this->load->view('Input Data/v_SubBidang', $data);
-        $this->load->view('Templates/footer');
+        $this->load->view('ext/footer');
     }
     public function create()
     {

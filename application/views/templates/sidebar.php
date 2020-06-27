@@ -10,15 +10,6 @@
     </a>
 
     <!-- Divider -->
-    <hr class="sidebar-divider my-0">
-
-    <li class="nav-item">
-        <a class="nav-link" href="<?= site_url('Profile') ?> ">
-            <i class="far fa-fw fa-id-card"></i>
-            <span>Profil</span></a>
-    </li>
-
-    <!-- Divider -->
     <hr class="sidebar-divider">
     <?php if ($this->session->userdata('dusun') != "dusun") { ?>
     <li class="nav-item">
