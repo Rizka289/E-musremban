@@ -32,9 +32,9 @@
                 <h6 class="collapse-header">Input</h6>
                 <?php if ($this->session->userdata('dusun') != "dusun") { ?>
                 <a class="collapse-item" href="<?= site_url('Tahun') ?>">Tahun</a>
+                <?php } ?>
                 <a class="collapse-item" href="<?= site_url('Bidang') ?>">Bidang</a>
                 <a class="collapse-item" href="<?= site_url('Sub_bidang') ?>">Sub Bidang</a>
-                <?php } ?>
                 <a class="collapse-item" href="<?= site_url('Usulan') ?>">Usulan</a>
 
             </div>

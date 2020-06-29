@@ -47,8 +47,20 @@ echo '</script>';
                         <label>Usulan</label>
                         <input type="text" class="form-control" name="usulan" autocomplete="off">
 
+                        <label>Panjang</label>
+                        <input type="text" class="form-control" name="panjang" autocomplete="off">
+
+                        <label>Lebar</label>
+                        <input type="text" class="form-control" name="lebar" autocomplete="off">
+
+                        <label>M3</label>
+                        <input type="text" class="form-control" name="m3" autocomplete="off">
+
                         <label>Anggaran (Rp)</label>
                         <input type="text" class="form-control" name="anggaran" autocomplete="off">
+
+                        <label>Total (Rp)</label>
+                        <input type="text" class="form-control" name="total" autocomplete="off">
 
                     </div>
                 </div>
@@ -75,7 +87,7 @@ echo '</script>';
         <div class="table-responsive">
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambah"><i
                     class="fas fa-fw fa-plus-circle"></i>Tambah</button>
-            <?php if ($this->session->userdata('dusun') != "dusun") { ?>
+
             <table class="table table-bordered" id="exttable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
@@ -85,6 +97,9 @@ echo '</script>';
                         <th>Sub Rekening</th>
                         <th>Sub Bidang</th>
                         <th>Usulan</th>
+                        <th>Panjang</th>
+                        <th>Lebar</th>
+                        <th>M3</th>
                         <th>Anggaran (Rp)</th>
                         <th>Aksi</th>
                     </tr>
@@ -99,10 +114,15 @@ echo '</script>';
                         <td><?= $key->Sub_rek ?></td>
                         <td><?= $key->nama_sub_bidang ?></td>
                         <td><?= $key->usulan ?></td>
+                        <td><?= $key->panjang ?></td>
+                        <td><?= $key->lebar ?></td>
+                        <td><?= $key->m3 ?></td>
                         <td><?= $key->anggaran ?></td>
                         <td>
+                            <?php if ($this->session->userdata('dusun') != "dusun") { ?>
                             <a href="<?= site_url('usulan/edit/' . $key->id_usulan) ?>" class="btn btn-warning"><i
                                     class="far fa-fw fa-edit"></i></a>
+                            <?php } ?>
                             <a onclick="return confirm ('yakin?');"
                                 href="<?= site_url('usulan/hapus/' . $key->id_usulan) ?>" class="btn btn-danger"><i
                                     class="fas fa-fw fa-trash-alt"></i></a>
@@ -112,7 +132,7 @@ echo '</script>';
                     <?php endforeach; ?>
                 </tbody>
             </table>
-            <?php } ?>
+
         </div>
     </div>
 </div>

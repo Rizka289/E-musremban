@@ -60,8 +60,10 @@ echo '</script>';
                 echo "<div class='alert alert-primary'><button type='button' class='close' data-dismiss='alert' aria-label='close'><span aria-hidden='true'>&times;</span></button>" . $this->session->flashdata('message') . "</div>";
             }
             ?>
+            <?php if ($this->session->userdata('dusun') != "dusun") { ?>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambah"><i
                     class="fas fa-fw fa-plus-circle"></i>Tambah</button>
+            <?php } ?>
             <table class="table table-bordered" id="exttable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
@@ -86,11 +88,13 @@ echo '</script>';
                         <td><?= $key->nama_sub_bidang ?>
                         </td>
                         <td>
+                            <?php if ($this->session->userdata('dusun') != "dusun") { ?>
                             <a href="<?= site_url('Sub_bidang/edit/' . $key->Id_sub_bidang) ?>"
                                 class="btn btn-warning"><i class="far fa-fw fa-edit"></i></a>
                             <a onclick="return confirm ('yakin?');"
                                 href="<?= site_url('Sub_bidang/hapus/' . $key->Id_sub_bidang) ?>"
                                 class="btn btn-danger"><i class="fas fa-fw fa-trash-alt"></i></a>
+                            <?php } ?>
                         </td>
                     </tr>
                     <?php endforeach; ?>

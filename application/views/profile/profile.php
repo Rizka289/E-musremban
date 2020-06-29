@@ -13,10 +13,31 @@
             </div>
             <div class="col-md-8">
                 <div class="card-body">
-                    <p class="card-title">Nama : <?= $user->username; ?></p>
-                    <p class="card-text">Agama : <?= $user->agama; ?></p>
-                    <p class="card-text">Alamat : <?= $user->alamat; ?></p>
-                    <p class="card-text">No Hp : <?= $user->alamat; ?></p>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>Nama</td>
+                                <td>:</td>
+                                <td><?= $user->username ?></td>
+                            </tr>
+                            <tr>
+                                <td>Agama</td>
+                                <td>:</td>
+                                <td><?= $user->agama ?></td>
+                            </tr>
+                            <tr>
+                                <td>No Handphone</td>
+                                <td>:</td>
+                                <td><?= $user->no_hp ?></td>
+                            </tr>
+                            <tr>
+                                <td>Alamat</td>
+                                <td>:</td>
+                                <td><?= $user->alamat ?></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <button class="btn btn-primary">Edit</button>
                 </div>
             </div>
         </div>
