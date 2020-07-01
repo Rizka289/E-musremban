@@ -4,7 +4,7 @@
             <div class="card-header " style="background-color: blue"></div>
             <div class="card-body">
 
-                <form action="<?= site_url('Bidang/proses_edit/') ?>" method="post">
+                <form action="<?= site_url('InputData/proses_editBidang/') ?>" method="post">
 
                     <input type="hidden" name="id" value="<?= $isi_bidang->id_bidang ?>">
 

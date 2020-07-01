@@ -4,7 +4,7 @@
             <div class="card-header " style="background-color: blue"></div>
             <div class="card-body">
 
-                <form action="<?= site_url('tahun/proses_edit/') ?>" method="post">
+                <form action="<?= site_url('InputData/proses_edit/') ?>" method="post">
                     <div class="form-group">
                         <label>Tahun</label>
                         <input type="text" class="form-control" name="tahun" value="<?= $isi_tahun->tahun; ?>"

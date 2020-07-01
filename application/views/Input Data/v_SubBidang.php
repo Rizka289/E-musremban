@@ -23,13 +23,14 @@ echo '</script>';
                                 onchange="this .size=1;this.blur()" id="idrekening" name="idrekening">
                                 <option>-Pilih-</option>
                                 <?php foreach ($Sub as $key) : ?>
-                                <option value="<?= $key->id_bidang; ?>"><?= $key->kode_rek; ?></option>
+                                <option value="<?= $key->id_bidang; ?>"><?= $key->kode_rek . $key->nama_bidang ?>
+                                </option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
 
-                        <label>Nama Bidang</label>
-                        <input type="text" class="form-control" name="nama_bid" autocomplete="off" id="nama_bidang">
+                        <!-- <label>Nama Bidang</label>
+                        <input type="text" class="form-control" name="nama_bid" autocomplete="off" id="nama_bidang"> -->
 
                         <label>Sub Rekening</label>
                         <input type="text" class="form-control" name="SubRek" autocomplete="off">
@@ -105,7 +106,7 @@ echo '</script>';
     </div>
 </div>
 </div>
-<script>
+<!-- <script>
 console.log(data);
 let idrekening = document.getElementById('idrekening');
 idrekening.addEventListener("change", function() {
@@ -116,4 +117,4 @@ idrekening.addEventListener("change", function() {
     document.getElementById('nama_bidang').value = result.nama_bidang;
 })
 </script>
-<!-- /.container-fluid -->
+/.container-fluid -->

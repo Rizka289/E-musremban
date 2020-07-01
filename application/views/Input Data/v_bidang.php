@@ -10,7 +10,7 @@
                 </button>
             </div>
 
-            <form action="<?= site_url('bidang/create') ?>" method="post">
+            <form action="<?= site_url('InputData/createBidang') ?>" method="post">
                 <div class="modal-body">
                     <div class="form-group">
 
@@ -82,11 +82,11 @@
                         <td><?= $key->nama_bidang ?> </td>
                         <td>
                             <?php if ($this->session->userdata('dusun') != "dusun") { ?>
-                            <a href="<?= site_url('bidang/edit/' . $key->id_bidang) ?>" class="btn btn-warning"><i
-                                    class="far fa-fw fa-edit"></i></a>
+                            <a href="<?= site_url('InputData/editBidang/' . $key->id_bidang) ?>"
+                                class="btn btn-warning"><i class="far fa-fw fa-edit"></i></a>
                             <a onclick="return confirm ('yakin?');"
-                                href="<?= site_url('bidang/hapus/' . $key->id_bidang) ?>" class="btn btn-danger"><i
-                                    class="fas fa-fw fa-trash-alt"></i></a>
+                                href="<?= site_url('InputData/hapusBidang/' . $key->id_bidang) ?>"
+                                class="btn btn-danger"><i class="fas fa-fw fa-trash-alt"></i></a>
                             <?php } ?>
                         </td>
                     </tr>

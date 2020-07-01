@@ -8,7 +8,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="<?= site_url("tahun/insert") ?>" method="post">
+            <form action="<?= site_url("InputData/insert") ?>" method="post">
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Tahun</label>
@@ -50,16 +50,17 @@
                     </tr>
                 </thead>
 
-                <?php $i = $this->uri->segment('3') + 1; ?>
+                <?php $i = 1; ?>
                 <?php foreach ($tahun as $key) : ?>
                 <tr>
                     <td><?= $i++; ?></td>
                     <td><?= $key->tahun; ?></td>
                     <td>
-                        <a href="<?= site_url('tahun/edit/' . $key->id_tahun) ?>" class="btn btn-warning"><i
+                        <a href="<?= site_url('InputData/edit/' . $key->id_tahun) ?>" class="btn btn-warning"><i
                                 class="far fa-fw fa-edit"></i></a>
-                        <a onclick="return confirm('Yakin?');" href="<?= site_url('tahun/hapus/' . $key->id_tahun) ?>"
-                            class="btn btn-danger"><i class="fas fa-fw fa-trash-alt"></i></a>
+                        <a onclick="return confirm('Yakin?');"
+                            href="<?= site_url('InputData/hapus/' . $key->id_tahun) ?>" class="btn btn-danger"><i
+                                class="fas fa-fw fa-trash-alt"></i></a>
                     </td>
                 </tr>
                 <?php endforeach; ?>

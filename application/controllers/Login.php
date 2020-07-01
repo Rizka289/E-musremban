@@ -105,4 +105,29 @@ class Login extends CI_Controller
 
         redirect(base_url());
     }
+    public function profile()
+    {
+        $data['title'] = 'Halaman Profile';
+
+        $this->load->view("templates/template", $data);
+        $this->load->view("profile/profile");
+        $this->load->view("templates/footer");
+    }
+    public function userDusun()
+    {
+        $data['user'] = $this->Login_model->getAll();
+        $data['title'] = 'Kelola User Dusun';
+
+
+        $this->load->view('ext/header', $data);
+        $this->load->view('templates/sidebar');
+        $this->load->view('templates/topbar');
+        $this->load->view('kelola user dusun/v_dusun');
+        $this->load->view('ext/footer');
+    }
+    public function hapusDusun($id)
+    {
+        $this->Login_model->remove($id);
+        redirect('userDusun');
+    }
 }

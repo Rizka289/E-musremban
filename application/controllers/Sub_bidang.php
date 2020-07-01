@@ -58,14 +58,16 @@ class Sub_bidang extends CI_Controller
     public function proses_edit()
     {
         $id_sub_bidang = $this->input->post('id');
-        $id_bidang = $this->input->post('id_bidang');
         $sub = $this->input->post('SubRek');
         $isi = $this->input->post('Nasub');
+        $idrek = $this->input->post('idrekening');
         $objek = array(
             'Sub_rek' => $sub,
             'nama_sub_bidang' => $isi,
-            'id_bidang' => $id_bidang
+            'id_bidang' => $idrek
         );
+        // var_dump($objek);
+        // die('edit');
         $data['bidang'] = $this->SubBidang_model->getSub();
         $this->SubBidang_model->update($id_sub_bidang, $objek);
         $this->session->set_flashdata('message', 'Data Berhasil diedit');

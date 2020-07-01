@@ -1,10 +1,3 @@
-<?php
-echo '<script type="text/javascript">';
-echo "let data = " . json_encode($bidang) . "\n";
-echo "let sub = " . json_encode($subBi) . "\n";
-echo '</script>';
-?>
-
 <div class="modal fade" id="tambah" tabindex="-1" role="dialog" aria-labelledby="TambahLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -14,7 +7,7 @@ echo '</script>';
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="<?= site_url('usulan/create') ?>" method="post">
+            <form action="<?= site_url('InputData/createUsulan') ?>" method="post" name='formUsulan'>
                 <div class="modal-body">
                     <div class="form-group">
                         <div class="form-group">
@@ -23,12 +16,11 @@ echo '</script>';
                                 onchange="this .size=1;this.blur()" id="idrekening" name="idrekening">
                                 <option>-Pilih-</option>
                                 <?php foreach ($bidang as $key) : ?>
-                                <option value="<?= $key->id_bidang; ?>"><?= $key->kode_rek; ?></option>
+                                <option value="<?= $key->id_bidang; ?>"><?= $key->kode_rek . $key->nama_bidang ?>
+                                </option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
-                        <label>Nama Bidang</label>
-                        <input type="text" class="form-control" name="nama_bidang" autocomplete="off" id="nama_bidang">
 
                         <div class="form-group">
                             <label>Sub Rekening</label>
@@ -36,31 +28,42 @@ echo '</script>';
                                 onchange="this.size=1;this.blur()" id="subRek" name="sub">
                                 <option>-Pilih-</option>
                                 <?php foreach ($subBi as $key) : ?>
-                                <option value="<?= $key->Id_sub_bidang ?>"><?= $key->Sub_rek ?></option>
+                                <option value="<?= $key->Id_sub_bidang ?>"><?= $key->Sub_rek . $key->nama_sub_bidang ?>
+                                </option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
 
-                        <label>Nama Sub Bidang</label>
-                        <input type="text" class="form-control" name="sub_Bidang" autocomplete="off" id="sub_Bidang">
-
                         <label>Usulan</label>
                         <input type="text" class="form-control" name="usulan" autocomplete="off">
 
+                        <!-- <label>Unit</label>
+                        <input type="text" class="form-control" name="unit" autocomplete="off" onfocus="startCalc();"
+                            onblur="stopCalc();"> -->
+
                         <label>Panjang</label>
-                        <input type="text" class="form-control" name="panjang" autocomplete="off">
+                        <input type="text" class="form-control" name="panjang" autocomplete="off" onfocus="startCalc();"
+                            onblur="stopCalc();">
 
                         <label>Lebar</label>
-                        <input type="text" class="form-control" name="lebar" autocomplete="off">
+                        <input type="text" class="form-control" name="lebar" autocomplete="off" onfocus="startCalc();"
+                            onblur="stopCalc();">
+
+                        <label>Tinggi</label>
+                        <input type="text" class="form-control" name="tinggi" autocomplete="off" onfocus="startCalc();"
+                            onblur="stopCalc();">
 
                         <label>M3</label>
-                        <input type="text" class="form-control" name="m3" autocomplete="off">
+                        <input type="text" class="form-control" name="m3" autocomplete="off" onfocus="startCalc();"
+                            onblur="stopCalc();">
 
                         <label>Anggaran (Rp)</label>
-                        <input type="text" class="form-control" name="anggaran" autocomplete="off">
+                        <input type="text" class="form-control" name="anggaran" autocomplete="off"
+                            onfocus="startCalc();" onblur="stopCalc();">
 
-                        <label>Total (Rp)</label>
-                        <input type="text" class="form-control" name="total" autocomplete="off">
+                        <label>Sub Total (Rp)</label>
+                        <input type="text" class="form-control" name="total" autocomplete="off" onfocus="startCalc();"
+                            onblur="stopCalc();">
 
                     </div>
                 </div>
@@ -97,10 +100,13 @@ echo '</script>';
                         <th>Sub Rekening</th>
                         <th>Sub Bidang</th>
                         <th>Usulan</th>
+                        <!-- <th>Unit</th> -->
                         <th>Panjang</th>
                         <th>Lebar</th>
+                        <th>Tinggi</th>
                         <th>M3</th>
                         <th>Anggaran (Rp)</th>
+                        <th>Sub Total (Rp)</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -114,18 +120,21 @@ echo '</script>';
                         <td><?= $key->Sub_rek ?></td>
                         <td><?= $key->nama_sub_bidang ?></td>
                         <td><?= $key->usulan ?></td>
+                        <!-- <td><?= $key->unit ?></td> -->
                         <td><?= $key->panjang ?></td>
                         <td><?= $key->lebar ?></td>
+                        <td><?= $key->tinggi ?></td>
                         <td><?= $key->m3 ?></td>
                         <td><?= $key->anggaran ?></td>
+                        <td><?= $key->total ?></td>
                         <td>
                             <?php if ($this->session->userdata('dusun') != "dusun") { ?>
-                            <a href="<?= site_url('usulan/edit/' . $key->id_usulan) ?>" class="btn btn-warning"><i
-                                    class="far fa-fw fa-edit"></i></a>
+                            <a href="<?= site_url('InputData/editUsulan/' . $key->id_usulan) ?>"
+                                class="btn btn-warning"><i class="far fa-fw fa-edit"></i></a>
                             <?php } ?>
                             <a onclick="return confirm ('yakin?');"
-                                href="<?= site_url('usulan/hapus/' . $key->id_usulan) ?>" class="btn btn-danger"><i
-                                    class="fas fa-fw fa-trash-alt"></i></a>
+                                href="<?= site_url('InputData/hapusUsulan/' . $key->id_usulan) ?>"
+                                class="btn btn-danger"><i class="fas fa-fw fa-trash-alt"></i></a>
                         </td>
 
                     </tr>
@@ -138,21 +147,24 @@ echo '</script>';
 </div>
 </div>
 <script>
-console.log(data);
-let idrekening = document.getElementById('idrekening');
-idrekening.addEventListener("change", function() {
-    var selectedCountry = $(this).children("option:selected").val();
-    let result = data.find(function(item) {
-        return item.id_bidang == selectedCountry
-    })
-    document.getElementById('nama_bidang').value = result.nama_bidang;
-})
-let subRek = document.getElementById('subRek');
-subRek.addEventListener("change", function() {
-    var selectedCountry = $(this).children("option:selected").val();
-    let result = sub.find(function(item) {
-        return item.Id_sub_bidang == selectedCountry
-    })
-    document.getElementById('sub_Bidang').value = result.nama_sub_bidang;
-})
+function startCalc() {
+    interval = setInterval("calc()", 1);
+}
+
+function calc() {
+    valuepanjang = document.formUsulan.panjang.value;
+    valuelebar = document.formUsulan.lebar.value;
+    valuetinggi = document.formUsulan.tinggi.value;
+    valuem3 = document.formUsulan.m3.value;
+    valueanggaran = document.formUsulan.anggaran.value;
+    // valueunit = document.formUsulan.unit.value;
+    document.formUsulan.m3.value = (valuepanjang * 1) * (valuelebar * 1);
+    document.formUsulan.m3.value = (valuepanjang * 1) * (valuetinggi * 1);
+    document.formUsulan.total.value = (valuem3 * 1) * (valueanggaran * 1);
+    // document.formUsulan.total.value = (valueanggaran * 1) * (valueunit * 1);
+}
+
+function stopCalc() {
+    clearInterval(interval);
+}
 </script>

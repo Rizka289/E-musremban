@@ -20,4 +20,12 @@ class Login_model extends CI_Model
             $this->db->insert('dusun', $data);
         }
     }
+    public function getAll()
+    {
+        return $this->db->get('dusun')->result();
+    }
+    public function remove()
+    {
+        $this->db->delete('dusun', array('id_dusun' => $id));
+    }
 }

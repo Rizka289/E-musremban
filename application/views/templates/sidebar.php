@@ -13,7 +13,7 @@
     <hr class="sidebar-divider">
     <?php if ($this->session->userdata('dusun') != "dusun") { ?>
     <li class="nav-item">
-        <a class="nav-link" href="<?= site_url('UserDusun') ?>">
+        <a class="nav-link" href="<?= site_url('Login/userDusun') ?>">
             <i class="fas fa-fw fa-users-cog"></i>
             <span>User Dusun</span></a>
     </li>
@@ -31,11 +31,11 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Input</h6>
                 <?php if ($this->session->userdata('dusun') != "dusun") { ?>
-                <a class="collapse-item" href="<?= site_url('Tahun') ?>">Tahun</a>
+                <a class="collapse-item" href="<?= site_url('InputData') ?>">Tahun</a>
                 <?php } ?>
-                <a class="collapse-item" href="<?= site_url('Bidang') ?>">Bidang</a>
+                <a class="collapse-item" href="<?= site_url('InputData/Bidang') ?>">Bidang</a>
                 <a class="collapse-item" href="<?= site_url('Sub_bidang') ?>">Sub Bidang</a>
-                <a class="collapse-item" href="<?= site_url('Usulan') ?>">Usulan</a>
+                <a class="collapse-item" href="<?= site_url('InputData/Usulan') ?>">Usulan</a>
 
             </div>
         </div>
