@@ -78,7 +78,7 @@ class Data_model extends CI_Model
     }
     public function get_idUsulan($id)
     {
-        $this->db->select('*');
+        $this->db->select('*, tbl_usulan.id_bidang as bidang');
         $this->db->from('tbl_usulan');
         $this->db->join('tbl_bidang', 'tbl_usulan.id_bidang = tbl_bidang.id_bidang');
         $this->db->join('tbl_sub_bidang', 'tbl_usulan.id_sub_bidang = tbl_sub_bidang.Id_sub_bidang');

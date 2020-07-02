@@ -37,33 +37,26 @@
                         <label>Usulan</label>
                         <input type="text" class="form-control" name="usulan" autocomplete="off">
 
-                        <!-- <label>Unit</label>
-                        <input type="text" class="form-control" name="unit" autocomplete="off" onfocus="startCalc();"
-                            onblur="stopCalc();"> -->
+                        <label>Unit</label>
+                        <input type="text" class="form-control" name="unit" autocomplete="off" id="unit">
 
                         <label>Panjang</label>
-                        <input type="text" class="form-control" name="panjang" autocomplete="off" onfocus="startCalc();"
-                            onblur="stopCalc();">
+                        <input type="text" class="form-control" name="panjang" autocomplete="off" id="panjang">
 
                         <label>Lebar</label>
-                        <input type="text" class="form-control" name="lebar" autocomplete="off" onfocus="startCalc();"
-                            onblur="stopCalc();">
+                        <input type="text" class="form-control" name="lebar" autocomplete="off" id="lebar">
 
                         <label>Tinggi</label>
-                        <input type="text" class="form-control" name="tinggi" autocomplete="off" onfocus="startCalc();"
-                            onblur="stopCalc();">
+                        <input type="text" class="form-control" name="tinggi" autocomplete="off" id="tinggi">
 
-                        <label>M3</label>
-                        <input type="text" class="form-control" name="m3" autocomplete="off" onfocus="startCalc();"
-                            onblur="stopCalc();">
+                        <label>M<sup>3</sup></label>
+                        <input type="text" class="form-control" name="m3" autocomplete="off" id="m3">
 
                         <label>Anggaran (Rp)</label>
-                        <input type="text" class="form-control" name="anggaran" autocomplete="off"
-                            onfocus="startCalc();" onblur="stopCalc();">
+                        <input type="text" class="form-control" name="anggaran" autocomplete="off" id="anggaran">
 
                         <label>Sub Total (Rp)</label>
-                        <input type="text" class="form-control" name="total" autocomplete="off" onfocus="startCalc();"
-                            onblur="stopCalc();">
+                        <input type="text" class="form-control" name="total" autocomplete="off" id="subtotal">
 
                     </div>
                 </div>
@@ -100,18 +93,19 @@
                         <th>Sub Rekening</th>
                         <th>Sub Bidang</th>
                         <th>Usulan</th>
-                        <!-- <th>Unit</th> -->
+                        <th>Unit</th>
                         <th>Panjang</th>
                         <th>Lebar</th>
                         <th>Tinggi</th>
-                        <th>M3</th>
+                        <th>M<sup>3</sup></th>
                         <th>Anggaran (Rp)</th>
                         <th>Sub Total (Rp)</th>
+                        <th>Status</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php $i = $this->uri->segment('3') + 1; ?>
+                    <?php $i = 1; ?>
                     <?php foreach ($usulan as $key) : ?>
                     <tr>
                         <td><?= $i++; ?></td>
@@ -120,21 +114,60 @@
                         <td><?= $key->Sub_rek ?></td>
                         <td><?= $key->nama_sub_bidang ?></td>
                         <td><?= $key->usulan ?></td>
-                        <!-- <td><?= $key->unit ?></td> -->
+                        <td><?= $key->unit ?></td>
                         <td><?= $key->panjang ?></td>
                         <td><?= $key->lebar ?></td>
                         <td><?= $key->tinggi ?></td>
                         <td><?= $key->m3 ?></td>
                         <td><?= $key->anggaran ?></td>
                         <td><?= $key->total ?></td>
+
+                        <?php if ($this->session->userdata('dusun') == 'dusun') : ?>
                         <td>
-                            <?php if ($this->session->userdata('dusun') != "dusun") { ?>
+                            <?php if ($key->status == 'Ya') : ?>
+                            <p style="font-style: italic; font-size: 17px; color: green; font-weight: bold">usulan sudah
+                                disetujui</p>
+
+                            <?php endif;
+                                    if ($key->status == 'Tidak') : ?>
+                            <p style="font-style: italic; font-size: 17px; color: red; font-weight: bold">usulan tidak
+                                disetujui</p>
+                            <?php endif;
+                                    if (empty($key->status)) : ?>
+                            <p style="font-style: italic; font-size: 17px; color: info; font-weight: bold">usulan belum
+                                disetujui</p>
+                            <?php endif ?>
+
+                        </td>
+                        <?php endif ?>
+
+                        <!-- untuk desa -->
+                        <?php if ($this->session->userdata('dusun') == 'desa') : ?>
+                        <td>
+                            <?php if ($key->status == 'Ya') : ?>
+                            <p style="font-style: italic; font-size: 17px; color: green; font-weight: bold">usulan sudah
+                                disetujui</p>
+                            <?php else : ?>
+                            <a href="<?= site_url('InputData/updateUsulan/'  . $key->id_usulan . '/Ya') ?>"
+                                class="btn btn-primary btn-sm">Setujui</a>
+
+                            <a href="<?= site_url("InputData/updateUsulan/" . $key->id_usulan . '/Tidak') ?>"
+                                class="btn btn-danger btn-sm">Tidak
+                                Setuju</a>
+                            <?php endif ?>
+
+                        </td>
+                        <?php endif ?>
+
+                        <td>
+                            <!-- Untuk V_usulan di Dusun -->
+                            <?php if ($key->status != 'Ya') : ?>
                             <a href="<?= site_url('InputData/editUsulan/' . $key->id_usulan) ?>"
                                 class="btn btn-warning"><i class="far fa-fw fa-edit"></i></a>
-                            <?php } ?>
                             <a onclick="return confirm ('yakin?');"
                                 href="<?= site_url('InputData/hapusUsulan/' . $key->id_usulan) ?>"
                                 class="btn btn-danger"><i class="fas fa-fw fa-trash-alt"></i></a>
+                            <?php endif ?>
                         </td>
 
                     </tr>
@@ -147,24 +180,54 @@
 </div>
 </div>
 <script>
-function startCalc() {
-    interval = setInterval("calc()", 1);
+let panjang = 0;
+let lebar = 0;
+let tinggi = 0;
+let m3 = 1;
+let anggaran = 1;
+let unit = '';
+let total = 0;
+document.getElementById('panjang').addEventListener('input', function(evet) {
+    panjang = parseFloat(evet.target.value);
+    count();
+});
+document.getElementById('lebar').addEventListener('input', function(evet) {
+    lebar = parseFloat(evet.target.value);
+    count();
+});
+document.getElementById('tinggi').addEventListener('input', function(evet) {
+    tinggi = parseFloat(evet.target.value);
+    count();
+});
+document.getElementById('anggaran').addEventListener('input', function(evet) {
+    anggaran = parseFloat(evet.target.value);
+    subtotal();
+});
+document.getElementById('unit').addEventListener('input', function(evet) {
+    unit = parseFloat(evet.target.value);
+    subtotal();
+});
+
+function subtotal() {
+    if (m3 > 1) {
+        total = m3 * anggaran;
+    } else if (unit !== '') {
+        total = unit * anggaran;
+    }
+    if (anggaran > 1) {
+        document.getElementById('subtotal').value = total;
+    }
 }
 
-function calc() {
-    valuepanjang = document.formUsulan.panjang.value;
-    valuelebar = document.formUsulan.lebar.value;
-    valuetinggi = document.formUsulan.tinggi.value;
-    valuem3 = document.formUsulan.m3.value;
-    valueanggaran = document.formUsulan.anggaran.value;
-    // valueunit = document.formUsulan.unit.value;
-    document.formUsulan.m3.value = (valuepanjang * 1) * (valuelebar * 1);
-    document.formUsulan.m3.value = (valuepanjang * 1) * (valuetinggi * 1);
-    document.formUsulan.total.value = (valuem3 * 1) * (valueanggaran * 1);
-    // document.formUsulan.total.value = (valueanggaran * 1) * (valueunit * 1);
-}
-
-function stopCalc() {
-    clearInterval(interval);
+function count() {
+    let data = [panjang, lebar, tinggi];
+    // let tamp = [];
+    m3 = 1;
+    data.map((e) => {
+        if (e !== 0) {
+            m3 *= e;
+        }
+    })
+    document.getElementById('m3').value = m3;
 }
 </script>

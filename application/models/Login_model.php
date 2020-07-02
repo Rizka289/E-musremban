@@ -24,7 +24,7 @@ class Login_model extends CI_Model
     {
         return $this->db->get('dusun')->result();
     }
-    public function remove()
+    public function remove($id)
     {
         $this->db->delete('dusun', array('id_dusun' => $id));
     }

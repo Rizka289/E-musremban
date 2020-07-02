@@ -90,7 +90,7 @@ class InputData extends CI_Controller
     {
         $data['title'] = 'Halaman Edit Bidang';
         $data['isi_bidang'] = $this->Data_model->get_idBidang($id);
-        $data['tbl_t'] = $this->Data_model->getTahun();
+        $data['tbl_t'] = $this->Data_model->getAll();
         // var_dump($data['isi_bidang']);
         // die;
         $this->load->view('Templates/template', $data);
@@ -154,11 +154,16 @@ class InputData extends CI_Controller
             'tinggi' => $tinggi,
             'm3' => $m3,
             'anggaran' => $anggaran,
-            'total' => $subT
+            'total' => $subT,
         );
         // var_dump($objek);
         // die('save');
         $this->Data_model->createUsulan($objek);
+        redirect('InputData/Usulan', 'refresh');
+    }
+    function updateUsulan($usulan, $status)
+    {
+        $this->db->where('id_usulan', $usulan)->set('status', $status)->update('tbl_usulan');
         redirect('InputData/Usulan', 'refresh');
     }
     public function hapusUsulan($id)
@@ -176,8 +181,6 @@ class InputData extends CI_Controller
         // var_dump($data['isi_usulan']);
         // die;
         $this->load->view('Templates/template', $data);
-        // $this->load->view('Templates/sidebar');
-        // $this->load->view('Templates/topbar');
         $this->load->view('Input Data/v_edit_usulan', $data);
         $this->load->view('Templates/footer');
     }
@@ -187,6 +190,7 @@ class InputData extends CI_Controller
         $idrek = $this->input->post('idrekening');
         $subrek = $this->input->post('sub');
         $usulan = $this->input->post('usulan');
+        $unit = $this->input->post('unit');
         $panjang = $this->input->post('panjang');
         $lebar = $this->input->post('lebar');
         $tinggi = $this->input->post('tinggi');
@@ -198,6 +202,7 @@ class InputData extends CI_Controller
             'id_bidang' => $idrek,
             'Id_sub_bidang' => $subrek,
             'usulan' => $usulan,
+            'unit' => $unit,
             'panjang' => $panjang,
             'lebar' => $lebar,
             'tinggi' => $tinggi,

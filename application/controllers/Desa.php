@@ -8,9 +8,6 @@ class Desa extends CI_Controller
         $data['title'] = 'My Profile';
 
         $this->load->view("templates/template", $data);
-        // $this->load->view("templates/sidebar");
-        // $this->load->view("templates/topbar");
-        // $this->load->view("admin/index", $data);
         $this->load->view("templates/footer");
     }
 }
