@@ -143,16 +143,6 @@ subRekDom.forEach(item => {
     }
     console.log(item.value);
 })
-
-// let id_bidang = document.querySelectorAll('#idrekening option');
-// id_bidang.forEach(item => {
-//     // console.log(item.value);
-//     // console.log(Number(idbdg));
-//     if (item.value == idbdg) {
-//         item.selected = true;
-//         $('#idrekening').trigger('change');
-//     }
-// })
 let subRek = document.getElementById('subRek');
 subRek.addEventListener("change", function() {
     var selectedCountry = $(this).children("option:selected").val();

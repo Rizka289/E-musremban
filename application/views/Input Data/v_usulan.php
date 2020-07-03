@@ -147,6 +147,9 @@
                             <?php if ($key->status == 'Ya') : ?>
                             <p style="font-style: italic; font-size: 17px; color: green; font-weight: bold">usulan sudah
                                 disetujui</p>
+                            <?php elseif ($key->status == 'Tidak') : ?>
+                            <p style="font-style: italic; font-size: 17px; color: red; font-weight: bold">usulan tidak
+                                disetujui</p>
                             <?php else : ?>
                             <a href="<?= site_url('InputData/updateUsulan/'  . $key->id_usulan . '/Ya') ?>"
                                 class="btn btn-primary btn-sm">Setujui</a>
@@ -155,9 +158,9 @@
                                 class="btn btn-danger btn-sm">Tidak
                                 Setuju</a>
                             <?php endif ?>
-
                         </td>
                         <?php endif ?>
+
 
                         <td>
                             <!-- Untuk V_usulan di Dusun -->
@@ -167,6 +170,7 @@
                             <a onclick="return confirm ('yakin?');"
                                 href="<?= site_url('InputData/hapusUsulan/' . $key->id_usulan) ?>"
                                 class="btn btn-danger"><i class="fas fa-fw fa-trash-alt"></i></a>
+                            <a href="<?= site_url('InputData/detail') ?>">Detail Usulan</a>
                             <?php endif ?>
                         </td>
 

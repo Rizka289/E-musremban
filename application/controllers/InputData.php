@@ -218,4 +218,20 @@ class InputData extends CI_Controller
         // $this->sessionn->set_flashdata('message', 'Data Berhasil diedit');
         redirect('InputData/Usulan');
     }
+    public function detail($id)
+    {
+        $data['title'] = 'Halaman Edit Usulan';
+        $data['isi_usulan'] = $this->Data_model->get_idUsulan($id);
+        $data['bidang'] = $this->Data_model->getBidang();
+        $data['subBi'] = $this->Data_model->getSub();
+        // var_dump($data['isi_usulan']);
+        // die;
+        // var_dump($objek);
+        // die('telat');
+        $data['bidang'] = $this->Data_model->getBidang();
+        $data['subBi'] = $this->Data_model->getSub();
+        $this->load->view("templates/template");
+        $this->load->view("Input Data/v_detail");
+        $this->load->view("templates/footer");
+    }
 }
