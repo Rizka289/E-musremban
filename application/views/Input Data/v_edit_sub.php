@@ -3,7 +3,7 @@
         <div class="card">
             <div class="card-header " style="background-color: blue"></div>
             <div class="card-body">
-                <form action="<?= site_url('Sub_bidang/proses_edit/') ?>" method="post">
+                <form action="<?= site_url('InputData/proses_E_Sub/') ?>" method="post">
                     <div class="form-group">
                         <label>Kode Rekening</label>
                         <select class="custom-select" onfocus="this.size=5" onblur="this.size=1"

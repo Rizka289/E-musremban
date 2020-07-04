@@ -65,7 +65,9 @@
                         <th>Nama Bidang</th>
                         <th>Sub Rekening</th>
                         <th>Nama Sub Bidang</th>
+                        <?php if ($this->session->userdata('user') != 'dusun') { ?>
                         <th>Aksi</th>
+                        <?php } ?>
                     </tr>
                 </thead>
 
@@ -80,15 +82,15 @@
                         <td><?= $key->Sub_rek ?> </td>
                         <td><?= $key->nama_sub_bidang ?>
                         </td>
+                        <?php if ($this->session->userdata('user') != "dusun") { ?>
                         <td>
-                            <?php if ($this->session->userdata('user') != "dusun") { ?>
-                            <a href="<?= site_url('Sub_bidang/edit/' . $key->Id_sub_bidang) ?>"
+                            <a href="<?= site_url('INputData/editSub/' . $key->Id_sub_bidang) ?>"
                                 class="btn btn-warning"><i class="far fa-fw fa-edit"></i></a>
                             <a onclick="return confirm ('yakin?');"
                                 href="<?= site_url('InputData/hapusSub/' . $key->Id_sub_bidang) ?>"
                                 class="btn btn-danger"><i class="fas fa-fw fa-trash-alt"></i></a>
-                            <?php } ?>
                         </td>
+                        <?php } ?>
                     </tr>
                     <?php endforeach; ?>
                 </tbody>

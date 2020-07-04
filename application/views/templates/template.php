@@ -66,11 +66,11 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Input</h6>
-                        <?php if ($this->session->userdata('dusun') != "dusun") { ?>
+                        <?php if ($this->session->userdata('user') != "dusun") { ?>
                         <a class="collapse-item" href="<?= site_url('InputData') ?>">Tahun</a>
                         <?php } ?>
                         <a class="collapse-item" href="<?= site_url('InputData/Bidang') ?>">Bidang</a>
-                        <a class="collapse-item" href="<?= site_url('Sub_bidang') ?>">Sub Bidang</a>
+                        <a class="collapse-item" href="<?= site_url('InputData/subBidang') ?>">Sub Bidang</a>
                         <a class="collapse-item" href="<?= site_url('InputData/Usulan') ?>">Usulan</a>
 
                     </div>

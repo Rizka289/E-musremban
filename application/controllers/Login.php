@@ -128,6 +128,6 @@ class Login extends CI_Controller
     public function hapusDusun($id)
     {
         $this->Login_model->remove($id);
-        redirect('userDusun');
+        redirect('Login/userDusun');
     }
 }

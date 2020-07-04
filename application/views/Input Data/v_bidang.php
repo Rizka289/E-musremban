@@ -56,7 +56,7 @@
                 echo "<div class='alert alert-primary'><button type='button' class='close' data-dismiss='alert' aria-label='close'><span aria-hidden='true'>&times;</span></button>" . $this->session->flashdata('message') . "</div>";
             }
             ?>
-            <?php if ($this->session->userdata('dusun') != "dusun") { ?>
+            <?php if ($this->session->userdata('user') != "dusun") { ?>
             <a target="_blank" class="btn btn-primary" href="<?= site_url() . '/InputData/test2' ?>">EXPORT KE EXCEL</a>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambah"><i
                     class="fas fa-fw fa-plus-circle"></i>Tambah</button>
@@ -68,7 +68,9 @@
                         <th>Tahun</th>
                         <th>Kode Rekening</th>
                         <th>Nama Bidang</th>
+                        <?php if ($this->session->userdata('user') != 'dusun') { ?>
                         <th>Aksi</th>
+                        <?php } ?>
                     </tr>
                 </thead>
                 <tbody>
@@ -80,15 +82,15 @@
                         <td><?= $key->tahun ?></td>
                         <td><?= $key->kode_rek ?></td>
                         <td><?= $key->nama_bidang ?> </td>
+                        <?php if ($this->session->userdata('user') != "dusun") { ?>
                         <td>
-                            <?php if ($this->session->userdata('dusun') != "dusun") { ?>
                             <a href="<?= site_url('InputData/editBidang/' . $key->id_bidang) ?>"
                                 class="btn btn-warning"><i class="far fa-fw fa-edit"></i></a>
                             <a onclick="return confirm ('yakin?');"
                                 href="<?= site_url('InputData/hapusBidang/' . $key->id_bidang) ?>"
                                 class="btn btn-danger"><i class="fas fa-fw fa-trash-alt"></i></a>
-                            <?php } ?>
                         </td>
+                        <?php } ?>
                     </tr>
                     <?php endforeach; ?>
                 </tbody>

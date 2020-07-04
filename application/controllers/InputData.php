@@ -251,7 +251,7 @@ class InputData extends CI_Controller
     {
         $data['title'] = "Halaman Edit Sub Bidang";
         $data['isi_subB'] = $this->Data_model->id_sub($id);
-        $data['Sub'] = $this->Data_model->getBidang();
+        $data['bidang'] = $this->Data_model->getBidang();
 
         $this->load->view("templates/template", $data);
         $this->load->view('Input Data/v_edit_sub', $data);
@@ -269,8 +269,11 @@ class InputData extends CI_Controller
             'id_bidang' => $idrek
         );
         $data['bidang'] = $this->Data_model->getBidang();
+        $this->Data_model->update($id_sub_bidang, $objek);
+        $this->session->set_flashdata('message', 'Data Berhasil Diedit');
+        redirect('InputData/subBidang');
     }
-    //=============================================test data
+    //=============================================EXPORT EXCEL==============================================
     public function test()
     {
         $this->load->view("ext/test");
