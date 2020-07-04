@@ -15,9 +15,10 @@
                             <select class="custom-select" onfocus="this.size=5" onblur="this.size=1"
                                 onchange="this .size=1;this.blur()" id="idrekening" name="idrekening">
                                 <option>-Pilih-</option>
-                                <?php foreach ($bidang as $key) : ?>
+                                <?php foreach ($lte->result() as $key) : ?>
                                 <option value="<?= $key->id_bidang; ?>"><?= $key->kode_rek . $key->nama_bidang ?>
                                 </option>
+                                <?php echo $key->id_bidang ?>
                                 <?php endforeach; ?>
                             </select>
                         </div>
@@ -122,7 +123,7 @@
                         <td><?= $key->anggaran ?></td>
                         <td><?= $key->total ?></td>
 
-                        <?php if ($this->session->userdata('dusun') == 'dusun') : ?>
+                        <?php if ($this->session->userdata('user') == 'dusun') : ?>
                         <td>
                             <?php if ($key->status == 'Ya') : ?>
                             <p style="font-style: italic; font-size: 17px; color: green; font-weight: bold">usulan sudah
@@ -142,7 +143,7 @@
                         <?php endif ?>
 
                         <!-- untuk desa -->
-                        <?php if ($this->session->userdata('dusun') == 'desa') : ?>
+                        <?php if ($this->session->userdata('user') == 'desa') : ?>
                         <td>
                             <?php if ($key->status == 'Ya') : ?>
                             <p style="font-style: italic; font-size: 17px; color: green; font-weight: bold">usulan sudah
@@ -165,8 +166,10 @@
                         <td>
                             <!-- Untuk V_usulan di Dusun -->
                             <?php if ($key->status != 'Ya') : ?>
+                            <?php if ($this->session->userdata('user') != 'desa') { ?>
                             <a href="<?= site_url('InputData/editUsulan/' . $key->id_usulan) ?>"
                                 class="btn btn-warning"><i class="far fa-fw fa-edit"></i></a>
+                            <?php } ?>
                             <a onclick="return confirm ('yakin?');"
                                 href="<?= site_url('InputData/hapusUsulan/' . $key->id_usulan) ?>"
                                 class="btn btn-danger"><i class="fas fa-fw fa-trash-alt"></i></a>

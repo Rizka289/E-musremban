@@ -1,9 +1,3 @@
-<?php
-echo '<script type="text/javascript">';
-echo "let data = " . json_encode($Sub) . "\n";
-echo '</script>';
-?>
-
 <div class="modal fade" id="tambah" tabindex="-1" role="dialog" aria-labelledby="TambahLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -14,7 +8,7 @@ echo '</script>';
                 </button>
             </div>
 
-            <form action="<?= site_url('sub_bidang/create') ?>" method="post">
+            <form action="<?= site_url('InputData/createSub') ?>" method="post">
                 <div class="modal-body">
                     <div class="form-group">
                         <div class="form-group">
@@ -22,15 +16,12 @@ echo '</script>';
                             <select class="custom-select" onfocus="this.size=5" onblur="this.size=1"
                                 onchange="this .size=1;this.blur()" id="idrekening" name="idrekening">
                                 <option>-Pilih-</option>
-                                <?php foreach ($Sub as $key) : ?>
+                                <?php foreach ($dt as $key) : ?>
                                 <option value="<?= $key->id_bidang; ?>"><?= $key->kode_rek . $key->nama_bidang ?>
                                 </option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
-
-                        <!-- <label>Nama Bidang</label>
-                        <input type="text" class="form-control" name="nama_bid" autocomplete="off" id="nama_bidang"> -->
 
                         <label>Sub Rekening</label>
                         <input type="text" class="form-control" name="SubRek" autocomplete="off">
@@ -61,7 +52,7 @@ echo '</script>';
                 echo "<div class='alert alert-primary'><button type='button' class='close' data-dismiss='alert' aria-label='close'><span aria-hidden='true'>&times;</span></button>" . $this->session->flashdata('message') . "</div>";
             }
             ?>
-            <?php if ($this->session->userdata('dusun') != "dusun") { ?>
+            <?php if ($this->session->userdata('user') != "dusun") { ?>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambah"><i
                     class="fas fa-fw fa-plus-circle"></i>Tambah</button>
             <?php } ?>
@@ -69,6 +60,7 @@ echo '</script>';
                 <thead>
                     <tr>
                         <th>No</th>
+                        <th>Tahun</th>
                         <th>Kode Rekening</th>
                         <th>Nama Bidang</th>
                         <th>Sub Rekening</th>
@@ -78,22 +70,22 @@ echo '</script>';
                 </thead>
 
                 <tbody>
-                    <?php $i =
-                        $this->uri->segment('3') + 1; ?>
+                    <?php $i = 1 ?>
                     <?php foreach ($subBidang as $key) : ?>
                     <tr>
                         <td><?= $i++; ?></td>
+                        <td><?= $key->tahun ?></td>
                         <td><?= $key->kode_rek ?></td>
                         <td><?= $key->nama_bidang ?></td>
                         <td><?= $key->Sub_rek ?> </td>
                         <td><?= $key->nama_sub_bidang ?>
                         </td>
                         <td>
-                            <?php if ($this->session->userdata('dusun') != "dusun") { ?>
+                            <?php if ($this->session->userdata('user') != "dusun") { ?>
                             <a href="<?= site_url('Sub_bidang/edit/' . $key->Id_sub_bidang) ?>"
                                 class="btn btn-warning"><i class="far fa-fw fa-edit"></i></a>
                             <a onclick="return confirm ('yakin?');"
-                                href="<?= site_url('Sub_bidang/hapus/' . $key->Id_sub_bidang) ?>"
+                                href="<?= site_url('InputData/hapusSub/' . $key->Id_sub_bidang) ?>"
                                 class="btn btn-danger"><i class="fas fa-fw fa-trash-alt"></i></a>
                             <?php } ?>
                         </td>
@@ -106,15 +98,3 @@ echo '</script>';
     </div>
 </div>
 </div>
-<!-- <script>
-console.log(data);
-let idrekening = document.getElementById('idrekening');
-idrekening.addEventListener("change", function() {
-    var selectedCountry = $(this).children("option:selected").val();
-    let result = data.find(function(item) {
-        return item.id_bidang == selectedCountry
-    })
-    document.getElementById('nama_bidang').value = result.nama_bidang;
-})
-</script>
-/.container-fluid -->

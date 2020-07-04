@@ -12,7 +12,8 @@ class Sub_bidang extends CI_Controller
     {
         $data['subBidang'] = $this->SubBidang_model->getAll();
         $data['Sub'] = $this->SubBidang_model->getSub();
-
+        $year = date("Y");
+        $data['dt'] = $this->SubBidang_model->getdb($year);
         $data['title'] = 'Halaman Sub Bidang';
 
         $this->load->view('ext/header', $data);
@@ -45,7 +46,7 @@ class Sub_bidang extends CI_Controller
     {
         $data['title'] = "Halaman Edit Sub Bidang";
         $data['isi_subB'] = $this->SubBidang_model->get_id($id);
-        $data['Sub'] = $this->SubBidang_model->getSub();
+        // $data['Sub'] = $this->SubBidang_model->getSub();
         $data['bidang'] = $this->SubBidang_model->getSub();
         // var_dump($data['isi_subB']);
         // die;

@@ -27,7 +27,6 @@
                                 </div>
                             </select>
                         </div>
-
                         <label>Kode Rekening</label>
                         <input type="text" class="form-control" name="kode_rek" autocomplete="off">
 
@@ -58,6 +57,7 @@
             }
             ?>
             <?php if ($this->session->userdata('dusun') != "dusun") { ?>
+            <a target="_blank" class="btn btn-primary" href="<?= site_url() . '/InputData/test2' ?>">EXPORT KE EXCEL</a>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambah"><i
                     class="fas fa-fw fa-plus-circle"></i>Tambah</button>
             <?php } ?>

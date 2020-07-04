@@ -6,8 +6,17 @@ class SubBidang_model extends CI_Model
     public function getAll()
     {
         $this->db->select('*');
-        $this->db->from('tbl_bidang');
+        $this->db->from('tbl_tahun');
+        $this->db->join('tbl_bidang', 'tbl_bidang.id_tahun = tbl_tahun.id_tahun');
         $this->db->join('tbl_sub_bidang', 'tbl_sub_bidang.id_bidang = tbl_bidang.id_bidang');
+        $query = $this->db->get();
+        return $query->result();
+    }
+    public function gettahun()
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_tahun');
+        $this->db->join('tbl_bidang', 'tbl_bidang.id_tahun = tbl_tahun.id_tahun');
         $query = $this->db->get();
         return $query->result();
     }
@@ -31,5 +40,9 @@ class SubBidang_model extends CI_Model
     public function update($id, $objek)
     {
         return $this->db->where('id_sub_bidang', $id)->update('tbl_sub_bidang', $objek);
+    }
+    public function getdb($year)
+    {
+        return $this->db->query('SELECT * FROM tbl_tahun,tbl_bidang WHERE tbl_tahun.id_tahun = tbl_bidang.id_tahun AND tbl_tahun.tahun = ' . $year)->result();
     }
 }

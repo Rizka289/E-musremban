@@ -67,15 +67,12 @@ class InputData extends CI_Controller
     }
     public function createBidang()
     {
-        $Thn = $this->input->post('tahun');
-        $kode = $this->input->post('kode_rek');
-        $nabid = $this->input->post('nama_bid');
+        $objek = [
+            'id_tahun' => htmlspecialchars($this->input->post('tahun')),
+            'kode_rek' => htmlspecialchars($this->input->post('kode_rek')),
+            'nama_bidang' => htmlspecialchars($this->input->post('nama_bid'))
+        ];
 
-        $objek = array(
-            'id_tahun' => $Thn,
-            'kode_rek' => $kode,
-            'nama_bidang' => $nabid
-        );
         $this->Data_model->createBidang($objek);
         $this->session->set_flashdata('message', 'Data Berhasil Ditambahkan');
         redirect('InputData/Bidang', 'refresh');
@@ -119,6 +116,8 @@ class InputData extends CI_Controller
     public function Usulan()
     {
         $data['title'] = 'Halaman Usulan';
+        $year = date("Y");
+        $data['lte'] = $this->Data_model->panggildb($year);
         $data['usulan'] = $this->Data_model->getUsulan();
         $data['bidang'] = $this->Data_model->getBidang();
         $data['subBi'] = $this->Data_model->getSub();
@@ -133,29 +132,18 @@ class InputData extends CI_Controller
     }
     public function createUsulan()
     {
-        $idrek = $this->input->post('idrekening');
-        $subrek = $this->input->post('sub');
-        $usulan = $this->input->post('usulan');
-        $unit = $this->input->post('unit');
-        $panjang = $this->input->post('panjang');
-        $lebar = $this->input->post('lebar');
-        $tinggi = $this->input->post('tinggi');
-        $m3 = $this->input->post('m3');
-        $anggaran = $this->input->post('anggaran');
-        $subT = $this->input->post('total');
-
-        $objek = array(
-            'id_bidang' => $idrek,
-            'Id_sub_bidang' => $subrek,
-            'usulan' => $usulan,
-            'unit' => $unit,
-            'panjang' => $panjang,
-            'lebar' => $lebar,
-            'tinggi' => $tinggi,
-            'm3' => $m3,
-            'anggaran' => $anggaran,
-            'total' => $subT,
-        );
+        $objek = [
+            'id_bidang' => htmlspecialchars($this->input->post('idrekening')),
+            'Id_sub_bidang' => htmlspecialchars($this->input->post('sub')),
+            'usulan' => htmlspecialchars($this->input->post('usulan')),
+            'unit' => htmlspecialchars($this->input->post('unit')),
+            'panjang' => htmlspecialchars($this->input->post('panjang')),
+            'lebar' => htmlspecialchars($this->input->post('lebar')),
+            'tinggi' => htmlspecialchars($this->input->post('tinggi')),
+            'm3' => htmlspecialchars($this->input->post('m3')),
+            'anggaran' => htmlspecialchars($this->input->post('anggaran')),
+            'total' => htmlspecialchars($this->input->post('total'))
+        ];
         // var_dump($objek);
         // die('save');
         $this->Data_model->createUsulan($objek);
@@ -210,6 +198,7 @@ class InputData extends CI_Controller
             'anggaran' => $anggaran,
             'total' => $subT
         );
+
         // var_dump($objek);
         // die('telat');
         $data['bidang'] = $this->Data_model->getBidang();
@@ -218,20 +207,78 @@ class InputData extends CI_Controller
         // $this->sessionn->set_flashdata('message', 'Data Berhasil diedit');
         redirect('InputData/Usulan');
     }
+    // =================================DETAIL===========================
     public function detail($id)
     {
         $data['title'] = 'Halaman Edit Usulan';
-        $data['isi_usulan'] = $this->Data_model->get_idUsulan($id);
-        $data['bidang'] = $this->Data_model->getBidang();
-        $data['subBi'] = $this->Data_model->getSub();
-        // var_dump($data['isi_usulan']);
-        // die;
-        // var_dump($objek);
-        // die('telat');
-        $data['bidang'] = $this->Data_model->getBidang();
-        $data['subBi'] = $this->Data_model->getSub();
-        $this->load->view("templates/template");
+
+        $this->load->view("templates/template", $data);
         $this->load->view("Input Data/v_detail");
         $this->load->view("templates/footer");
+    }
+    // =================================SUB BIDANG========================
+    function subBidang()
+    {
+        $data['subBidang'] = $this->Data_model->getAllSub();
+        $data['Sub'] = $this->Data_model->getBidang();
+        $year = date("Y");
+        $data['dt'] = $this->Data_model->getdb($year);
+        $data['title'] = 'Halaman Sub Bidang';
+
+        $this->load->view('ext/header', $data);
+        $this->load->view('Templates/sidebar');
+        $this->load->view('Templates/topbar');
+        $this->load->view('Input Data/v_SubBidang', $data);
+        $this->load->view('ext/footer');
+    }
+    public function createSub()
+    {
+        $objek = [
+            'id_bidang' => htmlspecialchars($this->input->post('idrekening')),
+            'Sub_rek' => htmlspecialchars($this->input->post('SubRek')),
+            'nama_sub_bidang' => htmlspecialchars($this->input->post('Nasub'))
+        ];
+        $this->Data_model->createSub($objek);
+        redirect('InputData/subBidang', 'refresh');
+    }
+    public function hapusSub($id)
+    {
+        $this->Data_model->removeSub($id);
+        $this->session->set_flashdata('message', 'Data Berhasil Dihapus');
+        redirect('InputData/subBidang', 'refresh');
+    }
+    public function editSub($id)
+    {
+        $data['title'] = "Halaman Edit Sub Bidang";
+        $data['isi_subB'] = $this->Data_model->id_sub($id);
+        $data['Sub'] = $this->Data_model->getBidang();
+
+        $this->load->view("templates/template", $data);
+        $this->load->view('Input Data/v_edit_sub', $data);
+        $this->load->view('templates/footer');
+    }
+    public function proses_E_Sub()
+    {
+        $id_sub_bidang = $this->input->post('id');
+        $sub = $this->input->post('SubRek');
+        $isi = $this->input->post('Nasub');
+        $idrek = $this->input->post('idrekening');
+        $objek = array(
+            'Sub_rek' => $sub,
+            'nama_sub_bidang' => $isi,
+            'id_bidang' => $idrek
+        );
+        $data['bidang'] = $this->Data_model->getBidang();
+    }
+    //=============================================test data
+    public function test()
+    {
+        $this->load->view("ext/test");
+    }
+    public function test2()
+    {
+        $year = Date('Y');
+        $data['usulan'] = $this->Data_model->exporttable($year);
+        $this->load->view("ext/export-excel", $data);
     }
 }
