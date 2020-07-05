@@ -41,23 +41,14 @@
         </div>
     </li>
 
-
-
     <!-- Divider -->
     <hr class="sidebar-divider">
 
     <!-- Nav Item - Charts -->
     <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-            <i class="fas fa-fw fa-chart-area"></i>
+        <a class="nav-link" href="<?= site_url('InputData/RKP') ?>">
+            <i class="	far fa-file-excel" aria-hidden="true"></i>
             <span>RKP</span></a>
-    </li>
-
-    <!-- Nav Item - Tables -->
-    <li class="nav-item">
-        <a class="nav-link" href="tables.html">
-            <i class="fas fa-fw fa-table"></i>
-            <span>Tables</span></a>
     </li>
 
     <!-- Divider -->

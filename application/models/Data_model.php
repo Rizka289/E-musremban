@@ -106,6 +106,7 @@ class Data_model extends CI_Model
     {
         return $this->db->where('id_usulan', $id)->update('tbl_usulan', $objek);
     }
+    // ============================EXCEL==================
     public function exporttable($year)
     {
         return $this->db->query("select * from tbl_usulan,tbl_bidang,tbl_sub_bidang,tbl_tahun WHERE 

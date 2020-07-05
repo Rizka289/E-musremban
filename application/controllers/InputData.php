@@ -37,7 +37,9 @@ class InputData extends CI_Controller
         $data['isi_tahun'] = $this->Data_model->get_idTahun($id);
         // var_dump($data['isi_tahun']);
         // die;
-        $this->load->view('Templates/template', $data);
+        $this->load->view('Templates/header', $data);
+        $this->load->view('Templates/sidebar');
+        $this->load->view('Templates/topbar');
         $this->load->view('Input Data/v_edit_tahun', $data);
         $this->load->view('Templates/footer');
     }
@@ -90,7 +92,9 @@ class InputData extends CI_Controller
         $data['tbl_t'] = $this->Data_model->getAll();
         // var_dump($data['isi_bidang']);
         // die;
-        $this->load->view('Templates/template', $data);
+        $this->load->view('Templates/header', $data);
+        $this->load->view('Templates/sidebar');
+        $this->load->view('Templates/topbar');
         $this->load->view('Input Data/v_edit_bidang', $data);
         $this->load->view('Templates/footer');
     }
@@ -168,7 +172,9 @@ class InputData extends CI_Controller
         $data['subBi'] = $this->Data_model->getSub();
         // var_dump($data['isi_usulan']);
         // die;
-        $this->load->view('Templates/template', $data);
+        $this->load->view('Templates/header', $data);
+        $this->load->view('Templates/sidebar');
+        $this->load->view('Templates/topbar');
         $this->load->view('Input Data/v_edit_usulan', $data);
         $this->load->view('Templates/footer');
     }
@@ -212,7 +218,9 @@ class InputData extends CI_Controller
     {
         $data['title'] = 'Halaman Edit Usulan';
 
-        $this->load->view("templates/template", $data);
+        $this->load->view("templates/header", $data);
+        $this->load->view("templates/sidebar");
+        $this->load->view("templates/topbar");
         $this->load->view("Input Data/v_detail");
         $this->load->view("templates/footer");
     }
@@ -253,7 +261,9 @@ class InputData extends CI_Controller
         $data['isi_subB'] = $this->Data_model->id_sub($id);
         $data['bidang'] = $this->Data_model->getBidang();
 
-        $this->load->view("templates/template", $data);
+        $this->load->view("templates/header", $data);
+        $this->load->view("templates/sidebar");
+        $this->load->view("templates/topbar");
         $this->load->view('Input Data/v_edit_sub', $data);
         $this->load->view('templates/footer');
     }
@@ -283,5 +293,15 @@ class InputData extends CI_Controller
         $year = Date('Y');
         $data['usulan'] = $this->Data_model->exporttable($year);
         $this->load->view("ext/export-excel", $data);
+    }
+    // ===============================RKP=================
+    public function RKP()
+    {
+
+        $this->load->view("templates/header");
+        $this->load->view("templates/sidebar");
+        $this->load->view("templates/topbar");
+        $this->load->view('Input Data/v_RKP');
+        $this->load->view('templates/footer');
     }
 }

@@ -109,8 +109,10 @@ class Login extends CI_Controller
     {
         $data['title'] = 'Halaman Profile';
 
-        $this->load->view("templates/template", $data);
-        $this->load->view("profile/profile");
+        $this->load->view("templates/header", $data);
+        $this->load->view("templates/sidebar");
+        $this->load->view("templates/topbar");
+        $this->load->view("profile/profile", $data);
         $this->load->view("templates/footer");
     }
     public function userDusun()
@@ -122,7 +124,7 @@ class Login extends CI_Controller
         $this->load->view('ext/header', $data);
         $this->load->view('templates/sidebar');
         $this->load->view('templates/topbar');
-        $this->load->view('kelola user dusun/v_dusun');
+        $this->load->view('kelola user dusun/v_dusun', $data);
         $this->load->view('ext/footer');
     }
     public function hapusDusun($id)

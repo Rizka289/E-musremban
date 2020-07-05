@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title>Export Data Ke Excel Dengan PHP - www.malasngoding.com</title>
+    <title>RENCANA KERJA PEMERINTAH </title>
 </head>
 
 <body>
@@ -37,7 +37,7 @@
     ?>
 
     <center>
-        <h1>Test Export</h1>
+        <h1>RENCANA KERJA PEMERINTAH DESA TAMANSARI</h1>
     </center>
 
     <table border="1">

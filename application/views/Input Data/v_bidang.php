@@ -57,7 +57,6 @@
             }
             ?>
             <?php if ($this->session->userdata('user') != "dusun") { ?>
-            <a target="_blank" class="btn btn-primary" href="<?= site_url() . '/InputData/test2' ?>">EXPORT KE EXCEL</a>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambah"><i
                     class="fas fa-fw fa-plus-circle"></i>Tambah</button>
             <?php } ?>
