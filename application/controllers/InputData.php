@@ -296,7 +296,6 @@ class InputData extends CI_Controller
     {
         $year = Date('Y');
         $data['hasil'] = $this->Data_model->exporttable2();
-        //$data['usulan'] = $this->Data_model->exporttable($year);
         $this->load->view("ext/export-excel", $data);
     }
     // ===============================RKP=================

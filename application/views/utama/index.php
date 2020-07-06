@@ -225,13 +225,10 @@
                                 <img src="assetss/img/about-mission.jpg" alt="" class="img-fluid">
                                 <div class="icon"><i class="ion-ios-speedometer-outline"></i></div>
                             </div>
-                            <h2 class="title"><a href="#">Our Mission</a></h2>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor ut labore et dolore
-                                magna aliqua. Ut
-                                enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                commodo consequat.
-                            </p>
+                            <h2 class="title"><a href="#">RENCANA KERJA PEMERINTAH</a></h2>
+                            <a target="_blank" class="btn btn-primary center-block"
+                                href="<?= site_url() . '/InputData/test2' ?>" style="text-align: center">EXPORT KE
+                                EXCEL</a>
                         </div>
                     </div>
 
@@ -897,12 +894,7 @@
                 &copy; Copyright <strong>BizPage</strong>. All Rights Reserved
             </div>
             <div class="credits">
-                <!--
-          All the links in the footer should remain intact.
-          You can delete the links only if you purchased the pro version.
-          Licensing information: https://bootstrapmade.com/license/
-          Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=BizPage
-        -->
+
                 Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
             </div>
         </div>

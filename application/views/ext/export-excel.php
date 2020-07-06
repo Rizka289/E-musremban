@@ -33,7 +33,7 @@
 
     <?php
     header("Content-type: application/vnd-ms-excel");
-    header("Content-Disposition: attachment; filename=DataIde " . Date('Y') . ".xls");
+    header("Content-Disposition: attachment; filename=RENCANA KERJA PEMERINTAH DESA TAMANSARI " . Date('Y') . ".xls");
     $this->load->model('Data_model');
     ?>
 
@@ -41,6 +41,7 @@
         <div style="font-size:18pt">RENCANA KERJA PEMERINTAH DESA TAMANSARI</div>
         <div>Tahun Anggaran 2020</div>
     </center>
+    <br>
     <table border="1">
         <tr>
             <th>Kode Rekening</th>
