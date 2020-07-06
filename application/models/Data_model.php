@@ -107,13 +107,23 @@ class Data_model extends CI_Model
         return $this->db->where('id_usulan', $id)->update('tbl_usulan', $objek);
     }
     // ============================EXCEL==================
-    public function exporttable($year)
+    public function exporttable($year, $idbidang)
     {
         return $this->db->query("select * from tbl_usulan,tbl_bidang,tbl_sub_bidang,tbl_tahun WHERE 
         tbl_usulan.id_bidang = tbl_bidang.id_bidang AND tbl_usulan.id_sub_bidang = tbl_sub_bidang.Id_sub_bidang 
-        AND tbl_bidang.id_tahun = tbl_tahun.id_tahun AND tbl_tahun.tahun = " . $year . " AND tbl_usulan.status = 'Ya'");
+        AND tbl_bidang.id_tahun = tbl_tahun.id_tahun AND tbl_tahun.tahun = " . $year . " AND tbl_usulan.status = 'Ya'
+        AND tbl_sub_bidang.id_sub_bidang=" . $idbidang);
+    }
+    public function exporttable2()
+    {
+        return $this->db->query("select * from tbl_bidang")->result();
+    }
+    public function getitem2($id)
+    {
+        return $this->db->query("select * from tbl_sub_bidang where id_bidang=" . $id);
     }
     // =================================SUB BIDANG========================
+
     public function getAllSub()
     {
         $this->db->select('*');
@@ -143,5 +153,12 @@ class Data_model extends CI_Model
     public function getdb($year)
     {
         return $this->db->query('SELECT * FROM tbl_tahun,tbl_bidang WHERE tbl_tahun.id_tahun = tbl_bidang.id_tahun AND tbl_tahun.tahun =' . $year)->result();
+    }
+    // =======================================RKP==========================
+    public function RKP($year)
+    {
+        return $this->db->query("select * from tbl_usulan,tbl_bidang,tbl_sub_bidang,tbl_tahun WHERE 
+        tbl_usulan.id_bidang = tbl_bidang.id_bidang AND tbl_usulan.id_sub_bidang = tbl_sub_bidang.Id_sub_bidang 
+        AND tbl_bidang.id_tahun = tbl_tahun.id_tahun AND tbl_tahun.tahun = " . $year . " AND tbl_usulan.status = 'Ya'");
     }
 }

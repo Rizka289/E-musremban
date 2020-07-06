@@ -216,13 +216,17 @@ class InputData extends CI_Controller
     // =================================DETAIL===========================
     public function detail($id)
     {
-        $data['title'] = 'Halaman Edit Usulan';
-
-        $this->load->view("templates/header", $data);
-        $this->load->view("templates/sidebar");
-        $this->load->view("templates/topbar");
-        $this->load->view("Input Data/v_detail");
-        $this->load->view("templates/footer");
+        $data['title'] = 'Halaman Detail Usulan';
+        $data['isi_usulan'] = $this->Data_model->get_idUsulan($id);
+        $data['bidang'] = $this->Data_model->getBidang();
+        $data['subBi'] = $this->Data_model->getSub();
+        // var_dump($data['isi_usulan']);
+        // die;
+        $this->load->view('Templates/header', $data);
+        $this->load->view('Templates/sidebar');
+        $this->load->view('Templates/topbar');
+        $this->load->view('Input Data/v_detail', $data);
+        $this->load->view('Templates/footer');
     }
     // =================================SUB BIDANG========================
     function subBidang()
@@ -291,17 +295,22 @@ class InputData extends CI_Controller
     public function test2()
     {
         $year = Date('Y');
-        $data['usulan'] = $this->Data_model->exporttable($year);
+        $data['hasil'] = $this->Data_model->exporttable2();
+        //$data['usulan'] = $this->Data_model->exporttable($year);
         $this->load->view("ext/export-excel", $data);
     }
     // ===============================RKP=================
     public function RKP()
     {
+        $data['title'] = "RENCANA KERJA PEMERINTAH";
+        $year = date("Y");
+        $data['usulan'] = $this->Data_model->RKP($year);
 
-        $this->load->view("templates/header");
+
+        $this->load->view("templates/header", $data);
         $this->load->view("templates/sidebar");
         $this->load->view("templates/topbar");
-        $this->load->view('Input Data/v_RKP');
+        $this->load->view('Input Data/v_RKP', $data);
         $this->load->view('templates/footer');
     }
 }

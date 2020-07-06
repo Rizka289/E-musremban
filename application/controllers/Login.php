@@ -115,6 +115,16 @@ class Login extends CI_Controller
         $this->load->view("profile/profile", $data);
         $this->load->view("templates/footer");
     }
+    public function edit_profile()
+    {
+        $data['title'] = 'Halaman Edit Profile';
+
+        $this->load->view("templates/header", $data);
+        $this->load->view("templates/sidebar");
+        $this->load->view("templates/topbar");
+        $this->load->view("profile/edit_profile", $data);
+        $this->load->view("templates/footer");
+    }
     public function userDusun()
     {
         $data['user'] = $this->Login_model->getAll();

@@ -173,7 +173,7 @@
                             <a onclick="return confirm ('yakin?');"
                                 href="<?= site_url('InputData/hapusUsulan/' . $key->id_usulan) ?>"
                                 class="btn btn-danger"><i class="fas fa-fw fa-trash-alt"></i></a>
-                            <a href="<?= site_url('InputData/detail') ?>">Detail Usulan</a>
+                            <a href="<?= site_url('InputData/detail/' . $key->id_usulan) ?>">Detail Usulan</a>
                             <?php endif ?>
                         </td>
 

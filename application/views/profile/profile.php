@@ -37,7 +37,8 @@
                             </tr>
                         </tbody>
                     </table>
-                    <button class="btn btn-primary">Edit</button>
+                    <br>
+                    <button class="btn btn-primary" href="<?= site_url('Login/edit_profile/') ?>">Edit</button>
                 </div>
             </div>
         </div>
