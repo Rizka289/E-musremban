@@ -5,6 +5,12 @@
             <div class="card-body">
                 <h1 align="center" style="color: blue">DETAIL DATA USULAN</h1>
                 <table style="text-align: left" width=620 border="1">
+                    <div>
+                        <label>Username :</label>
+                        <!-- <label>
+                            <?= $this->session->set_userdata($data); ?></label> -->
+
+                    </div>
                     <tbody>
                         <tr>
                             <th colspan="2" style="text-align: center">KETERANGAN</th>

@@ -5,7 +5,7 @@ class Login_model extends CI_Model
     {
         $data = [
             'username' => htmlspecialchars($this->input->post('name', true)),
-            'image' => $this->input->post('jenisKelamin') == 'lk' ? 'defaultL.jpg' : 'defaultP.jpg',
+            'image' => '-',
             'password' => password_hash(
                 $this->input->post('password1'),
                 PASSWORD_DEFAULT

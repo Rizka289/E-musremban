@@ -58,9 +58,12 @@
 
                         <label>Sub Total (Rp)</label>
                         <input type="text" class="form-control" name="total" autocomplete="off" id="subtotal">
-
+                    </div>
+                    <div class="form-group">
+                        <!-- <input type="hidden" name="author" value="<?= $this->session->userdata($data); ?>"> -->
                     </div>
                 </div>
+
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="submit" name="insertdata" class="btn btn-primary">Simpan</button>
