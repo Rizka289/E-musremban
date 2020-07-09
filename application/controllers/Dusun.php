@@ -10,6 +10,7 @@ class Dusun extends CI_Controller
         $this->load->view("templates/header", $data);
         $this->load->view("templates/sidebar");
         $this->load->view("templates/topbar");
+        $this->load->view("utama/welcome");
         $this->load->view("templates/footer");
     }
 }

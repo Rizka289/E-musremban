@@ -6,9 +6,8 @@
                 <h1 align="center" style="color: blue">DETAIL DATA USULAN</h1>
                 <table style="text-align: left" width=620 border="1">
                     <div>
-                        <label>Username :</label>
+                        <label>Username : <?= $isi_usulan->username ?></label>
                         <label></label>
-
                     </div>
                     <tbody>
                         <tr>

@@ -28,4 +28,19 @@ class Login_model extends CI_Model
     {
         $this->db->delete('dusun', array('id_dusun' => $id));
     }
+    public function tambahDusun()
+    {
+        $data = [
+            'username' => htmlspecialchars($this->input->post('username', true)),
+            'image' => '-',
+            'password' => password_hash(
+                $this->input->post('password1'),
+                PASSWORD_DEFAULT
+            ),
+            'alamat' => htmlspecialchars($this->input->post('alamat')),
+            'agama' => htmlspecialchars($this->input->post('agama')),
+            'no_hp' => htmlspecialchars($this->input->post('nope'))
+        ];
+        $this->db->insert('dusun', $data);
+    }
 }

@@ -34,7 +34,9 @@ class Login extends CI_Controller
         } elseif ($this->input->post('pilih') == 'dusun') {
             $user = $this->db->get_where('dusun', ['username' => $name])->row_array();
         }
-
+        $datausulan = $this->db->query('SELECT * FROM tbl_usulan WHERE is_open=0')->result();
+        // var_dump($datausulan);
+        // die('berhenti');
         if ($name == $user['username'] && password_verify($password, $user['password'])) {
 
             $data = [
@@ -44,15 +46,8 @@ class Login extends CI_Controller
 
             unset($user["password"]);
 
-            $cookie = array(
-                'name'   => 'user',
-                'value'  => json_encode($user),
-                'expire' => '3600',
-                'path' => '/',
-                'secure' => TRUE
-            );
-
             setcookie('user', json_encode($user), time() + (86400 * 30), "/");
+            setcookie('usulan', json_encode($datausulan), time() + (86400 * 30), "/");
             if ($this->input->post('pilih') == 'desa') {
                 redirect('desa');
                 // $this->session->set('access_level', 'desa');
@@ -139,9 +134,18 @@ class Login extends CI_Controller
         $this->load->view('kelola user dusun/v_dusun', $data);
         $this->load->view('ext/footer');
     }
+    public function tambahDusun()
+    {
+        $this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[3]|matches[password2]', [
+            'matches' => 'password dont match!',
+            'min_length' => 'password too short'
+        ]);
+        $this->Login_model->tambahDusun();
+        redirect('Login/userDusun', 'refresh');
+    }
     public function hapusDusun($id)
     {
         $this->Login_model->remove($id);
-        redirect('Login/userDusun');
+        redirect('Login/userDusun', 'refresh');
     }
 }

@@ -146,7 +146,8 @@ class InputData extends CI_Controller
             'tinggi' => htmlspecialchars($this->input->post('tinggi')),
             'm3' => htmlspecialchars($this->input->post('m3')),
             'anggaran' => htmlspecialchars($this->input->post('anggaran')),
-            'total' => htmlspecialchars($this->input->post('total'))
+            'total' => htmlspecialchars($this->input->post('total')),
+            'username' => htmlspecialchars($this->input->post('username'))
         ];
         // var_dump($objek);
         // die('save');
@@ -216,10 +217,13 @@ class InputData extends CI_Controller
     // =================================DETAIL===========================
     public function detail($id)
     {
+        $datausulan = $this->db->query('SELECT * FROM tbl_usulan WHERE is_open=0')->result();
+        setcookie('usulan', json_encode($datausulan), time() + (86400 * 30), "/");
         $data['title'] = 'Halaman Detail Usulan';
         $data['isi_usulan'] = $this->Data_model->get_idUsulan($id);
         $data['bidang'] = $this->Data_model->getBidang();
         $data['subBi'] = $this->Data_model->getSub();
+        $this->Data_model->updateUsulan($id, ['is_open' => 1]);
         // var_dump($data['isi_usulan']);
         // die;
         $this->load->view('Templates/header', $data);

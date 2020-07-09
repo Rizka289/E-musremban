@@ -1,3 +1,7 @@
+<?php
+$user = json_decode($_COOKIE['user']);
+$username = $user->username;
+?>
 <div class="modal fade" id="tambah" tabindex="-1" role="dialog" aria-labelledby="TambahLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -35,6 +39,8 @@
                             </select>
                         </div>
 
+                        <input type="hidden" class="form-control" name="username" value="<?= $username ?>"
+                            autocomplete="off">
                         <label>Usulan</label>
                         <input type="text" class="form-control" name="usulan" autocomplete="off">
 
