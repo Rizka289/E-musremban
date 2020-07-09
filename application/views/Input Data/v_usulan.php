@@ -50,7 +50,7 @@
                         <label>Tinggi</label>
                         <input type="text" class="form-control" name="tinggi" autocomplete="off" id="tinggi">
 
-                        <label>M<sup>3</sup></label>
+                        <label>M<sup>2</sup></label>
                         <input type="text" class="form-control" name="m3" autocomplete="off" id="m3">
 
                         <label>Anggaran (Rp)</label>
@@ -59,9 +59,9 @@
                         <label>Sub Total (Rp)</label>
                         <input type="text" class="form-control" name="total" autocomplete="off" id="subtotal">
                     </div>
-                    <div class="form-group">
-                        <!-- <input type="hidden" name="author" value="<?= $this->session->userdata($data); ?>"> -->
-                    </div>
+                    <!-- <div class="form-group">
+                        <!- <input type="hidden" name="author" value="<?= $this->session->userdata($data); ?>"> -->
+                    <!-- </div>  -->
                 </div>
 
                 <div class="modal-footer">
@@ -101,7 +101,7 @@
                         <th>Panjang</th>
                         <th>Lebar</th>
                         <th>Tinggi</th>
-                        <th>M<sup>3</sup></th>
+                        <th>M<sup>2</sup></th>
                         <th>Anggaran (Rp)</th>
                         <th>Sub Total (Rp)</th>
                         <th>Status</th>

@@ -5,6 +5,7 @@ class Desa extends CI_Controller
 {
     public function index()
     {
+
         $data['title'] = 'My Profile';
 
         $this->load->view("templates/header", $data);

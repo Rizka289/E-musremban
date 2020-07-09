@@ -38,8 +38,8 @@
     ?>
 
     <center>
-        <div style="font-size:18pt">RENCANA KERJA PEMERINTAH DESA TAMANSARI</div>
-        <div>Tahun Anggaran 2020</div>
+        <div style="font-size:18pt">RENCANA KERJA PEMERINTAH DESA TAMAN SARI</div>
+        <div>Tahun Anggaran <?= date('Y'); ?></div>
     </center>
     <br>
     <table border="1">
@@ -80,23 +80,13 @@
                     echo '<td>' . $row1->tinggi . '</td>';
                     echo '<td>' . $row1->unit . '</td>';
                     echo '<td>' . $row1->m3 . '</td>';
-                    echo '<td>m<sup>3</sup></td>';
+                    echo '<td>m<sup>2</sup></td>';
                     echo '<td>' . $row1->anggaran . '</td>';
                     echo '<td>' . $row1->total . '</td>';
                     echo '</tr>';
                 }
             }
             ?>
-
-        <?php /*
-            <td><?= $key->usulan ?></td>
-        <td><?= $key->unit ?></td>
-        <td><?= $key->panjang ?></td>
-        <td><?= $key->lebar ?></td>
-        <td><?= $key->tinggi ?></td>
-        <td><?= $key->m3 ?></td>
-        <td><?= $key->anggaran ?></td>
-        <td><?= $key->total ?></td> */ ?>
         </tr>
         <?php endforeach; ?>
     </table>

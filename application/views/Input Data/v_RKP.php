@@ -19,7 +19,7 @@
                     <th>Panjang</th>
                     <th>Lebar</th>
                     <th>Tinggi</th>
-                    <th>M<sup>3</sup></th>
+                    <th>M<sup>2</sup></th>
                     <th>Anggaran (Rp)</th>
                     <th>Sub Total (Rp)</th>
                 </tr>

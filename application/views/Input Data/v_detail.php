@@ -7,8 +7,7 @@
                 <table style="text-align: left" width=620 border="1">
                     <div>
                         <label>Username :</label>
-                        <!-- <label>
-                            <?= $this->session->set_userdata($data); ?></label> -->
+                        <label></label>
 
                     </div>
                     <tbody>

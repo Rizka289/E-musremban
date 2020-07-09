@@ -58,7 +58,7 @@ echo '</script>';
                         <input type="text" class="form-control" name="tinggi" autocomplete="off" id="tinggi"
                             value="<?= $isi_usulan->tinggi ?>">
 
-                        <label>M<sup>3</sup></label>
+                        <label>M<sup>2</sup></label>
                         <input type="text" class="form-control" name="m3" autocomplete="off" id="m3"
                             value="<?= $isi_usulan->m3 ?>">
 

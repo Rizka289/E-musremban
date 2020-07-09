@@ -36,6 +36,7 @@ class Login extends CI_Controller
         }
 
         if ($name == $user['username'] && password_verify($password, $user['password'])) {
+
             $data = [
                 'user' => $this->input->post('pilih')
             ];
@@ -54,6 +55,7 @@ class Login extends CI_Controller
             setcookie('user', json_encode($user), time() + (86400 * 30), "/");
             if ($this->input->post('pilih') == 'desa') {
                 redirect('desa');
+                // $this->session->set('access_level', 'desa');
             } elseif ($this->input->post('pilih') == 'dusun') {
                 redirect('dusun');
             }
