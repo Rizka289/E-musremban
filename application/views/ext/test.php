@@ -36,7 +36,7 @@
     </center>
 
     <center>
-        <a target="_blank" href="<?= site_url() . '/InputData/test2' ?>">EXPORT KE EXCEL</a>
+        <a target="_blank" href="<?= site_url() . '/InputData/test' ?>">EXPORT KE EXCEL</a>
     </center>
 
     <table>

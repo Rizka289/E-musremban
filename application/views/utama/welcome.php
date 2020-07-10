@@ -1,11 +1,5 @@
-<!-- <div class="jumbotron jumbotron-fluid">
-    <div class="container">
-        <h1 class="display-4">SELAMAT DATANG</h1>
-        <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
-    </div>
-</div> -->
-<div class="container-fluid">
-    <div class="card">
-        <h1>Test</h1>
-    </div>
+<div class="p-3 mb-2 bg-primary text-white">
+    <h1 class="p-3 mb-2 bg-info text-white; text-center">SELAMAT DATANG DI WEBSITE DESA TAMAN SARI</h1>
+</div>
+
 </div>

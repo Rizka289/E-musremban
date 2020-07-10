@@ -49,10 +49,9 @@ class Login extends CI_Controller
             setcookie('user', json_encode($user), time() + (86400 * 30), "/");
             setcookie('usulan', json_encode($datausulan), time() + (86400 * 30), "/");
             if ($this->input->post('pilih') == 'desa') {
-                redirect('desa');
-                // $this->session->set('access_level', 'desa');
+                redirect('InputData/home');
             } elseif ($this->input->post('pilih') == 'dusun') {
-                redirect('dusun');
+                redirect('InputData/home');
             }
         } else {
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
