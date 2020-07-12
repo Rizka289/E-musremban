@@ -127,60 +127,11 @@
 
             <header class="section-header">
                 <h3>E-Musrenbang</h3>
-                <p>Sistem ini digunakan untuk dalam pengelolaan proses Musrenbang (Musyawarah
-                    Perencanaan Pembangunan) untuk tingkat desa. E-Musrenbang dapat diakses oleh Masyarakat, Dusun dan
+                <p class="text-center">Sistem ini digunakan untuk mendukung pelaksanaan Musrenbang (Musyawarah
+                    Perencanaan Pembangunan) dalam rangka penyusunan RKPD tingkat desa. E-Musrenbang dapat diakses oleh
+                    Masyarakat, Dusun dan
                     Desa</p>
             </header>
-
-            <!-- <div class="row about-cols">
-
-                    <div class="col-md-4 wow fadeInUp">
-                        <div class="about-col">
-                            <div class="img">
-                                <img src="assetss/img/about-mission.jpg" alt="" class="img-fluid">
-                                <div class="icon"><i class="ion-ios-speedometer-outline"></i></div>
-                            </div>
-                            <h2 class="title"><a href="#">RENCANA KERJA PEMERINTAH</a></h2>
-                            <a target="_blank" class="btn btn-primary center-block"
-                                href="<?= site_url() . '/InputData/test2' ?>" style="text-align: center">EXPORT KE
-                                EXCEL</a>
-                        </div>
-                    </div> -->
-
-            <!-- <div class="col-md-4 wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="about-col">
-                            <div class="img">
-                                <img src="assetss/img/about-plan.jpg" alt="" class="img-fluid">
-                                <div class="icon"><i class="ion-ios-list-outline"></i></div>
-                            </div>
-                            <h2 class="title"><a href="#">RKP</a></h2>
-                            <p>
-                                RKP (Rencana Pembangunan Pemerintah) merupakan rencana pembangunan yang terdiri dari usulan semua 
-                                dusun yang berada di Desa Taman Sari 
-                            </p>
-                            <a target="_blank" class="btn btn-primary center-block"
-                                href="<?= site_url() . '/InputData/test2' ?>" style="text-align: center">EXPORT KE
-                                EXCEL</a>
-                        </div>
-                    </div>
-
-                    <!- <div class="col-md-4 wow fadeInUp" data-wow-delay="0.2s">
-                        <div class="about-col">
-                            <div class="img">
-                                <img src="assetss/img/about-vision.jpg" alt="" class="img-fluid">
-                                <div class="icon"><i class="ion-ios-eye-outline"></i></div>
-                            </div>
-                            <h2 class="title"><a href="#">Our Vision</a></h2>
-                            <p>
-                                Nemo enim ipsam voluptatem quia voluptas sit aut odit aut fugit, sed quia magni dolores
-                                eos qui ratione
-                                voluptatem sequi nesciunt Neque porro quisquam est, qui dolorem ipsum quia dolor sit
-                                amet.
-                            </p>
-                        </div>
-                    </div> -->
-
-            <!-- </div> -->
 
         </div>
     </section><!-- #about -->

@@ -65,9 +65,6 @@ $username = $user->username;
                         <label>Sub Total (Rp)</label>
                         <input type="text" class="form-control" name="total" autocomplete="off" id="subtotal">
                     </div>
-                    <!-- <div class="form-group">
-                        <!- <input type="hidden" name="author" value="<?= $this->session->userdata($data); ?>"> -->
-                    <!-- </div>  -->
                 </div>
 
                 <div class="modal-footer">
@@ -91,9 +88,10 @@ $username = $user->username;
     ?>
     <div class="card-body">
         <div class="table-responsive">
+            <?php if ($this->session->userdata('user') != 'desa') { ?>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambah"><i
                     class="fas fa-fw fa-plus-circle"></i>Tambah</button>
-
+            <?php } ?>
             <table class="table table-bordered" id="exttable" width="100%" cellspacing="0">
                 <thead>
                     <tr>

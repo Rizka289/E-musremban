@@ -37,7 +37,7 @@ $contusulan =  count($usulan);
                                 </div>
                             </div>
                             <div>
-                                <div class="small text-gray-500">December 12, 2019</div>
+                                <div class="small text-gray-500"><?= date('D-M-Y'); ?></div>
                                 <span class="font-weight-bold"><?= $value->usulan ?></span>
                             </div>
                         </a>
