@@ -39,9 +39,6 @@
 
                                 </form>
                                 <hr>
-                                <div class="text-center">
-                                    <a class="small" href="">Forgot Password?</a>
-                                </div>
                                 <div id="register" class="text-center">
                                     <a class="small" href="<?= site_url('login/registrasi') ?>">Create an Account!</a>
                                 </div>

@@ -132,15 +132,32 @@
                     Masyarakat, Dusun dan
                     Desa</p>
             </header>
+            <div class="row about-cols">
 
-        </div>
+                <div class="col-md-6 wow fadeInUp">
+                    <div class="about-col">
+                        <div class="img">
+                            <img src="img/about-mission.jpg" alt="" class="img-fluid">
+                            <div class="icon"><i class="ion-ios-list-outline"></i></div>
+                        </div>
+                        <h2 class="title"><a href="#">RKP</a></h2>
+                        <p>
+                            RKP (Rencana Pembangunan Pemerintah) merupakan rencana pembangunan yang terdiri dari usulan
+                            semua
+                            dusun yang berada di Desa Taman Sari yang telah disetujui oleh kepala Desa Taman Sari.
+                        </p>
+                        <a target="_blank" class="btn btn-primary center-block"
+                            href="<?= site_url() . '/InputData/test2' ?>" style="text-align: center">EXPORT TO EXCEL</a>
+                    </div>
+                </div>
+            </div>
     </section><!-- #about -->
 
 
     <!--==========================
       Call To Action Section
     ============================-->
-    <section id="call-to-action" class="wow fadeIn">
+    <!-- <section id="call-to-action" class="wow fadeIn">
         <div class="container text-center">
             <h3>RKP</h3>
             <p>
@@ -149,8 +166,8 @@
             </p>
             <a target="_blank" class="btn btn-primary center-block" href="<?= site_url() . '/InputData/test2' ?>"
                 style="text-align: center">EXPORT TO EXCEL</a>
-        </div>
-    </section><!-- #call-to-action -->
+        </div> -->
+    <!-- </section>#call-to-action -->
 
     <!--==========================
       Contact Section
