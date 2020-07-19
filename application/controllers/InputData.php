@@ -7,6 +7,8 @@ class InputData extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Data_model');
+        $this->load->helper(array('form', 'url'));
+        $this->load->library('form_validation');
     }
     public function index()
     {
@@ -69,15 +71,45 @@ class InputData extends CI_Controller
     }
     public function createBidang()
     {
-        $objek = [
-            'id_tahun' => htmlspecialchars($this->input->post('tahun')),
-            'kode_rek' => htmlspecialchars($this->input->post('kode_rek')),
-            'nama_bidang' => htmlspecialchars($this->input->post('nama_bid'))
-        ];
+        $config = array(
+            array(
+                'field' => 'tahun',
+                'label' => 'tahun',
+                'rules' => 'required'
+            ),
+            array(
+                'field' => 'kode_rek',
+                'label' => 'kode_rek',
+                'rules' => 'required'
+            ),
+            array(
+                'field' => 'nama_bid',
+                'label' => 'nama_bid',
+                'rules' => 'required'
+            ),
+        );
+        $this->form_validation->set_rules($config);
+        if ($this->form_validation->run() != false) {
+            $objek = [
+                'id_tahun' => htmlspecialchars($this->input->post('tahun')),
+                'kode_rek' => htmlspecialchars($this->input->post('kode_rek')),
+                'nama_bidang' => htmlspecialchars($this->input->post('nama_bid'))
+            ];
 
-        $this->Data_model->createBidang($objek);
-        $this->session->set_flashdata('message', 'Data Berhasil Ditambahkan');
-        redirect('InputData/Bidang', 'refresh');
+            $this->Data_model->createBidang($objek);
+            $this->session->set_flashdata('message', 'Data Berhasil Ditambahkan');
+            redirect('InputData/Bidang', 'refresh');
+        } else {
+            $data['title'] = 'Halaman Bidang';
+            $data['bidang'] = $this->Data_model->getAllBidang();
+            $data['tbl_t'] = $this->Data_model->getAll();
+
+            $this->load->view('ext/header', $data);
+            $this->load->view('templates/sidebar');
+            $this->load->view('templates/topbar');
+            $this->load->view('Input Data/v_bidang', $data);
+            $this->load->view('ext/footer');
+        }
     }
     public function hapusBidang($id)
     {

@@ -1,5 +1,11 @@
 <!-- Modal Tambah Data -->
-
+<?php
+if (validation_errors() != "") {
+    echo "<div class='alert alert-danger' role='alert'>";
+    echo validation_errors();
+    echo "</div>";
+}
+?>
 <div class="modal fade" id="tambah" tabindex="-1" role="dialog" aria-labelledby="TambahLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -20,7 +26,7 @@
                             <select class="custom-select" onfocus="this.size=5" onblur="this.size=1"
                                 onchange="this .size=1;this.blur()" name="tahun">
                                 <div class="test">
-                                    <option>-Pilih-</option>
+                                    <option value="">-Pilih-</option>
                                     <?php foreach ($tbl_t as $key) : ?>
                                     <option value="<?= $key->id_tahun ?>"><?= $key->tahun; ?></option>
                                     <?php endforeach; ?>
@@ -28,10 +34,11 @@
                             </select>
                         </div>
                         <label>Kode Rekening</label>
-                        <input type="text" class="form-control" name="kode_rek" autocomplete="off">
+                        <input type="text" class="form-control" name="kode_rek" autocomplete="off"
+                            placeholder="Contoh 1.2" pattern="[0-9]{1,9}.[0-9]{1,9}">
 
                         <label>Nama Bidang</label>
-                        <input type="text" class="form-control" name="nama_bid" autocomplete="off">
+                        <input type="text" class="form-control" name="nama_bid" autocomplete="off" required>
                     </div>
                 </div>
 

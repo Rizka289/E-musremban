@@ -132,8 +132,8 @@
                     Masyarakat, Dusun dan
                     Desa</p>
             </header>
-            <div class="row about-cols">
 
+            <div class="row about-cols justify-content-center">
                 <div class="col-md-6 wow fadeInUp">
                     <div class="about-col">
                         <div class="img">
@@ -146,11 +146,15 @@
                             semua
                             dusun yang berada di Desa Taman Sari yang telah disetujui oleh kepala Desa Taman Sari.
                         </p>
-                        <a target="_blank" class="btn btn-primary center-block"
-                            href="<?= site_url() . '/InputData/test2' ?>" style="text-align: center">EXPORT TO EXCEL</a>
+                        <div class="row justify-content-center">
+                            <a target="_blank" class="btn btn-primary center-block"
+                                href="<?= site_url() . '/InputData/test2' ?>" style="text-align: center">EXPORT TO
+                                EXCEL</a>
+                        </div>
                     </div>
                 </div>
             </div>
+
     </section><!-- #about -->
 
 

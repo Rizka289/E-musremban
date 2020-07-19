@@ -12,7 +12,7 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Tahun</label>
-                        <input type="text" class="form-control" name="tahun" autocomplete="off">
+                        <input type="number" class="form-control" name="tahun" autocomplete="off" required>
                     </div>
                 </div>
                 <div class="modal-footer">

@@ -31,7 +31,7 @@
                             <td><?= $isi_usulan->tinggi ?></td>
                         </tr>
                         <tr>
-                            <td>M<sup>3</sup></td>
+                            <td>M<sup>2</sup></td>
                             <td><?= $isi_usulan->m3 ?></td>
                         </tr>
                         <tr>

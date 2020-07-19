@@ -24,10 +24,10 @@
                         </div>
 
                         <label>Sub Rekening</label>
-                        <input type="text" class="form-control" name="SubRek" autocomplete="off">
+                        <input type="text" class="form-control" name="SubRek" autocomplete="off" required>
 
                         <label>Nama Sub Bidang</label>
-                        <input type="text" class="form-control" name="Nasub" autocomplete="off">
+                        <input type="text" class="form-control" name="Nasub" autocomplete="off" required>
                     </div>
                 </div>
 

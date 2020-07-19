@@ -42,28 +42,31 @@ $username = $user->username;
                         <input type="hidden" class="form-control" name="username" value="<?= $username ?>"
                             autocomplete="off">
                         <label>Usulan</label>
-                        <input type="text" class="form-control" name="usulan" autocomplete="off">
+                        <input type="text" class="form-control" name="usulan" autocomplete="off" required>
 
                         <label>Unit</label>
                         <input type="text" class="form-control" name="unit" autocomplete="off" id="unit">
 
                         <label>Panjang</label>
-                        <input type="text" class="form-control" name="panjang" autocomplete="off" id="panjang">
+                        <input type="text" class="form-control" name="panjang" autocomplete="off" id="panjang"
+                            value="0">
 
                         <label>Lebar</label>
-                        <input type="text" class="form-control" name="lebar" autocomplete="off" id="lebar">
+                        <input type="text" class="form-control" name="lebar" autocomplete="off" id="lebar" value="-">
 
                         <label>Tinggi</label>
-                        <input type="text" class="form-control" name="tinggi" autocomplete="off" id="tinggi">
+                        <input type="number" class="form-control" name="tinggi" autocomplete="off" id="tinggi"
+                            value="-">
 
                         <label>M<sup>2</sup></label>
-                        <input type="text" class="form-control" name="m3" autocomplete="off" id="m3">
+                        <input type="text" class="form-control" name="m3" autocomplete="off" id="m3" value="-">
 
                         <label>Anggaran (Rp)</label>
-                        <input type="text" class="form-control" name="anggaran" autocomplete="off" id="anggaran">
+                        <input type="text" class="form-control" name="anggaran" autocomplete="off" id="anggaran"
+                            value="-">
 
                         <label>Sub Total (Rp)</label>
-                        <input type="text" class="form-control" name="total" autocomplete="off" id="subtotal">
+                        <input type="text" class="form-control" name="total" autocomplete="off" id="subtotal" value="-">
                     </div>
                 </div>
 
@@ -126,9 +129,9 @@ $username = $user->username;
                         <td><?= $key->panjang ?></td>
                         <td><?= $key->lebar ?></td>
                         <td><?= $key->tinggi ?></td>
-                        <td><?= $key->m3 ?></td>
-                        <td><?= $key->anggaran ?></td>
-                        <td><?= $key->total ?></td>
+                        <td><?= round($key->m3) ?></td>
+                        <td><?= "Rp " . number_format($key->anggaran, 2, ',', '.') ?></td>
+                        <td><?= "Rp " . number_format($key->total, 2, ',', '.') ?></td>
 
                         <?php if ($this->session->userdata('user') == 'dusun') : ?>
                         <td>
