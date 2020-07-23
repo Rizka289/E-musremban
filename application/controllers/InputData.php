@@ -74,17 +74,17 @@ class InputData extends CI_Controller
         $config = array(
             array(
                 'field' => 'tahun',
-                'label' => 'tahun',
+                'label' => 'Tahun',
                 'rules' => 'required'
             ),
             array(
                 'field' => 'kode_rek',
-                'label' => 'kode_rek',
+                'label' => 'Kode Rekening',
                 'rules' => 'required'
             ),
             array(
                 'field' => 'nama_bid',
-                'label' => 'nama_bid',
+                'label' => 'Nama Bidang',
                 'rules' => 'required'
             ),
         );
@@ -168,23 +168,64 @@ class InputData extends CI_Controller
     }
     public function createUsulan()
     {
-        $objek = [
-            'id_bidang' => htmlspecialchars($this->input->post('idrekening')),
-            'Id_sub_bidang' => htmlspecialchars($this->input->post('sub')),
-            'usulan' => htmlspecialchars($this->input->post('usulan')),
-            'unit' => htmlspecialchars($this->input->post('unit')),
-            'panjang' => htmlspecialchars($this->input->post('panjang')),
-            'lebar' => htmlspecialchars($this->input->post('lebar')),
-            'tinggi' => htmlspecialchars($this->input->post('tinggi')),
-            'm3' => htmlspecialchars($this->input->post('m3')),
-            'anggaran' => htmlspecialchars($this->input->post('anggaran')),
-            'total' => htmlspecialchars($this->input->post('total')),
-            'username' => htmlspecialchars($this->input->post('username'))
-        ];
-        // var_dump($objek);
-        // die('save');
-        $this->Data_model->createUsulan($objek);
-        redirect('InputData/Usulan', 'refresh');
+        $config = array(
+            array(
+                'field' => 'idrekening',
+                'label' => 'idrekening',
+                'rules' => 'required'
+            ),
+            array(
+                'field' => 'sub',
+                'label' => 'sub',
+                'rules' => 'required'
+            ),
+            array(
+                'field' => 'usulan',
+                'label' => 'usulan',
+                'rules' => 'required'
+            ),
+            array(
+                'field' => 'anggaran',
+                'label' => 'Anggaran',
+                'rules' => 'required'
+            ),
+        );
+        $this->form_validation->set_rules($config);
+        if ($this->form_validation->run() != false) {
+
+            // var_dump($this->session);
+
+
+            $objek = [
+                'id_bidang' => htmlspecialchars($this->input->post('idrekening')),
+                'Id_sub_bidang' => htmlspecialchars($this->input->post('sub')),
+                'usulan' => htmlspecialchars($this->input->post('usulan')),
+                'unit' => htmlspecialchars($this->input->post('unit')),
+                'panjang' => htmlspecialchars($this->input->post('panjang')),
+                'lebar' => htmlspecialchars($this->input->post('lebar')),
+                'tinggi' => htmlspecialchars($this->input->post('tinggi')),
+                'm3' => htmlspecialchars($this->input->post('m3')),
+                'anggaran' => htmlspecialchars($this->input->post('anggaran')),
+                'total' => htmlspecialchars($this->input->post('total')),
+                'id_dusun' => htmlspecialchars($this->session->userdata('id')),
+                'id_desa' => htmlspecialchars('20')
+            ];
+            // var_dump($objek);
+            // die('save');
+            $this->Data_model->createUsulan($objek);
+            redirect('InputData/Usulan', 'refresh');
+        } else {
+            $data['title'] = 'Halaman Bidang';
+            $data['usulan'] = $this->Data_model->getUsulan();
+            $data['bidang'] = $this->Data_model->getBidang();
+            $data['subBi'] = $this->Data_model->getSub();
+
+            $this->load->view('ext/header', $data);
+            $this->load->view('templates/sidebar');
+            $this->load->view('templates/topbar');
+            $this->load->view('Input Data/v_usulan', $data);
+            $this->load->view('ext/footer');
+        }
     }
     function updateUsulan($usulan, $status)
     {
@@ -222,6 +263,8 @@ class InputData extends CI_Controller
         $lebar = $this->input->post('lebar');
         $tinggi = $this->input->post('tinggi');
         $m3 = $this->input->post('m3');
+        $hari = $this->input->post('hari');
+        $orang = $this->input->post('orang');
         $anggaran = $this->input->post('anggaran');
         $subT = $this->input->post('total');
 
@@ -234,6 +277,8 @@ class InputData extends CI_Controller
             'lebar' => $lebar,
             'tinggi' => $tinggi,
             'm3' => $m3,
+            'hari' => $hari,
+            'org' => $orang,
             'anggaran' => $anggaran,
             'total' => $subT
         );
@@ -281,13 +326,45 @@ class InputData extends CI_Controller
     }
     public function createSub()
     {
-        $objek = [
-            'id_bidang' => htmlspecialchars($this->input->post('idrekening')),
-            'Sub_rek' => htmlspecialchars($this->input->post('SubRek')),
-            'nama_sub_bidang' => htmlspecialchars($this->input->post('Nasub'))
-        ];
-        $this->Data_model->createSub($objek);
-        redirect('InputData/subBidang', 'refresh');
+        $config = array(
+            // array(
+            //     'field' => 'id_rekening',
+            //     'label' => 'Kode Rekening',
+            //     'rules' => 'required'
+            // ),
+            array(
+                'field' => 'SubRek',
+                'label' => 'Sub Rekening',
+                'rules' => 'required'
+            ),
+            array(
+                'field' => 'Nasub',
+                'label' => 'Nama Sub Bidang',
+                'rules' => 'required'
+            ),
+        );
+        $this->form_validation->set_rules($config);
+        if ($this->form_validation->run() != false) {
+            $objek = [
+                'id_bidang' => htmlspecialchars($this->input->post('idrekening')),
+                'Sub_rek' => htmlspecialchars($this->input->post('SubRek')),
+                'nama_sub_bidang' => htmlspecialchars($this->input->post('Nasub'))
+            ];
+            $this->Data_model->createSub($objek);
+            redirect('InputData/subBidang', 'refresh');
+        } else {
+            $data['subBidang'] = $this->Data_model->getAllSub();
+            $data['Sub'] = $this->Data_model->getBidang();
+            $year = date("Y");
+            $data['dt'] = $this->Data_model->getdb($year);
+            $data['title'] = 'Halaman Sub Bidang';
+
+            $this->load->view('ext/header', $data);
+            $this->load->view('Templates/sidebar');
+            $this->load->view('Templates/topbar');
+            $this->load->view('Input Data/v_SubBidang', $data);
+            $this->load->view('ext/footer');
+        }
     }
     public function hapusSub($id)
     {

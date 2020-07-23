@@ -35,12 +35,13 @@ class Login extends CI_Controller
             $user = $this->db->get_where('dusun', ['username' => $name])->row_array();
         }
         $datausulan = $this->db->query('SELECT * FROM tbl_usulan WHERE is_open=0')->result();
-        // var_dump($datausulan);
-        // die('berhenti');
-        if ($name == $user['username'] && password_verify($password, $user['password'])) {
 
+        if ($name == $user['username'] && password_verify($password, $user['password'])) {
             $data = [
-                'user' => $this->input->post('pilih')
+                'id' => $user['id_dusun'],
+                'user' => $this->input->post('pilih'),
+                'username' =>  $this->input->post('name'),
+                // 'setatus' => 'jomblo'
             ];
             $this->session->set_userdata($data);
 

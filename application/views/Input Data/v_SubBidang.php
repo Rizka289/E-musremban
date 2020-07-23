@@ -1,3 +1,10 @@
+<?php
+if (validation_errors() != "") {
+    echo "<div class='alert alert-danger' role='alert'>";
+    echo validation_errors();
+    echo "</div>";
+}
+?>
 <div class="modal fade" id="tambah" tabindex="-1" role="dialog" aria-labelledby="TambahLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -12,7 +19,7 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <div class="form-group">
-                            <label>Kode Rekening</label>
+                            <label>Nama Bidang</label>
                             <select class="custom-select" onfocus="this.size=5" onblur="this.size=1"
                                 onchange="this .size=1;this.blur()" id="idrekening" name="idrekening">
                                 <option>-Pilih-</option>
@@ -24,7 +31,8 @@
                         </div>
 
                         <label>Sub Rekening</label>
-                        <input type="text" class="form-control" name="SubRek" autocomplete="off" required>
+                        <input type="text" class="form-control" name="SubRek" autocomplete="off"
+                            placeholder="Contoh 1.2" pattern="[0-9]{1,9}.[0-9]{1,9}">
 
                         <label>Nama Sub Bidang</label>
                         <input type="text" class="form-control" name="Nasub" autocomplete="off" required>

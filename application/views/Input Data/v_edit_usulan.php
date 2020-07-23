@@ -15,7 +15,7 @@ echo '</script>';
 
                 <form action="<?= site_url('InputData/proses_editUsulan') ?>" method="post">
                     <div class="form-group">
-                        <label>Kode Rekening</label>
+                        <label>Nama Bidang</label>
                         <select class="custom-select" onfocus="this.size=5" onblur="this.size=1"
                             onchange="this.size=1;this.blur()" id="idrekening" name="idrekening"
                             value="<?= $isi_usulan->id_bidang; ?>">
@@ -26,7 +26,7 @@ echo '</script>';
                         </select>
 
                         <div class="form-group">
-                            <label>Sub Rekening</label>
+                            <label>Nama Sub Bidang</label>
                             <select class="custom-select" onfocus="this.size=5" onblur="this.size=1"
                                 onchange="this.size=1;this.blur()" id="subRek" name="sub"
                                 value="<?= $isi_usulan->Id_sub_bidang; ?>">

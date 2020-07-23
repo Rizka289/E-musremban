@@ -72,9 +72,16 @@ class Data_model extends CI_Model
         $this->db->select('*');
         $this->db->from('tbl_usulan');
         $this->db->join('tbl_bidang', 'tbl_usulan.id_bidang = tbl_bidang.id_bidang');
-        $this->db->join('tbl_sub_bidang', 'tbl_usulan.id_sub_bidang = tbl_sub_bidang.Id_sub_bidang');
+        $this->db->join('tbl_sub_bidang', 'tbl_sub_bidang.id_sub_bidang = tbl_usulan.id_sub_bidang');
+
+        if ($this->session->userdata('user') == 'dusun')
+            $this->db->where('tbl_usulan.id_dusun', $this->session->userdata('id'));
+
         $query  = $this->db->get();
         return $query->result();
+
+        // var_dump($query->result());
+        // die();
     }
     public function getBidang()
     {
@@ -94,10 +101,13 @@ class Data_model extends CI_Model
     }
     public function get_idUsulan($id)
     {
-        $this->db->select('*, tbl_usulan.id_bidang as bidang');
+        $this->db->select('*, tbl_usulan.id_bidang as bidang , dusun.username As username');
         $this->db->from('tbl_usulan');
         $this->db->join('tbl_bidang', 'tbl_usulan.id_bidang = tbl_bidang.id_bidang');
-        $this->db->join('tbl_sub_bidang', 'tbl_usulan.id_sub_bidang = tbl_sub_bidang.Id_sub_bidang');
+        $this->db->join('tbl_sub_bidang', 'tbl_sub_bidang.id_sub_bidang = tbl_usulan.id_sub_bidang');
+        $this->db->join('dusun', 'dusun.id_dusun = tbl_usulan.id_dusun');
+
+
         $this->db->where('id_usulan', $id);
         $query  = $this->db->get()->row();
         return $query;

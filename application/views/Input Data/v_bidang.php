@@ -38,7 +38,7 @@ if (validation_errors() != "") {
                             placeholder="Contoh 1.2" pattern="[0-9]{1,9}.[0-9]{1,9}">
 
                         <label>Nama Bidang</label>
-                        <input type="text" class="form-control" name="nama_bid" autocomplete="off" required>
+                        <input type="text" class="form-control" name="nama_bid" autocomplete="off">
                     </div>
                 </div>
 

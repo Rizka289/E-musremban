@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 25 Jun 2020 pada 08.44
--- Versi server: 10.4.8-MariaDB
--- Versi PHP: 7.3.10
+-- Generation Time: Jul 23, 2020 at 12:19 PM
+-- Server version: 10.4.8-MariaDB
+-- PHP Version: 7.3.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `desa`
+-- Table structure for table `desa`
 --
 
 CREATE TABLE `desa` (
@@ -39,16 +39,16 @@ CREATE TABLE `desa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `desa`
+-- Dumping data for table `desa`
 --
 
 INSERT INTO `desa` (`id_desa`, `username`, `image`, `password`, `alamat`, `agama`, `no_hp`) VALUES
-(19, 'rizka', 'defaultP.jpg', '$2y$10$lW/ZIODAmOHpFNNChHFUxObekAFOzETJdsoE9ptJDdcGXjofyJ2fS', '2', '1', '5');
+(20, 'rizka', '-', '$2y$10$90qNLoiDuiNkD2ne4Qa/Se4fxzkFw5mPtfCKj3k1/lnWyceLU8l9W', '-', '-', '-');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `dusun`
+-- Table structure for table `dusun`
 --
 
 CREATE TABLE `dusun` (
@@ -62,48 +62,38 @@ CREATE TABLE `dusun` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `dusun`
+-- Dumping data for table `dusun`
 --
 
 INSERT INTO `dusun` (`id_dusun`, `username`, `image`, `password`, `alamat`, `agama`, `no_hp`) VALUES
-(14, 'rahma', 'defaultP.jpg', '$2y$10$Lia9t.WKFfncdcwCmCKfK.6nHb2h6NwpyoKounwWDb5kFvOZXsZfW', '-', '-', '-');
+(20, 'rizka', '-', '$2y$10$fJHn0HMzxaxBSURjJIBbQuGCZpMr5IWcVk4RR5oyM8XAoCFUjLZWe', '-', '-', '-'),
+(23, 'rahma', '-', '$2y$10$t4S6J0VeF8cM0wUdJ0/u.O9/BgbkkGMQnP40MnpkiM0kr/0ZFiqry', '-', '-', '-');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_bidang`
+-- Table structure for table `tbl_bidang`
 --
 
 CREATE TABLE `tbl_bidang` (
   `id_bidang` int(11) NOT NULL,
   `id_tahun` int(11) DEFAULT NULL,
-  `kode_rek` varchar(11) DEFAULT NULL,
+  `kode_rek` double DEFAULT NULL,
   `nama_bidang` varchar(255) DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tbl_bidang`
+-- Dumping data for table `tbl_bidang`
 --
 
 INSERT INTO `tbl_bidang` (`id_bidang`, `id_tahun`, `kode_rek`, `nama_bidang`) VALUES
-(1, 31, '23.3', 'ntahlah'),
-(10, 38, '2', 'fsdf');
+(46, 75, 2.2, 'Bidang Pelaksanaan Pembangunan Desa'),
+(47, 75, 3.8, 'sfd');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_rkp`
---
-
-CREATE TABLE `tbl_rkp` (
-  `id_rkp` int(11) NOT NULL,
-  `id_usulan` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `tbl_sub_bidang`
+-- Table structure for table `tbl_sub_bidang`
 --
 
 CREATE TABLE `tbl_sub_bidang` (
@@ -114,17 +104,17 @@ CREATE TABLE `tbl_sub_bidang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tbl_sub_bidang`
+-- Dumping data for table `tbl_sub_bidang`
 --
 
 INSERT INTO `tbl_sub_bidang` (`Id_sub_bidang`, `id_bidang`, `Sub_rek`, `nama_sub_bidang`) VALUES
-(6, 1, '5667', 'iyyu'),
-(7, 1, '56', 'thb');
+(40, 46, '234.7', 'dsfgsd'),
+(41, 46, '12.5', 'rf');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_tahun`
+-- Table structure for table `tbl_tahun`
 --
 
 CREATE TABLE `tbl_tahun` (
@@ -133,173 +123,165 @@ CREATE TABLE `tbl_tahun` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tbl_tahun`
+-- Dumping data for table `tbl_tahun`
 --
 
 INSERT INTO `tbl_tahun` (`id_tahun`, `tahun`) VALUES
-(38, 342),
-(37, 587),
-(40, 2000),
-(28, 2015),
-(29, 2016),
-(30, 2017),
-(31, 2018),
-(32, 2019),
-(33, 2021),
-(45, 2067),
-(43, 3242),
-(42, 6556),
-(39, 423432);
+(76, 434),
+(70, 2015),
+(71, 2016),
+(72, 2017),
+(73, 2018),
+(74, 2019),
+(75, 2020);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_usulan`
+-- Table structure for table `tbl_usulan`
 --
 
 CREATE TABLE `tbl_usulan` (
   `id_usulan` int(11) NOT NULL,
+  `id_dusun` int(11) NOT NULL,
+  `id_desa` int(11) NOT NULL,
   `id_bidang` int(11) DEFAULT NULL,
   `id_sub_bidang` int(11) DEFAULT NULL,
   `usulan` varchar(100) DEFAULT '',
-  `anggaran` int(11) DEFAULT NULL
+  `unit` int(11) DEFAULT NULL,
+  `panjang` double DEFAULT NULL,
+  `lebar` double DEFAULT NULL,
+  `tinggi` double DEFAULT NULL,
+  `m3` double DEFAULT NULL,
+  `meter` double NOT NULL,
+  `hari` int(11) NOT NULL,
+  `org` int(11) NOT NULL,
+  `anggaran` double DEFAULT NULL,
+  `total` double DEFAULT NULL,
+  `status` enum('Ya','Tidak') DEFAULT NULL,
+  `is_open` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tbl_usulan`
+-- Dumping data for table `tbl_usulan`
 --
 
-INSERT INTO `tbl_usulan` (`id_usulan`, `id_bidang`, `id_sub_bidang`, `usulan`, `anggaran`) VALUES
-(8, 1, 6, 'Rizkaaaaa', 234),
-(9, 10, 7, 'aaaaa', 12),
-(10, 10, 7, '12', 1212),
-(11, 10, 6, 'dsfs', 1234);
+INSERT INTO `tbl_usulan` (`id_usulan`, `id_dusun`, `id_desa`, `id_bidang`, `id_sub_bidang`, `usulan`, `unit`, `panjang`, `lebar`, `tinggi`, `m3`, `meter`, `hari`, `org`, `anggaran`, `total`, `status`, `is_open`) VALUES
+(1, 23, 20, 46, 40, 'pk', 9, 9, 9, 9, 9, 8, 3, 8, 34, 89, NULL, 1),
+(81, 20, 20, 46, 40, 'sa', 1, NULL, NULL, NULL, NULL, 0, 0, 0, NULL, NULL, NULL, 0),
+(82, 23, 20, 46, 40, 'sda', 1, 0, 0, 0, 0, 0, 0, 0, 1234, 1234, 'Ya', 1);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `desa`
+-- Indexes for table `desa`
 --
 ALTER TABLE `desa`
   ADD PRIMARY KEY (`id_desa`);
 
 --
--- Indeks untuk tabel `dusun`
+-- Indexes for table `dusun`
 --
 ALTER TABLE `dusun`
   ADD PRIMARY KEY (`id_dusun`);
 
 --
--- Indeks untuk tabel `tbl_bidang`
+-- Indexes for table `tbl_bidang`
 --
 ALTER TABLE `tbl_bidang`
   ADD PRIMARY KEY (`id_bidang`),
   ADD KEY `fk_tahun` (`id_tahun`);
 
 --
--- Indeks untuk tabel `tbl_rkp`
---
-ALTER TABLE `tbl_rkp`
-  ADD PRIMARY KEY (`id_rkp`),
-  ADD KEY `fk_rkp_usulan` (`id_usulan`);
-
---
--- Indeks untuk tabel `tbl_sub_bidang`
+-- Indexes for table `tbl_sub_bidang`
 --
 ALTER TABLE `tbl_sub_bidang`
   ADD PRIMARY KEY (`Id_sub_bidang`),
-  ADD KEY `fk_sub_bidang` (`id_bidang`);
+  ADD KEY `fk_sub_bidang` (`id_bidang`),
+  ADD KEY `id_bidang` (`id_bidang`);
 
 --
--- Indeks untuk tabel `tbl_tahun`
+-- Indexes for table `tbl_tahun`
 --
 ALTER TABLE `tbl_tahun`
   ADD PRIMARY KEY (`id_tahun`),
   ADD KEY `fk_tahun_kegiUta` (`tahun`);
 
 --
--- Indeks untuk tabel `tbl_usulan`
+-- Indexes for table `tbl_usulan`
 --
 ALTER TABLE `tbl_usulan`
   ADD PRIMARY KEY (`id_usulan`),
-  ADD KEY `fk_usulan_sub` (`id_sub_bidang`),
-  ADD KEY `fk_bid` (`id_bidang`);
+  ADD KEY `fk_bid` (`id_bidang`),
+  ADD KEY `fk_desa` (`id_desa`),
+  ADD KEY `fk_dusun` (`id_dusun`),
+  ADD KEY `fk_subBi` (`id_sub_bidang`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `desa`
+-- AUTO_INCREMENT for table `desa`
 --
 ALTER TABLE `desa`
-  MODIFY `id_desa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id_desa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
--- AUTO_INCREMENT untuk tabel `dusun`
+-- AUTO_INCREMENT for table `dusun`
 --
 ALTER TABLE `dusun`
-  MODIFY `id_dusun` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_dusun` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
--- AUTO_INCREMENT untuk tabel `tbl_bidang`
+-- AUTO_INCREMENT for table `tbl_bidang`
 --
 ALTER TABLE `tbl_bidang`
-  MODIFY `id_bidang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_bidang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
--- AUTO_INCREMENT untuk tabel `tbl_rkp`
---
-ALTER TABLE `tbl_rkp`
-  MODIFY `id_rkp` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT untuk tabel `tbl_sub_bidang`
+-- AUTO_INCREMENT for table `tbl_sub_bidang`
 --
 ALTER TABLE `tbl_sub_bidang`
-  MODIFY `Id_sub_bidang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `Id_sub_bidang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
--- AUTO_INCREMENT untuk tabel `tbl_tahun`
+-- AUTO_INCREMENT for table `tbl_tahun`
 --
 ALTER TABLE `tbl_tahun`
-  MODIFY `id_tahun` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id_tahun` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 
 --
--- AUTO_INCREMENT untuk tabel `tbl_usulan`
+-- AUTO_INCREMENT for table `tbl_usulan`
 --
 ALTER TABLE `tbl_usulan`
-  MODIFY `id_usulan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_usulan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
 
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `tbl_bidang`
+-- Constraints for table `tbl_bidang`
 --
 ALTER TABLE `tbl_bidang`
   ADD CONSTRAINT `fk_tahun` FOREIGN KEY (`id_tahun`) REFERENCES `tbl_tahun` (`id_tahun`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `tbl_rkp`
---
-ALTER TABLE `tbl_rkp`
-  ADD CONSTRAINT `fk_usulan` FOREIGN KEY (`id_usulan`) REFERENCES `tbl_usulan` (`id_usulan`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Ketidakleluasaan untuk tabel `tbl_sub_bidang`
+-- Constraints for table `tbl_sub_bidang`
 --
 ALTER TABLE `tbl_sub_bidang`
   ADD CONSTRAINT `fk_bidang` FOREIGN KEY (`id_bidang`) REFERENCES `tbl_bidang` (`id_bidang`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `tbl_usulan`
+-- Constraints for table `tbl_usulan`
 --
 ALTER TABLE `tbl_usulan`
   ADD CONSTRAINT `fk_bid` FOREIGN KEY (`id_bidang`) REFERENCES `tbl_bidang` (`id_bidang`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_desa` FOREIGN KEY (`id_desa`) REFERENCES `desa` (`id_desa`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_dusun` FOREIGN KEY (`id_dusun`) REFERENCES `dusun` (`id_dusun`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_subBi` FOREIGN KEY (`id_sub_bidang`) REFERENCES `tbl_sub_bidang` (`Id_sub_bidang`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 

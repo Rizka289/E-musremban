@@ -1,4 +1,11 @@
 <?php
+if (validation_errors() != "") {
+    echo "<div class='alert alert-danger' role='alert'>";
+    echo validation_errors();
+    echo "</div>";
+}
+?>
+<?php
 $user = json_decode($_COOKIE['user']);
 $username = $user->username;
 ?>
@@ -15,7 +22,7 @@ $username = $user->username;
                 <div class="modal-body">
                     <div class="form-group">
                         <div class="form-group">
-                            <label>Kode Rekening</label>
+                            <label>Nama Bidang</label>
                             <select class="custom-select" onfocus="this.size=5" onblur="this.size=1"
                                 onchange="this .size=1;this.blur()" id="idrekening" name="idrekening">
                                 <option>-Pilih-</option>
@@ -28,7 +35,7 @@ $username = $user->username;
                         </div>
 
                         <div class="form-group">
-                            <label>Sub Rekening</label>
+                            <label>Nama Sub Bidang</label>
                             <select class="custom-select" onfocus="this.size=5" onblur="this.size=1"
                                 onchange="this.size=1;this.blur()" id="subRek" name="sub">
                                 <option>-Pilih-</option>
@@ -45,28 +52,31 @@ $username = $user->username;
                         <input type="text" class="form-control" name="usulan" autocomplete="off" required>
 
                         <label>Unit</label>
-                        <input type="text" class="form-control" name="unit" autocomplete="off" id="unit">
+                        <input type="number" class="form-control" name="unit" autocomplete="off" id="unit">
 
                         <label>Panjang</label>
-                        <input type="text" class="form-control" name="panjang" autocomplete="off" id="panjang"
-                            value="0">
+                        <input type="number" class="form-control" name="panjang" autocomplete="off" id="panjang">
 
                         <label>Lebar</label>
-                        <input type="text" class="form-control" name="lebar" autocomplete="off" id="lebar" value="-">
+                        <input type="number" class="form-control" name="lebar" autocomplete="off" id="lebar">
 
                         <label>Tinggi</label>
-                        <input type="number" class="form-control" name="tinggi" autocomplete="off" id="tinggi"
-                            value="-">
+                        <input type="number" class="form-control" name="tinggi" autocomplete="off" id="tinggi">
 
                         <label>M<sup>2</sup></label>
-                        <input type="text" class="form-control" name="m3" autocomplete="off" id="m3" value="-">
+                        <input type="number" class="form-control" name="m3" autocomplete="off" id="m3">
+
+                        <label>Hari</label>
+                        <input type="text" class="form-control" name="hari" autocomplete="off" id="hari">
+
+                        <label>Orang</label>
+                        <input type="text" class="form-control" name="orang" autocomplete="off" id="orang">
 
                         <label>Anggaran (Rp)</label>
-                        <input type="text" class="form-control" name="anggaran" autocomplete="off" id="anggaran"
-                            value="-">
+                        <input type="number" class="form-control" name="anggaran" autocomplete="off" id="anggaran">
 
                         <label>Sub Total (Rp)</label>
-                        <input type="text" class="form-control" name="total" autocomplete="off" id="subtotal" value="-">
+                        <input type="number" class="form-control" name="total" autocomplete="off" id="subtotal">
                     </div>
                 </div>
 
@@ -109,6 +119,8 @@ $username = $user->username;
                         <th>Lebar</th>
                         <th>Tinggi</th>
                         <th>M<sup>2</sup></th>
+                        <th>Hari</th>
+                        <th>Orang</th>
                         <th>Anggaran (Rp)</th>
                         <th>Sub Total (Rp)</th>
                         <th>Status</th>
@@ -130,6 +142,9 @@ $username = $user->username;
                         <td><?= $key->lebar ?></td>
                         <td><?= $key->tinggi ?></td>
                         <td><?= round($key->m3) ?></td>
+                        <td><?= $key->hari ?></td>
+                        <td><?= $key->org ?></td>
+
                         <td><?= "Rp " . number_format($key->anggaran, 2, ',', '.') ?></td>
                         <td><?= "Rp " . number_format($key->total, 2, ',', '.') ?></td>
 
@@ -200,6 +215,8 @@ $username = $user->username;
 let panjang = 0;
 let lebar = 0;
 let tinggi = 0;
+let hari = 0;
+let orang = 0;
 let m3 = 1;
 let anggaran = 1;
 let unit = '';
@@ -221,6 +238,14 @@ document.getElementById('anggaran').addEventListener('input', function(evet) {
     subtotal();
 });
 document.getElementById('unit').addEventListener('input', function(evet) {
+    unit = parseFloat(evet.target.value);
+    subtotal();
+});
+document.getElementById('hari').addEventListener('input', function(evet) {
+    unit = parseFloat(evet.target.value);
+    subtotal();
+});
+document.getElementById('orang').addEventListener('input', function(evet) {
     unit = parseFloat(evet.target.value);
     subtotal();
 });
