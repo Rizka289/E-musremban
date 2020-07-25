@@ -12,28 +12,28 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Username</label>
-                        <input type="text" class="form-control" name="username" autocomplete="off">
+                        <input type="text" class="form-control" name="username" autocomplete="off" required>
                         <label>Password</label>
                         <div class=" form-group row">
                             <div class="col-sm-6 mb-3 mb-sm-0">
                                 <input type="password" class="form-control form-control-user" id="password1"
-                                    placeholder="Password" name="password1">
+                                    placeholder="Password" name="password1" required>
                                 <?= form_error('password1', ' <small class="text-danger pl-3">', '</small>'); ?>
                             </div>
                             <div class="col-sm-6">
                                 <input type="password" class="form-control form-control-user" id="password2"
-                                    name="password2" placeholder="Repeat Password">
+                                    name="password2" placeholder="Repeat Password" required>
                             </div>
                         </div>
 
                         <label>Alamat</label>
-                        <input type="text" class="form-control" name="alamat" autocomplete="off">
+                        <input type="text" class="form-control" name="alamat" autocomplete="off" required>
 
                         <label>Agama</label>
-                        <input type="text" class="form-control" name="agama" autocomplete="off">
+                        <input type="text" class="form-control" name="agama" autocomplete="off" required>
 
                         <label>No Hp</label>
-                        <input type="text" class="form-control" name="nope" autocomplete="off">
+                        <input type="text" class="form-control" name="nope" autocomplete="off" required>
                     </div>
                 </div>
 

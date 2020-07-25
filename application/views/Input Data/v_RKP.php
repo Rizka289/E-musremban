@@ -20,6 +20,8 @@
                     <th>Lebar</th>
                     <th>Tinggi</th>
                     <th>M<sup>2</sup></th>
+                    <th>Hari</th>
+                    <th>Orang</th>
                     <th>Anggaran (Rp)</th>
                     <th>Sub Total (Rp)</th>
                 </tr>
@@ -37,6 +39,8 @@
                     <td><?= $key->lebar ?></td>
                     <td><?= $key->tinggi ?></td>
                     <td><?= $key->m3 ?></td>
+                    <td><?= $key->hari ?></td>
+                    <td><?= $key->org ?></td>
                     <td><?= $key->anggaran ?></td>
                     <td><?= $key->total ?></td>
                 </tr>

@@ -22,7 +22,7 @@ if (validation_errors() != "") {
                             <label>Nama Bidang</label>
                             <select class="custom-select" onfocus="this.size=5" onblur="this.size=1"
                                 onchange="this .size=1;this.blur()" id="idrekening" name="idrekening">
-                                <option>-Pilih-</option>
+                                <option value="">-Pilih-</option>
                                 <?php foreach ($dt as $key) : ?>
                                 <option value="<?= $key->id_bidang; ?>"><?= $key->kode_rek . $key->nama_bidang ?>
                                 </option>
@@ -32,7 +32,7 @@ if (validation_errors() != "") {
 
                         <label>Sub Rekening</label>
                         <input type="text" class="form-control" name="SubRek" autocomplete="off"
-                            placeholder="Contoh 1.2" pattern="[0-9]{1,9}.[0-9]{1,9}">
+                            placeholder="Contoh 2.2.1" pattern="[0-9]{1,9}.[0-9]{1,9}.[0-9]{1,9}">
 
                         <label>Nama Sub Bidang</label>
                         <input type="text" class="form-control" name="Nasub" autocomplete="off" required>

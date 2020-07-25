@@ -39,9 +39,9 @@
 
                                 </form>
                                 <hr>
-                                <div id="register" class="text-center">
+                                <!-- <div id="register" class="text-center">
                                     <a class="small" href="<?= site_url('login/registrasi') ?>">Create an Account!</a>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>

@@ -171,17 +171,17 @@ class InputData extends CI_Controller
         $config = array(
             array(
                 'field' => 'idrekening',
-                'label' => 'idrekening',
+                'label' => 'Nama Bidang',
                 'rules' => 'required'
             ),
             array(
                 'field' => 'sub',
-                'label' => 'sub',
+                'label' => 'Nama Sub Bidang',
                 'rules' => 'required'
             ),
             array(
                 'field' => 'usulan',
-                'label' => 'usulan',
+                'label' => 'Usulan',
                 'rules' => 'required'
             ),
             array(
@@ -192,37 +192,46 @@ class InputData extends CI_Controller
         );
         $this->form_validation->set_rules($config);
         if ($this->form_validation->run() != false) {
-
+            // var_dump();
+            $panjang = '';
+            foreach ($this->input->post('panjang') as $pnj) {
+                if ($pnj) {
+                    $panjang = $pnj;
+                }
+            }
+            // die('save');
             // var_dump($this->session);
-
-
             $objek = [
                 'id_bidang' => htmlspecialchars($this->input->post('idrekening')),
                 'Id_sub_bidang' => htmlspecialchars($this->input->post('sub')),
                 'usulan' => htmlspecialchars($this->input->post('usulan')),
                 'unit' => htmlspecialchars($this->input->post('unit')),
-                'panjang' => htmlspecialchars($this->input->post('panjang')),
+                'panjang' => htmlspecialchars($panjang),
                 'lebar' => htmlspecialchars($this->input->post('lebar')),
                 'tinggi' => htmlspecialchars($this->input->post('tinggi')),
                 'm3' => htmlspecialchars($this->input->post('m3')),
+                'hari' => htmlspecialchars($this->input->post('hari')),
+                'org' => htmlspecialchars($this->input->post('orang')),
                 'anggaran' => htmlspecialchars($this->input->post('anggaran')),
                 'total' => htmlspecialchars($this->input->post('total')),
                 'id_dusun' => htmlspecialchars($this->session->userdata('id')),
-                'id_desa' => htmlspecialchars('20')
             ];
-            // var_dump($objek);
-            // die('save');
+
             $this->Data_model->createUsulan($objek);
             redirect('InputData/Usulan', 'refresh');
         } else {
-            $data['title'] = 'Halaman Bidang';
+            $data['title'] = 'Halaman Usulan';
+            $year = date("Y");
+            $data['lte'] = $this->Data_model->panggildb($year);
             $data['usulan'] = $this->Data_model->getUsulan();
             $data['bidang'] = $this->Data_model->getBidang();
             $data['subBi'] = $this->Data_model->getSub();
+            // var_dump($data['usulan']);
+            // die;
 
             $this->load->view('ext/header', $data);
-            $this->load->view('templates/sidebar');
-            $this->load->view('templates/topbar');
+            $this->load->view('Templates/sidebar');
+            $this->load->view('Templates/topbar');
             $this->load->view('Input Data/v_usulan', $data);
             $this->load->view('ext/footer');
         }
@@ -327,11 +336,11 @@ class InputData extends CI_Controller
     public function createSub()
     {
         $config = array(
-            // array(
-            //     'field' => 'id_rekening',
-            //     'label' => 'Kode Rekening',
-            //     'rules' => 'required'
-            // ),
+            array(
+                'field' => 'idrekening',
+                'label' => 'Kode Rekening',
+                'rules' => 'required'
+            ),
             array(
                 'field' => 'SubRek',
                 'label' => 'Sub Rekening',
