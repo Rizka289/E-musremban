@@ -15,24 +15,14 @@
                             <th colspan="2" style="text-align: center">RINCIAN ANGGARAN BIAYA</th>
                         </tr>
                         <tr>
-                            <td rowspan="3">Nama Bidang</td>
-                            <td rowspan="3" width=200><?= $isi_usulan->kode_rek . $isi_usulan->nama_bidang ?></td>
+                            <td rowspan="4">Nama Bidang</td>
+                            <td rowspan="4" width=200><?= $isi_usulan->kode_rek . $isi_usulan->nama_bidang ?></td>
                             <td>Panjang</td>
                             <td><?= $isi_usulan->panjang ?></td>
                         </tr>
                         <tr>
                             <td>Lebar</td>
                             <td><?= $isi_usulan->lebar ?></td>
-                        </tr>
-                        <tr>
-                            <td>M<sup>2</sup></td>
-                            <td><?= $isi_usulan->m3 ?></td>
-                        </tr>
-                        <tr>
-                            <td rowspan="3">Nama Sub Bidang</td>
-                            <td rowspan="3"><?= $isi_usulan->Sub_rek . $isi_usulan->nama_sub_bidang ?></td>
-                            <td>Panjang</td>
-                            <td><?= $isi_usulan->panjang ?></td>
                         </tr>
                         <tr>
                             <td>Tinggi</td>
@@ -43,8 +33,8 @@
                             <td><?= $isi_usulan->m3 ?></td>
                         </tr>
                         <tr>
-                            <td rowspan="4">Usulan</td>
-                            <td rowspan="4"><?= $isi_usulan->usulan ?></td>
+                            <td rowspan="3">Nama Sub Bidang</td>
+                            <td rowspan="3"><?= $isi_usulan->Sub_rek . $isi_usulan->nama_sub_bidang ?></td>
                             <td>Unit</td>
                             <td><?= $isi_usulan->unit ?></td>
                         </tr>
@@ -56,6 +46,9 @@
                             <td>Orang</td>
                             <td><?= $isi_usulan->org ?></td>
                         </tr>
+                        <tr>
+                            <td rowspan="2">Usulan</td>
+                            <td rowspan="2"><?= $isi_usulan->usulan ?></td>
                         <tr>
                             <td>Anggaran (Rp)</td>
                             <td><?= $isi_usulan->anggaran ?></td>
