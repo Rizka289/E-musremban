@@ -132,20 +132,49 @@ class InputData extends CI_Controller
     }
     public function proses_editBidang()
     {
-
-        $id = $this->input->post('id');
-        $id_tahun = $this->input->post('tahun');
-        $kode = $this->input->post('kode_rek');
-        $nabid = $this->input->post('nama_bid');
-
-        $objek = array(
-            'id_tahun' => $id_tahun,
-            'kode_rek' => $kode,
-            'nama_bidang' => $nabid
+        $config = array(
+            array(
+                'field' => 'tahun',
+                'label' => 'Tahun',
+                'rules' => 'required'
+            ),
+            array(
+                'field' => 'kode_rek',
+                'label' => 'Kode Rekening',
+                'rules' => 'required'
+            ),
+            array(
+                'field' => 'nama_bid',
+                'label' => 'Nama Bidang',
+                'rules' => 'required'
+            ),
         );
-        $this->Data_model->updateBidang($id, $objek);
-        $this->session->set_flashdata('message', 'Data Berhasil diedit');
-        redirect('InputData/Bidang', 'refresh');
+        $this->form_validation->set_rules($config);
+        if ($this->form_validation->run() != false) {
+            $id = $this->input->post('id');
+            $id_tahun = $this->input->post('tahun');
+            $kode = $this->input->post('kode_rek');
+            $nabid = $this->input->post('nama_bid');
+
+            $objek = array(
+                'id_tahun' => $id_tahun,
+                'kode_rek' => $kode,
+                'nama_bidang' => $nabid
+            );
+            $this->Data_model->updateBidang($id, $objek);
+            $this->session->set_flashdata('message', 'Data Berhasil diedit');
+            redirect('InputData/Bidang', 'refresh');
+        } else {
+            $data['title'] = 'Halaman Bidang';
+            $data['bidang'] = $this->Data_model->getAllBidang();
+            $data['tbl_t'] = $this->Data_model->getAll();
+
+            $this->load->view('ext/header', $data);
+            $this->load->view('templates/sidebar');
+            $this->load->view('templates/topbar');
+            $this->load->view('Input Data/v_bidang', $data);
+            $this->load->view('ext/footer');
+        }
     }
 
     // ===============================================USULAN====================================================
@@ -395,19 +424,51 @@ class InputData extends CI_Controller
     }
     public function proses_E_Sub()
     {
-        $id_sub_bidang = $this->input->post('id');
-        $sub = $this->input->post('SubRek');
-        $isi = $this->input->post('Nasub');
-        $idrek = $this->input->post('idrekening');
-        $objek = array(
-            'Sub_rek' => $sub,
-            'nama_sub_bidang' => $isi,
-            'id_bidang' => $idrek
+        $config = array(
+            array(
+                'field' => 'idrekening',
+                'label' => 'Kode Rekening',
+                'rules' => 'required'
+            ),
+            array(
+                'field' => 'SubRek',
+                'label' => 'Sub Rekening',
+                'rules' => 'required'
+            ),
+            array(
+                'field' => 'Nasub',
+                'label' => 'Nama Sub Bidang',
+                'rules' => 'required'
+            ),
         );
-        $data['bidang'] = $this->Data_model->getBidang();
-        $this->Data_model->update($id_sub_bidang, $objek);
-        $this->session->set_flashdata('message', 'Data Berhasil Diedit');
-        redirect('InputData/subBidang');
+        $this->form_validation->set_rules($config);
+        if ($this->form_validation->run() != false) {
+            $id_sub_bidang = $this->input->post('id');
+            $sub = $this->input->post('SubRek');
+            $isi = $this->input->post('Nasub');
+            $idrek = $this->input->post('idrekening');
+            $objek = array(
+                'Sub_rek' => $sub,
+                'nama_sub_bidang' => $isi,
+                'id_bidang' => $idrek
+            );
+            $data['bidang'] = $this->Data_model->getBidang();
+            $this->Data_model->update($id_sub_bidang, $objek);
+            $this->session->set_flashdata('message', 'Data Berhasil Diedit');
+            redirect('InputData/subBidang');
+        } else {
+            $data['subBidang'] = $this->Data_model->getAllSub();
+            $data['Sub'] = $this->Data_model->getBidang();
+            $year = date("Y");
+            $data['dt'] = $this->Data_model->getdb($year);
+            $data['title'] = 'Halaman Sub Bidang';
+
+            $this->load->view('ext/header', $data);
+            $this->load->view('Templates/sidebar');
+            $this->load->view('Templates/topbar');
+            $this->load->view('Input Data/v_SubBidang', $data);
+            $this->load->view('ext/footer');
+        }
     }
     //=============================================EXPORT EXCEL==============================================
     public function test()

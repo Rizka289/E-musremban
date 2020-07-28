@@ -13,7 +13,7 @@
                             <div class="form-group">
                                 <label>Tahun</label>
                                 <select class="custom-select" id="tahun" name="tahun">
-                                    <option>-Pilih-</option>
+                                    <option value="">-Pilih-</option>
                                     <?php
                                     foreach ($tbl_t as $key) : ?>
                                     <option value="<?= $key->id_tahun ?>"><?= $key->tahun ?></option>

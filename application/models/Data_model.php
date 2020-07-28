@@ -107,8 +107,8 @@ class Data_model extends CI_Model
         $this->db->join('tbl_sub_bidang', 'tbl_sub_bidang.id_sub_bidang = tbl_usulan.id_sub_bidang');
         $this->db->join('dusun', 'dusun.id_dusun = tbl_usulan.id_dusun');
 
-
         $this->db->where('id_usulan', $id);
+        //$query  = $this->db->get()->row();
         $query  = $this->db->get()->row();
         return $query;
     }

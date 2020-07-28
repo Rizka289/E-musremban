@@ -19,7 +19,8 @@ echo '</script>';
                         <select class="custom-select" onfocus="this.size=5" onblur="this.size=1"
                             onchange="this.size=1;this.blur()" id="idrekening" name="idrekening"
                             value="<?= $isi_usulan->id_bidang; ?>">
-                            <option>-Pilih-</option>
+                            <option value="<?= $isi_usulan->id_bidang; ?>">
+                                <?= $isi_usulan->kode_rek; ?><?= $isi_usulan->nama_bidang; ?></option>
                             <?php foreach ($bidang as $key) : ?>
                             <option value="<?= $key->id_bidang; ?>"><?= $key->kode_rek . $key->nama_bidang ?></option>
                             <?php endforeach; ?>
@@ -30,7 +31,8 @@ echo '</script>';
                             <select class="custom-select" onfocus="this.size=5" onblur="this.size=1"
                                 onchange="this.size=1;this.blur()" id="subRek" name="sub"
                                 value="<?= $isi_usulan->Id_sub_bidang; ?>">
-                                <option>-Pilih-</option>
+                                <option value="<?= $isi_usulan->Id_sub_bidang; ?>">
+                                    <?= $isi_usulan->Sub_rek; ?><?= $isi_usulan->nama_sub_bidang; ?></option>
                                 <?php foreach ($subBi as $key) : ?>
                                 <option value="<?= $key->Id_sub_bidang ?>"><?= $key->Sub_rek . $key->nama_sub_bidang ?>
                                 </option>
@@ -130,6 +132,8 @@ document.getElementById('tinggi').addEventListener('input', function(evet) {
     tinggi = parseFloat(evet.target.value);
     getCheck();
 });
+
+document.getElementById("idrekening").value = "<?= $isi_usulan->id_bidang; ?>";
 
 function getCheck() {
     let angk3 = anggaran;

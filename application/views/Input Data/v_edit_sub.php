@@ -9,7 +9,7 @@
                         <select class="custom-select" onfocus="this.size=5" onblur="this.size=1"
                             onchange="this.size=1;this.blur()" id="idrekening" name="idrekening"
                             value="<?= $isi_subB->id_bidang; ?>">
-                            <option>-Pilih-</option>
+                            <option value="">-Pilih-</option>
                             <?php foreach ($bidang as $key) : ?>
                             <option value="<?= $key->id_bidang; ?>"><?= $key->kode_rek . $key->nama_bidang ?></option>
                             <?php endforeach; ?>

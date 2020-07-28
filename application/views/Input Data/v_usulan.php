@@ -209,10 +209,10 @@ $username = $user->username;
                         <td>
                             <!-- Untuk V_usulan di Dusun -->
                             <?php if ($key->status != 'Ya') : ?>
-                            <?php if ($this->session->userdata('user') != 'desa') { ?>
+                            <!-- <?php if ($this->session->userdata('user') != 'desa') { ?>
                             <a href="<?= site_url('InputData/editUsulan/' . $key->id_usulan) ?>"
                                 class="btn btn-warning"><i class="far fa-fw fa-edit"></i></a>
-                            <?php } ?>
+                            <?php } ?> -->
                             <a onclick="return confirm ('yakin?');"
                                 href="<?= site_url('InputData/hapusUsulan/' . $key->id_usulan) ?>"
                                 class="btn btn-danger"><i class="fas fa-fw fa-trash-alt"></i></a>
