@@ -84,11 +84,23 @@ $username = $user->username;
                         <label>M<sup>2</sup></label>
                         <input type="text" class="form-control" name="m3" autocomplete="off" id="m3">
 
-                        <label>Hari</label>
+
+                        <div class="form-check form-check-inline my-2">
+                            <input class="form-check-input" type="radio" name="panjangCheck" id="panjang2"
+                                value="panjang2">
+
+                            <label class="form-check-label" for="panjang2">Hari</label>&ensp;
+                            <input type="text" class="form-control col-md-2" name="hari" autocomplete="off" id="hari">
+
+                            &ensp;<label>Orang</label>&ensp;
+                            <input type="text" class="form-control col-md-2" name="orang" autocomplete="off" id="orang">
+                        </div>
+
+                        <!-- <label>Hari</label>
                         <input type="text" class="form-control" name="hari" autocomplete="off" id="hari">
 
                         <label>Orang</label>
-                        <input type="text" class="form-control" name="orang" autocomplete="off" id="orang">
+                        <input type="text" class="form-control" name="orang" autocomplete="off" id="orang"> -->
 
                         <label>Anggaran (Rp)</label>
                         <input type="text" class="form-control" name="anggaran" autocomplete="off" id="anggaran">
@@ -289,17 +301,17 @@ function getCheck() {
 
 document.getElementById('anggaran').addEventListener('keyup', function(evet) {
     anggaran = evet.target.value;
-    anggr2 = anggaran.replace(/[ .]/, "")
     var bilangan = formatRupiah(anggaran, '');
+    anggr2 = anggaran.replace(/[ .]/, "")
 
     document.getElementById('anggaran').value = bilangan
 
     getCheck();
-    getUnit()
+    getUnit();
+    getHari();
 });
 
 function formatRupiah(angka, prefix) {
-    console.log(typeof angka);
 
     var number_string = angka.replace(/[^,\d]/g, '').toString(),
         split = number_string.split(','),
@@ -326,11 +338,7 @@ function getUnit() {
     let angk3 = anggr2.replace(/[ .]/, "");
     if (unit != 0 && angk3 != 0) {
         let nilaiunit = unit * angk3
-        console.log("unit", unit);
 
-        console.log("angka", angk3);
-
-        console.log("jumlah", nilaiunit);
 
         let total = formatRupiah(nilaiunit.toString(), '');
 
@@ -338,9 +346,20 @@ function getUnit() {
     }
 }
 document.getElementById('hari').addEventListener('input', function(evet) {
-    unit = parseFloat(evet.target.value);
+    hari = parseFloat(evet.target.value);
+    getHari();
 });
 document.getElementById('orang').addEventListener('input', function(evet) {
-    unit = parseFloat(evet.target.value);
+    orang = parseFloat(evet.target.value);
+    getHari();
 });
+
+function getHari() {
+    if (hari != 0 && orang != 0 && anggr2 != 0) {
+        let nilaihari = hari * orang * anggr2
+        let total = formatRupiah(nilaihari.toString(), '');
+
+        document.getElementById('subtotal').value = total;
+    }
+}
 </script>

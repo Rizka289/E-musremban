@@ -46,13 +46,13 @@
         <tr>
             <th>Kode Rekening</th>
             <th colspan="2">URAIAN</th>
-            <th colspan="8">Anggaran(Rp)</th>
+            <th colspan="10">Anggaran(Rp)</th>
         </tr>
         <?php foreach ($hasil as $key) : ?>
         <tr>
             <td><?= $key->kode_rek ?></td>
             <td colspan="2"><?= $key->nama_bidang ?></td>
-            <td colspan="8"></td>
+            <td colspan="10"></td>
         </tr>
         <?php
             $data1 = $this->Data_model->getitem2($key->id_bidang);
@@ -61,6 +61,8 @@
                 echo '<td></td>';
                 echo '<td>' . $row->Sub_rek . '</td>';
                 echo '<td>' . $row->nama_sub_bidang . '</td>';
+                echo '<td>Hr</td>'; //
+                echo '<td>Or</td>'; //
                 echo '<td>P</td>';
                 echo '<td>L</td>';
                 echo '<td>T</td>';
@@ -75,6 +77,8 @@
                     echo '<td></td>';
                     echo '<td></td>';
                     echo '<td>' . $row1->usulan . '</td>';
+                    echo '<td>' . $row1->hari . '</td>'; //
+                    echo '<td>' . $row1->org . '</td>'; //
                     echo '<td>' . $row1->panjang . '</td>';
                     echo '<td>' . $row1->lebar . '</td>';
                     echo '<td>' . $row1->tinggi . '</td>';

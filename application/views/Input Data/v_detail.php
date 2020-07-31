@@ -49,6 +49,7 @@
                         <tr>
                             <td rowspan="2">Usulan</td>
                             <td rowspan="2"><?= $isi_usulan->usulan ?></td>
+                        </tr>
                         <tr>
                             <td>Anggaran (Rp)</td>
                             <td><?= $isi_usulan->anggaran ?></td>
