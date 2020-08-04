@@ -265,70 +265,70 @@ class InputData extends CI_Controller
             $this->load->view('ext/footer');
         }
     }
-    function updateUsulan($usulan, $status)
-    {
-        $this->db->where('id_usulan', $usulan)->set('status', $status)->update('tbl_usulan');
-        redirect('InputData/Usulan', 'refresh');
-    }
+    // function updateUsulan($usulan, $status)
+    // {
+    //     $this->db->where('id_usulan', $usulan)->set('status', $status)->update('tbl_usulan');
+    //     redirect('InputData/Usulan', 'refresh');
+    // }
     public function hapusUsulan($id)
     {
         $this->Data_model->removeUsulan($id);
         $this->session->set_flashdata('message', 'Data Berhasil Dihapus');
         redirect('InputData/Usulan');
     }
-    public function editUsulan($id)
-    {
-        $data['title'] = 'Halaman Edit Usulan';
-        $data['isi_usulan'] = $this->Data_model->get_idUsulan($id);
-        $data['bidang'] = $this->Data_model->getBidang();
-        $data['subBi'] = $this->Data_model->getSub();
-        // var_dump($data['isi_usulan']);
-        // die;
-        $this->load->view('Templates/header', $data);
-        $this->load->view('Templates/sidebar');
-        $this->load->view('Templates/topbar');
-        $this->load->view('Input Data/v_edit_usulan', $data);
-        $this->load->view('Templates/footer');
-    }
-    public function proses_editUsulan()
-    {
-        $id_usulan = $this->input->post('id');
-        $idrek = $this->input->post('idrekening');
-        $subrek = $this->input->post('sub');
-        $usulan = $this->input->post('usulan');
-        $unit = $this->input->post('unit');
-        $panjang = $this->input->post('panjang');
-        $lebar = $this->input->post('lebar');
-        $tinggi = $this->input->post('tinggi');
-        $m3 = $this->input->post('m3');
-        $hari = $this->input->post('hari');
-        $orang = $this->input->post('orang');
-        $anggaran = $this->input->post('anggaran');
-        $subT = $this->input->post('total');
+    // public function editUsulan($id)
+    // {
+    //     $data['title'] = 'Halaman Edit Usulan';
+    //     $data['isi_usulan'] = $this->Data_model->get_idUsulan($id);
+    //     $data['bidang'] = $this->Data_model->getBidang();
+    //     $data['subBi'] = $this->Data_model->getSub();
+    //     // var_dump($data['isi_usulan']);
+    //     // die;
+    //     $this->load->view('Templates/header', $data);
+    //     $this->load->view('Templates/sidebar');
+    //     $this->load->view('Templates/topbar');
+    //     $this->load->view('Input Data/v_edit_usulan', $data);
+    //     $this->load->view('Templates/footer');
+    // }
+    // public function proses_editUsulan()
+    // {
+    //     $id_usulan = $this->input->post('id');
+    //     $idrek = $this->input->post('idrekening');
+    //     $subrek = $this->input->post('sub');
+    //     $usulan = $this->input->post('usulan');
+    //     $unit = $this->input->post('unit');
+    //     $panjang = $this->input->post('panjang');
+    //     $lebar = $this->input->post('lebar');
+    //     $tinggi = $this->input->post('tinggi');
+    //     $m3 = $this->input->post('m3');
+    //     $hari = $this->input->post('hari');
+    //     $orang = $this->input->post('orang');
+    //     $anggaran = $this->input->post('anggaran');
+    //     $subT = $this->input->post('total');
 
-        $objek = array(
-            'id_bidang' => $idrek,
-            'Id_sub_bidang' => $subrek,
-            'usulan' => $usulan,
-            'unit' => $unit,
-            'panjang' => $panjang,
-            'lebar' => $lebar,
-            'tinggi' => $tinggi,
-            'm3' => $m3,
-            'hari' => $hari,
-            'org' => $orang,
-            'anggaran' => $anggaran,
-            'total' => $subT
-        );
+    //     $objek = array(
+    //         'id_bidang' => $idrek,
+    //         'Id_sub_bidang' => $subrek,
+    //         'usulan' => $usulan,
+    //         'unit' => $unit,
+    //         'panjang' => $panjang,
+    //         'lebar' => $lebar,
+    //         'tinggi' => $tinggi,
+    //         'm3' => $m3,
+    //         'hari' => $hari,
+    //         'org' => $orang,
+    //         'anggaran' => $anggaran,
+    //         'total' => $subT
+    //     );
 
-        // var_dump($objek);
-        // die('telat');
-        $data['bidang'] = $this->Data_model->getBidang();
-        $data['subBi'] = $this->Data_model->getSub();
-        $this->Data_model->updateUsulan($id_usulan, $objek);
-        // $this->sessionn->set_flashdata('message', 'Data Berhasil diedit');
-        redirect('InputData/Usulan');
-    }
+    //     // var_dump($objek);
+    //     // die('telat');
+    //     $data['bidang'] = $this->Data_model->getBidang();
+    //     $data['subBi'] = $this->Data_model->getSub();
+    //     $this->Data_model->updateUsulan($id_usulan, $objek);
+    //     // $this->sessionn->set_flashdata('message', 'Data Berhasil diedit');
+    //     redirect('InputData/Usulan');
+    // }
     // =================================DETAIL===========================
     public function detail($id)
     {

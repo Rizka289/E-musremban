@@ -77,12 +77,12 @@
                     echo '<td></td>';
                     echo '<td></td>';
                     echo '<td>' . $row1->usulan . '</td>';
-                    echo '<td>' . $row1->hari . '</td>'; //
-                    echo '<td>' . $row1->org . '</td>'; //
+                    echo '<td>' . ($row1->hari == 0 ? (' ') : ($row1->hari)) . '</td>'; //
+                    echo '<td>' . ($row1->org == 0 ? (' ') : ($row1->org)) . '</td>'; //
                     echo '<td>' . $row1->panjang . '</td>';
                     echo '<td>' . $row1->lebar . '</td>';
                     echo '<td>' . $row1->tinggi . '</td>';
-                    echo '<td>' . $row1->unit . '</td>';
+                    echo '<td>' . ($row1->unit == 0 ? (' ') : ($row1->unit))  . '</td>';
                     echo '<td>' . $row1->m3 . '</td>';
                     echo '<td>m<sup>2</sup></td>';
                     echo '<td>' . $row1->anggaran . '</td>';

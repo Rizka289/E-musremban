@@ -1,4 +1,6 @@
 <?php
+
+// die('stop');
 if (validation_errors() != "") {
     echo "<div class='alert alert-danger' role='alert'>";
     echo validation_errors();
@@ -167,10 +169,14 @@ $username = $user->username;
                         <td><?= $key->Sub_rek ?></td>
                         <td><?= $key->nama_sub_bidang ?></td>
                         <td><?= $key->usulan ?></td>
-                        <td><?= $key->unit ?></td>
+                        <td>
+                            <?= $key->unit != 0 ? ($key->unit) : ('') ?>
+
+
+                        </td>
                         <td><?= $key->panjang ?></td>
                         <td><?= $key->lebar ?></td>
-                        <td><?= $key->tinggi ?></td>
+                        <td><?= $key->tinggi == 0 ? ('') : ($key->tinggi) ?></td>
                         <td><?= $key->m3 ?></td>
                         <td><?= $key->hari ?></td>
                         <td><?= $key->org ?></td>

@@ -28,19 +28,20 @@
                 <?php $i = 1; ?>
                 <?php foreach ($usulan->result() as $key) : ?>
                 <tr>
+                    <!-- dasar   heheheh udh buat kyak yg tdi kk tulis wait jgn diskonikkin -->
                     <td><?= $i++; ?></td>
                     <td><?= $key->kode_rek ?></td>
                     <td><?= $key->nama_bidang ?></td>
                     <td><?= $key->Sub_rek ?></td>
                     <td><?= $key->nama_sub_bidang ?></td>
                     <td><?= $key->usulan ?></td>
-                    <td><?= $key->unit ?></td>
+                    <td><?= $key->unit != 0 ? ($key->unit) : ('') ?></td>
                     <td><?= $key->panjang ?></td>
                     <td><?= $key->lebar ?></td>
                     <td><?= $key->tinggi ?></td>
                     <td><?= $key->m3 ?></td>
-                    <td><?= $key->hari ?></td>
-                    <td><?= $key->org ?></td>
+                    <td><?= $key->hari != 0 ? ($key->hari) : ('') ?></td>
+                    <td><?= $key->org != 0 ? ($key->org) : ('') ?></td>
                     <td><?= $key->anggaran ?></td>
                     <td><?= $key->total ?></td>
                 </tr>
