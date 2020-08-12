@@ -265,11 +265,11 @@ class InputData extends CI_Controller
             $this->load->view('ext/footer');
         }
     }
-    // function updateUsulan($usulan, $status)
-    // {
-    //     $this->db->where('id_usulan', $usulan)->set('status', $status)->update('tbl_usulan');
-    //     redirect('InputData/Usulan', 'refresh');
-    // }
+    function updateUsulan($usulan, $status)
+    {
+        $this->db->where('id_usulan', $usulan)->set('status', $status)->update('tbl_usulan');
+        redirect('InputData/Usulan', 'refresh');
+    }
     public function hapusUsulan($id)
     {
         $this->Data_model->removeUsulan($id);
